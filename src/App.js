@@ -1,25 +1,60 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import axios from 'axios';
+
+import { useGlobalContext } from './context/Context';
+import ProtectedRoute from './utils/ProtectedRoute';
+import AddButton from './components/AddButton';
+import SinglePage from './pages/SinglePage';
+import AuthRoute from './utils/AuthRoute';
+import DashBoard from './pages/DashBoard';
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
+import AddStory from './pages/AddStory';
+import Register from './pages/Register';
+import Account from './pages/Account';
+import Stories from './pages/Stories';
+import Update from './pages/Update';
+import About from './pages/About';
+import Error from './pages/Error';
+import Login from './pages/Login';
+import Home from './pages/Home';
+
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min.js';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
+axios.defaults.baseURL = 'http://localhost:9090/api/v1';
+
 function App() {
+  const { user } = useGlobalContext();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <ToastContainer />
+      {user && <AddButton />}
+      <main>
+        <div className='container'>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/about' component={About} />
+            <AuthRoute path='/login' component={Login} />
+            <AuthRoute path='/register' component={Register} />
+            <Route exact path='/stories' component={Stories} />
+            <Route path='/stories/create' component={AddStory} />
+            <ProtectedRoute path='/account' component={Account} />
+            <Route path='/stories/update/:slug' component={Update} />
+            <ProtectedRoute path='/dashboard' component={DashBoard} />
+            <Route path='/stories/details/:slug' component={SinglePage} />
+            <Route path='*' component={Error} />
+          </Switch>
+        </div>
+      </main>
+      <Footer />
+    </Router>
   );
-}
+};
 
 export default App;
