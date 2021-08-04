@@ -38,7 +38,11 @@ const CommentForm = ({ id }) => {
                             label='Add Comment'
                             onChange={e => setBody(e.target.value)}
                         />
-                        <Button text='Submit' className='btn' />
+                        <Button
+                            text='Submit'
+                            className='btn'
+                            disabled={body.trim() === ''}
+                        />
                     </form>
                 ) : (
                     <p>Please <Link to='/login'>log</Link> in to leave a comment</p>
