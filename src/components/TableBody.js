@@ -1,10 +1,10 @@
-import { FaPencilAlt, FaTrash } from 'react-icons/fa';
+import { FaPencilAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
-import Button from './Button';
+import DeleteButton from './DeleteButton';
 
-const TableBody = ({ data, onDelete }) => {
+const TableBody = ({ data }) => {
     return (
         <tbody>
             {data.map(item => {
@@ -25,12 +25,7 @@ const TableBody = ({ data, onDelete }) => {
                                 <FaPencilAlt />
                             </Link>
                             {' '}
-                            <Button
-                                text='Delete'
-                                className='btn red'
-                                icon={<FaTrash />}
-                                onClick={() => onDelete(_id)}
-                            />
+                            <DeleteButton id={_id} />
                         </td>
                     </tr>
                 )
