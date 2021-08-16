@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
-import { toast } from 'react-toastify';
 
 import { userDashBoard } from '../services/userService';
-import { deleteStory } from '../services/storyService';
 import { useGlobalContext } from '../context/Context';
 import Loader from '../components/Loader';
 import Table from '../components/Table';
@@ -33,16 +31,6 @@ const DashBoard = () => {
         }
     };
 
-    const handleDelete = async (id) => {
-        try {
-            await deleteStory(id);
-            window.location.reload();
-        } catch (ex) {
-            if (ex.response && ex.response.status === 404)
-                toast.error('This story has already been deleted');
-        }
-    };
-
     if (loading) {
         return (
             <main>
@@ -62,7 +50,6 @@ const DashBoard = () => {
             <Table
                 data={stories}
                 columns={columns}
-                onDelete={handleDelete}
             />
         </div>
     );
