@@ -25,6 +25,7 @@ const DeleteButton = ({ id }) => {
 
     return (
         <Button
+            type='button'
             text='Delete'
             className='btn red'
             icon={<FaTrash />}
