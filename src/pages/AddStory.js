@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 
 import { createStory } from '../services/storyService';
+import { useGlobalContext } from '../context/Context';
 import TextArea from '../components/TextArea';
 import Button from '../components/Button';
 import Input from '../components/Input';
 
 const AddStory = () => {
-    const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
+    const [title, setTitle] = useState('');
+    const { addStory } = useGlobalContext();
     const [status, setStatus] = useState('');
     const [errors, setErrrors] = useState({});
     const [allowComments, setAllowComments] = useState(true);
@@ -25,6 +27,7 @@ const AddStory = () => {
             };
 
             const { data: story } = await createStory(newStory);
+            addStory(story);
             window.location.replace(`/stories/details/${story.slug}`);
         } catch (ex) {
             console.log(ex.response.data.message);
