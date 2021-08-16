@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 
 import { getWithSlug, updateStory } from '../services/storyService';
+import { useGlobalContext } from '../context/Context';
+import { UPDATE_STORY } from '../context/types';
 import TextArea from '../components/TextArea';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -10,6 +12,7 @@ import Input from '../components/Input';
 const Update = () => {
     const { pathname } = useLocation();
     const path = pathname.split('/')[3];
+    const { dispatch } = useGlobalContext();
 
     const [id, setId] = useState(null);
     const [body, setBody] = useState('');
@@ -44,6 +47,7 @@ const Update = () => {
             };
 
             await updateStory(id, updStory);
+            dispatch({ type: UPDATE_STORY });
             window.location.replace('/dashboard');
         } catch (ex) {
             if (ex.response && ex.response.status === 500) {
