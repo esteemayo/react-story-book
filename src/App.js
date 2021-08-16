@@ -12,6 +12,7 @@ import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import AddStory from './pages/AddStory';
 import Register from './pages/Register';
+import Alert from './components/Alert';
 import Account from './pages/Account';
 import Stories from './pages/Stories';
 import Update from './pages/Update';
@@ -28,12 +29,13 @@ import './App.css';
 axios.defaults.baseURL = 'http://localhost:9090/api/v1';
 
 function App() {
-  const { user } = useGlobalContext();
+  const { user, alert } = useGlobalContext();
 
   return (
     <Router>
       <NavBar />
       <ToastContainer />
+      {alert.show && <Alert {...alert} />}
       {user && <AddButton />}
       <main>
         <div className='container'>
