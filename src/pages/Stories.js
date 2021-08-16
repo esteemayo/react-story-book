@@ -1,20 +1,24 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import { FETCH_STORIES, LOADING } from '../context/types';
+import { useGlobalContext } from '../context/Context';
 import { getStories } from '../services/storyService';
 import StoryCard from '../components/StoryCard';
 import Loader from '../components/Loader';
 
 const Stories = () => {
-    const [loading, setLoading] = useState(true);
-    const [stories, setStories] = useState([]);
     const { search } = useLocation();
+    const { stories, dispatch, isLoading: loading } = useGlobalContext();
 
     const fetchStories = useCallback(async () => {
+        dispatch({ type: LOADING });
         const { data } = await getStories(search);
-        setStories(data);
-        setLoading(false);
-    }, [search]);
+        dispatch({
+            type: FETCH_STORIES,
+            payload: data,
+        });
+    }, [search, dispatch]);
 
     useEffect(() => {
         fetchStories();
