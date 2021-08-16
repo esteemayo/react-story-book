@@ -103,7 +103,7 @@ const Update = () => {
                         <Button
                             text='Update'
                             className='btn'
-                            icon={<FaArrowRight style={iconStyling} />}
+                            icon={<FaArrowRight style={iconStyle} />}
                         />
                     </form>
                 </div>
@@ -112,7 +112,7 @@ const Update = () => {
     );
 };
 
-const iconStyling = {
+const iconStyle = {
     fontSize: '0.8rem',
 };
 
