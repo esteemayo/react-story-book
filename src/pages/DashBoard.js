@@ -22,8 +22,12 @@ const DashBoard = () => {
 
     const fetchStories = async () => {
         try {
-            const { data: stories } = await userDashBoard();
-            setStories(stories);
+            const res = await userDashBoard();
+            if (res.status >= 200 && res.status < 299) {
+                setStories(res.data);
+            } else {
+                throw new Error(res.statusText);
+            }
             setLoading(false);
         } catch (err) {
             setLoading(true);

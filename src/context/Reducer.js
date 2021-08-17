@@ -1,12 +1,74 @@
+import {
+    LOGOUT,
+    LOADING,
+    ADD_STORY,
+    HIDE_ALERT,
+    LOGIN_START,
+    DELETE_STORY,
+    FETCH_STORIES,
+    LOGIN_SUCCESS,
+    LOGIN_FAILURE,
+    UPDATE_STORY,
+} from './types';
+
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'LOGIN_START':
+        case FETCH_STORIES:
             return {
                 ...state,
-                isLoading: true
+                stories: action.payload,
+                isLoading: false,
+            }
+
+        case LOADING:
+            return {
+                ...state,
+                isLoading: true,
+            }
+
+        case ADD_STORY:
+            const newStory = [action.payload, ...state.stories];
+
+            return {
+                ...state,
+                stories: newStory,
+                alert: {
+                    show: true,
+                    type: 'teal lighten-2',
+                    msg: 'Story successfully created!',
+                },
+            }
+
+        case UPDATE_STORY:
+            return {
+                ...state,
+                alert: {
+                    show: true,
+                    type: 'teal lighten-2',
+                    msg: 'Story successfully updated!',
+                },
+            }
+
+        case DELETE_STORY:
+            const updStory = state.stories.filter(story => story.id !== action.payload);
+
+            return {
+                ...state,
+                stories: updStory,
+                alert: {
+                    show: true,
+                    type: 'red',
+                    msg: 'Story successfully deleted!',
+                },
+            }
+
+        case LOGIN_START:
+            return {
+                ...state,
+                isLoading: true,
             };
 
-        case 'LOGIN_SUCCESS':
+        case LOGIN_SUCCESS:
             return {
                 ...state,
                 user: action.payload,
@@ -14,7 +76,7 @@ const reducer = (state, action) => {
                 error: false
             };
 
-        case 'LOGIN_FAILURE':
+        case LOGIN_FAILURE:
             return {
                 ...state,
                 user: null,
@@ -22,11 +84,21 @@ const reducer = (state, action) => {
                 isLoading: false,
             };
 
-        case 'LOGOUT':
+        case LOGOUT:
             return {
                 ...state,
                 user: null,
             };
+
+        case HIDE_ALERT:
+            return {
+                ...state,
+                alert: {
+                    show: false,
+                    type: '',
+                    msg: '',
+                },
+            }
 
         default:
             throw new Error('No matching action type');

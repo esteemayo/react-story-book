@@ -1,4 +1,4 @@
-import http from "./httpService";
+import http from './httpService';
 
 const apiEndPoint = '/stories';
 
