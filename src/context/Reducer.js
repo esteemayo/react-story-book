@@ -18,13 +18,13 @@ const reducer = (state, action) => {
                 ...state,
                 stories: action.payload,
                 isLoading: false,
-            }
+            };
 
         case LOADING:
             return {
                 ...state,
                 isLoading: true,
-            }
+            };
 
         case ADD_STORY:
             const newStory = [action.payload, ...state.stories];
@@ -37,7 +37,7 @@ const reducer = (state, action) => {
                     type: 'teal lighten-2',
                     msg: 'Story successfully created!',
                 },
-            }
+            };
 
         case UPDATE_STORY:
             return {
@@ -47,7 +47,7 @@ const reducer = (state, action) => {
                     type: 'teal lighten-2',
                     msg: 'Story successfully updated!',
                 },
-            }
+            };
 
         case DELETE_STORY:
             const updStory = state.stories.filter(story => story.id !== action.payload);
@@ -60,7 +60,7 @@ const reducer = (state, action) => {
                     type: 'red',
                     msg: 'Story successfully deleted!',
                 },
-            }
+            };
 
         case LOGIN_START:
             return {
@@ -73,7 +73,7 @@ const reducer = (state, action) => {
                 ...state,
                 user: action.payload,
                 isLoading: false,
-                error: false
+                error: false,
             };
 
         case LOGIN_FAILURE:
@@ -98,11 +98,11 @@ const reducer = (state, action) => {
                     type: '',
                     msg: '',
                 },
-            }
+            };
 
         default:
             throw new Error('No matching action type');
-    }
+    };
 };
 
 export default reducer;
