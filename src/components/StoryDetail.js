@@ -11,13 +11,13 @@ const StoryDetail = ({ body, slug, title, author, createdAt }) => {
     return (
         <>
             <h3 className='heading-tertiary'>{title}
-                {user && user.username === author ? (
+                {user && user.username === author && (
                     <Link to={`/stories/update/${slug}`}>
                         <small>
                             {' '}<FaPencilAlt />
                         </small>
                     </Link>
-                ) : ''}
+                )}
             </h3>
             <div className='card story'>
                 <div className='card-content'>
