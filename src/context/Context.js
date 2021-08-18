@@ -11,7 +11,7 @@ import {
 } from './types';
 import reducer from './Reducer';
 
-const initialStates = {
+const initialState = {
     user: null,
     error: false,
     stories: [],
@@ -33,14 +33,14 @@ if (token) {
     if (decodedToken.exp * 1000 < expiryDate) {
         localStorage.removeItem(tokenKey);
     } else {
-        initialStates.user = decodedToken;
+        initialState.user = decodedToken;
     }
 }
 
-const AppContext = createContext(initialStates);
+const AppContext = createContext(initialState);
 
 const AppProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(reducer, initialStates);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     const addStory = story => {
         dispatch({
