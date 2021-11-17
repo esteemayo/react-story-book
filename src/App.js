@@ -42,10 +42,10 @@ function App() {
             <AuthRoute path='/login' component={Login} />
             <AuthRoute path='/register' component={Register} />
             <Route exact path='/stories' component={Stories} />
-            <Route path='/stories/create' component={AddStory} />
             <ProtectedRoute path='/account' component={Account} />
             <Route path='/stories/update/:slug' component={Update} />
             <ProtectedRoute path='/dashboard' component={DashBoard} />
+            <ProtectedRoute path='/stories/create' component={AddStory} />
             <Route path='/stories/details/:slug' component={SinglePage} />
             <Route path='*' component={Error} />
           </Switch>
