@@ -9,6 +9,7 @@ import Title from './Title';
 
 const UserPassword = () => {
     const { loginSuccess } = useGlobalContext();
+
     const [errors, setErrors] = useState({});
     const [password, setPassword] = useState('');
     const [passwordCurrent, setPasswordCurrent] = useState('');
@@ -17,15 +18,15 @@ const UserPassword = () => {
     const validateForm = () => {
         const tempErrors = {};
 
-        if (password === '') {
+        if (!password) {
             tempErrors.password = 'Password field is required.';
         }
 
-        if (passwordCurrent === '') {
+        if (!passwordCurrent) {
             tempErrors.passwordCurrent = 'Current password field is required.';
         }
 
-        if (passwordConfirm === '') {
+        if (!passwordConfirm) {
             tempErrors.passwordConfirm = 'Confirm password field is required.';
         }
 
@@ -41,6 +42,7 @@ const UserPassword = () => {
         e.preventDefault();
 
         if (!validateForm()) return;
+        setErrors({});
 
         try {
             const userData = {
@@ -57,11 +59,8 @@ const UserPassword = () => {
             if (ex.response && ex.response.status === 400) {
                 const tempErrors = { ...errors };
                 tempErrors.passwordCurrent = ex.response.data.message;
-                setErrors(tempErrors);
-            } else if (ex.response && ex.response.status === 500) {
-                const tempErrors = { ...errors };
-                tempErrors.password = ex.response.data.message.slice(41);
-                tempErrors.passwordConfirm = ex.response.data.message.slice(41);
+                tempErrors.password = null;
+                tempErrors.passwordConfirm = null;
                 setErrors(tempErrors);
             }
         }
@@ -82,15 +81,16 @@ const UserPassword = () => {
                     label='Current Password'
                     autoComplete='true'
                     error={errors.passwordCurrent}
-                    onChange={e => setPasswordCurrent(e.target.value)}
+                    onChange={(e) => setPasswordCurrent(e.target.value)}
                 />
                 <Input
                     type='password'
                     name='password'
                     label='Password'
                     placeholder='********'
+                    minLength='8'
                     autoComplete='true'
-                    onChange={e => setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                     error={errors.password}
                 />
                 <Input
@@ -99,19 +99,20 @@ const UserPassword = () => {
                     placeholder='********'
                     label='Confirm Password'
                     autoComplete='true'
+                    minLength='8'
                     error={errors.passwordConfirm}
-                    onChange={e => setPasswordConfirm(e.target.value)}
+                    onChange={(e) => setPasswordConfirm(e.target.value)}
                 />
                 <Button
                     text='Save password'
-                    icon={<FaArrowAltCircleRight style={iconStyling} />}
+                    icon={<FaArrowAltCircleRight style={iconStyle} />}
                 />
             </form>
         </div>
     );
 };
 
-const iconStyling = {
+const iconStyle = {
     fontSize: '0.8rem',
 };
 

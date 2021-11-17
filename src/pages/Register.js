@@ -86,7 +86,7 @@ const Register = () => {
             loginSuccess(user);
             window.location.replace('/stories');
         } catch (err) {
-            if (err.response && err.response.status === 500) {
+            if (err.response && err.response.status === 400) {
                 const tempErrors = { ...errors };
                 tempErrors.username = 'Username already exists. Try another one';
                 setErrors(tempErrors);
