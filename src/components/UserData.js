@@ -14,8 +14,8 @@ const UserData = () => {
     const [name, setName] = useState('');
     const [file, setFile] = useState(null);
     const [email, setEmail] = useState('');
-    const [username, setUsername] = useState('');
     const [errors, setErrors] = useState({});
+    const [username, setUsername] = useState('');
 
     const validateForm = () => {
         const tempErrors = {};
