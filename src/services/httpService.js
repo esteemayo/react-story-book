@@ -3,6 +3,8 @@ import axios from 'axios';
 
 import logger from './logService';
 
+axios.defaults.baseURL = 'http://localhost:9090/api/v1';
+
 axios.interceptors.response.use(null, error => {
     const expectedError =
         error.response &&

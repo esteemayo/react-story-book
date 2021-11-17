@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FaSignInAlt } from 'react-icons/fa';
 
-import { useGlobalContext } from '../context/Context';
+import { useGlobalContext } from 'context/Context';
 
 const Home = () => {
     const { user } = useGlobalContext();
@@ -16,7 +16,7 @@ const Home = () => {
             <br />
             {!user && (
                 <Link className="btn red darken-1" to="/login">
-                    <FaSignInAlt style={iconStyling} />{' '}
+                    <FaSignInAlt style={iconStyle} />{' '}
                     Login into your account
                 </Link>
             )}
@@ -24,7 +24,7 @@ const Home = () => {
     );
 };
 
-const iconStyling = {
+const iconStyle = {
     fontSize: '0.8rem',
 };
 

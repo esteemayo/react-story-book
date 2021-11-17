@@ -1,5 +1,5 @@
-import UserProfile from '../components/UserProfile';
-import AccountSettings from '../components/AccountSettings';
+import UserProfile from 'components/UserProfile';
+import AccountSettings from 'components/AccountSettings';
 
 const Account = () => {
     return (
