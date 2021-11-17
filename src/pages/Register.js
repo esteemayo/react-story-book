@@ -36,6 +36,11 @@ const Register = () => {
             errors.password = 'Please provide a password.';
         }
 
+        if (password.length < 8 || passwordConfirm.length < 8) {
+            errors.password = 'Password must not be less than 8 characters';
+            errors.passwordConfirm = 'Password must not be less than 8 characters';
+        }
+
         if (passwordConfirm === '') {
             errors.passwordConfirm = 'Please confirm your password.';
         }
@@ -106,7 +111,7 @@ const Register = () => {
                         label='Name'
                         autoFocus
                         placeholder='Enter your name'
-                        onChange={e => setName(e.target.value)}
+                        onChange={(e) => setName(e.target.value)}
                         error={errors.name}
                     />
                     <Input
@@ -114,7 +119,7 @@ const Register = () => {
                         name='email'
                         label='Email Address'
                         placeholder='you@example.com'
-                        onChange={e => setEmail(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                         error={errors.email}
                     />
                     <Input
@@ -122,7 +127,7 @@ const Register = () => {
                         name='username'
                         label='Username'
                         placeholder='username'
-                        onChange={e => setUsername(e.target.value)}
+                        onChange={(e) => setUsername(e.target.value)}
                         error={errors.username}
                     />
                     <Input
@@ -130,7 +135,7 @@ const Register = () => {
                         name='password'
                         label='Password'
                         placeholder='********'
-                        onChange={e => setPassword(e.target.value)}
+                        onChange={(e) => setPassword(e.target.value)}
                         error={errors.password}
                     />
                     <Input
@@ -138,7 +143,7 @@ const Register = () => {
                         name='passwordConfirm'
                         placeholder='********'
                         label='Confirm Password'
-                        onChange={e => setPasswordConfirm(e.target.value)}
+                        onChange={(e) => setPasswordConfirm(e.target.value)}
                         error={errors.passwordConfirm}
                     />
                     {file && (
@@ -147,7 +152,7 @@ const Register = () => {
                     <Input
                         type='file'
                         name='photo'
-                        onChange={e => setFile(e.target.files[0])}
+                        onChange={(e) => setFile(e.target.files[0])}
                     />
                     <button type='submit' className='btn registerButton'>
                         {isLoading ? <Spinner /> : 'Register'}

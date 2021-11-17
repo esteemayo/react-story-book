@@ -88,7 +88,6 @@ const UserPassword = () => {
                     name='password'
                     label='Password'
                     placeholder='********'
-                    minLength='8'
                     autoComplete='true'
                     onChange={(e) => setPassword(e.target.value)}
                     error={errors.password}
@@ -99,7 +98,6 @@ const UserPassword = () => {
                     placeholder='********'
                     label='Confirm Password'
                     autoComplete='true'
-                    minLength='8'
                     error={errors.passwordConfirm}
                     onChange={(e) => setPasswordConfirm(e.target.value)}
                 />
