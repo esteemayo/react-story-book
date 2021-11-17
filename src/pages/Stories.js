@@ -39,7 +39,7 @@ const Stories = () => {
     return (
         <div className='row'>
             <h1>Stories</h1>
-            {stories.map(story => {
+            {stories?.map(story => {
                 return <StoryCard key={story._id} {...story} />
             })}
         </div>
