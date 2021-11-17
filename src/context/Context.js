@@ -1,14 +1,7 @@
 import { useContext, useReducer, createContext } from 'react';
 import jwtDecode from 'jwt-decode';
 
-import {
-    LOGOUT,
-    ADD_STORY,
-    HIDE_ALERT,
-    LOGIN_START,
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
-} from './types';
+import * as actions from './types';
 import reducer from './Reducer';
 
 const initialState = {
@@ -44,34 +37,34 @@ const AppProvider = ({ children }) => {
 
     const addStory = story => {
         dispatch({
-            type: ADD_STORY,
+            type: actions.ADD_STORY,
             payload: story,
         });
     };
 
     const loginStart = () => {
-        dispatch({ type: LOGIN_START });
+        dispatch({ type: actions.LOGIN_START });
     };
 
     const loginSuccess = userData => {
         localStorage.setItem(tokenKey, userData.token);
         dispatch({
-            type: LOGIN_SUCCESS,
+            type: actions.LOGIN_SUCCESS,
             payload: userData
         });
     };
 
     const loginFailure = () => {
-        dispatch({ type: LOGIN_FAILURE });
+        dispatch({ type: actions.LOGIN_FAILURE });
     };
 
     const logout = () => {
         localStorage.removeItem(tokenKey);
-        dispatch({ type: LOGOUT });
+        dispatch({ type: actions.LOGOUT });
     };
 
     const hideAlert = () => {
-        dispatch({ type: HIDE_ALERT });
+        dispatch({ type: actions.HIDE_ALERT });
     };
 
     return (
