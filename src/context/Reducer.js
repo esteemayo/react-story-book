@@ -1,32 +1,21 @@
-import {
-    LOGOUT,
-    LOADING,
-    ADD_STORY,
-    HIDE_ALERT,
-    LOGIN_START,
-    DELETE_STORY,
-    FETCH_STORIES,
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
-    UPDATE_STORY,
-} from './types';
+import * as actions from './types';
 
 const reducer = (state, action) => {
     switch (action.type) {
-        case FETCH_STORIES:
+        case actions.FETCH_STORIES:
             return {
                 ...state,
                 stories: action.payload,
                 isLoading: false,
             };
 
-        case LOADING:
+        case actions.LOADING:
             return {
                 ...state,
                 isLoading: true,
             };
 
-        case ADD_STORY:
+        case actions.ADD_STORY:
             const newStory = [action.payload, ...state.stories];
 
             return {
@@ -39,7 +28,7 @@ const reducer = (state, action) => {
                 },
             };
 
-        case UPDATE_STORY:
+        case actions.UPDATE_STORY:
             return {
                 ...state,
                 alert: {
@@ -49,7 +38,7 @@ const reducer = (state, action) => {
                 },
             };
 
-        case DELETE_STORY:
+        case actions.DELETE_STORY:
             const updStory = state.stories.filter(story => story.id !== action.payload);
 
             return {
@@ -62,13 +51,13 @@ const reducer = (state, action) => {
                 },
             };
 
-        case LOGIN_START:
+        case actions.LOGIN_START:
             return {
                 ...state,
                 isLoading: true,
             };
 
-        case LOGIN_SUCCESS:
+        case actions.LOGIN_SUCCESS:
             return {
                 ...state,
                 user: action.payload,
@@ -76,7 +65,7 @@ const reducer = (state, action) => {
                 error: false,
             };
 
-        case LOGIN_FAILURE:
+        case actions.LOGIN_FAILURE:
             return {
                 ...state,
                 user: null,
@@ -84,13 +73,13 @@ const reducer = (state, action) => {
                 isLoading: false,
             };
 
-        case LOGOUT:
+        case actions.LOGOUT:
             return {
                 ...state,
                 user: null,
             };
 
-        case HIDE_ALERT:
+        case actions.HIDE_ALERT:
             return {
                 ...state,
                 alert: {
