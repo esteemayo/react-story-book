@@ -15,9 +15,36 @@ const UserData = () => {
     const [file, setFile] = useState(null);
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
+    const [errors, setErrors] = useState({});
+
+    const validateForm = () => {
+        const tempErrors = {};
+
+        if (name.trim() === '') {
+            tempErrors.name = 'Please tell us your name';
+        }
+
+        if (email.trim() === '') {
+            tempErrors.email = 'Please provide your password';
+        }
+
+        if (username.trim() === '') {
+            tempErrors.username = 'Please tell us your username';
+        }
+
+        if (Object.keys(tempErrors).length > 0) {
+            setErrors(tempErrors);
+            return false;
+        }
+        return true;
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!validateForm()) return;
+        setErrors({});
+
         const userData = {
             name,
             email,
@@ -58,16 +85,19 @@ const UserData = () => {
                     name='name'
                     placeholder={user.name}
                     onChange={e => setName(e.target.value)}
+                    error={errors.name}
                 />
                 <Input
                     name='email'
                     placeholder={user.email}
                     onChange={e => setEmail(e.target.value)}
+                    error={errors.email}
                 />
                 <Input
                     name='username'
                     placeholder={user.username}
                     onChange={e => setUsername(e.target.value)}
+                    error={errors.username}
                 />
                 <Input
                     name='file'
@@ -76,14 +106,14 @@ const UserData = () => {
                 />
                 <Button
                     text='Save settings'
-                    icon={<FaArrowAltCircleRight style={iconStyling} />}
+                    icon={<FaArrowAltCircleRight style={iconStyle} />}
                 />
             </form>
         </div>
     );
 };
 
-const iconStyling = {
+const iconStyle = {
     fontSize: '0.8rem',
 };
 
