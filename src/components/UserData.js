@@ -11,6 +11,7 @@ import Title from './Title';
 
 const UserData = () => {
     const { user, loginSuccess } = useGlobalContext();
+
     const [name, setName] = useState('');
     const [file, setFile] = useState(null);
     const [email, setEmail] = useState('');
@@ -84,25 +85,25 @@ const UserData = () => {
                 <Input
                     name='name'
                     placeholder={user.name}
-                    onChange={e => setName(e.target.value)}
+                    onChange={(e) => setName(e.target.value)}
                     error={errors.name}
                 />
                 <Input
                     name='email'
                     placeholder={user.email}
-                    onChange={e => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     error={errors.email}
                 />
                 <Input
                     name='username'
                     placeholder={user.username}
-                    onChange={e => setUsername(e.target.value)}
+                    onChange={(e) => setUsername(e.target.value)}
                     error={errors.username}
                 />
                 <Input
                     name='file'
                     type='file'
-                    onChange={e => setFile(e.target.files[0])}
+                    onChange={(e) => setFile(e.target.files[0])}
                 />
                 <Button
                     text='Save settings'
