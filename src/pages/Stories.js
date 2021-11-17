@@ -1,11 +1,11 @@
 import { useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { FETCH_STORIES, LOADING } from '../context/types';
-import { useGlobalContext } from '../context/Context';
-import { getStories } from '../services/storyService';
-import StoryCard from '../components/StoryCard';
-import Loader from '../components/Loader';
+import { FETCH_STORIES, LOADING } from 'context/types';
+import { useGlobalContext } from 'context/Context';
+import { getStories } from 'services/storyService';
+import StoryCard from 'components/StoryCard';
+import Loader from 'components/Loader';
 
 const Stories = () => {
     const { search } = useLocation();

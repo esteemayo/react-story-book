@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { createComment } from '../services/commentService';
-import { useGlobalContext } from '../context/Context';
+import { createComment } from 'services/commentService';
+import { useGlobalContext } from 'context/Context';
 import TextArea from './TextArea';
 import Button from './Button';
 

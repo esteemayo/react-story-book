@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FaPencilAlt } from 'react-icons/fa';
 
-import { useGlobalContext } from '../context/Context';
+import { useGlobalContext } from 'context/Context';
 
 const StoryCard = ({ body, slug, user, title }) => {
     const { user: currentUser } = useGlobalContext();

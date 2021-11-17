@@ -1,6 +1,6 @@
 import Moment from 'react-moment';
 
-import { useGlobalContext } from '../context/Context';
+import { useGlobalContext } from 'context/Context';
 import Title from './Title';
 
 const UserProfile = () => {

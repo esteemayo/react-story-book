@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaPencilAlt } from 'react-icons/fa';
 
-import { useGlobalContext } from '../context/Context';
+import { useGlobalContext } from 'context/Context';
 
 const StoryDetail = ({ body, slug, title, author, createdAt }) => {
     const [readMore, setReadMore] = useState(false);

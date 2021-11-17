@@ -2,9 +2,9 @@ import { v4 } from 'uuid';
 import { useState } from 'react';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
-import { updateUserData } from '../services/userService';
-import { uploadPhoto } from '../services/uploadService';
-import { useGlobalContext } from '../context/Context';
+import { updateUserData } from 'services/userService';
+import { uploadPhoto } from 'services/uploadService';
+import { useGlobalContext } from 'context/Context';
 import Button from './Button';
 import Input from './Input';
 import Title from './Title';

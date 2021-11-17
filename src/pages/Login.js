@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 
-import { useGlobalContext } from '../context/Context';
-import { loginUser } from '../services/userService';
-import Spinner from '../components/Spinner';
+import { useGlobalContext } from 'context/Context';
+import { loginUser } from 'services/userService';
+import Spinner from 'components/Spinner';
 
 const Login = () => {
     const emailRef = useRef(null);

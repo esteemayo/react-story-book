@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
-import { updateUserPassword } from '../services/userService';
-import { useGlobalContext } from '../context/Context';
+import { updateUserPassword } from 'services/userService';
+import { useGlobalContext } from 'context/Context';
 import Button from './Button';
 import Input from './Input';
 import Title from './Title';

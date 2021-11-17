@@ -2,12 +2,12 @@ import { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 
-import { getWithSlug, updateStory } from '../services/storyService';
-import { useGlobalContext } from '../context/Context';
-import { UPDATE_STORY } from '../context/types';
-import TextArea from '../components/TextArea';
-import Button from '../components/Button';
-import Input from '../components/Input';
+import { getWithSlug, updateStory } from 'services/storyService';
+import { useGlobalContext } from 'context/Context';
+import { UPDATE_STORY } from 'context/types';
+import TextArea from 'components/TextArea';
+import Button from 'components/Button';
+import Input from 'components/Input';
 
 const Update = () => {
     const { pathname } = useLocation();
