@@ -24,7 +24,7 @@ const StoryCard = ({ body, slug, user, title }) => {
                     <p className='story-text'>{body.substr(0, 130)}...</p>
                     <br />
                     <div className='chip'>
-                        <img src={user.photo ? PF + user.photo : user.gravatar} alt='' />
+                        <img src={user?.photo ? PF + user.photo : user.gravatar} alt='' />
                         <Link to={`/stories?author=${user.username}`}>{user.name}</Link>
                     </div>
                 </div>

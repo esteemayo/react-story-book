@@ -15,7 +15,7 @@ const NavBar = () => {
                     <li>
                         <Link to='/about'>About</Link>
                     </li>
-                    {user &&
+                    {user && (
                         <>
                             <li>
                                 <Link to='/dashboard'>Welcome {user.firstName}</Link>
@@ -27,8 +27,8 @@ const NavBar = () => {
                                 <Link to='#' onClick={logout}>Logout</Link>
                             </li>
                         </>
-                    }
-                    {!user &&
+                    )}
+                    {!user && (
                         <>
                             <li>
                                 <Link to='/login'>Login</Link>
@@ -37,7 +37,7 @@ const NavBar = () => {
                                 <Link to='/register'>Register</Link>
                             </li>
                         </>
-                    }
+                    )}
                 </ul>
             </div>
         </nav>

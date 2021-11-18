@@ -14,7 +14,7 @@ const UserProfile = () => {
                 className='text-uppercase'
             />
             <div className='thumbnail'>
-                <img src={user.photo ? PF + user.photo : user.gravatar} width={200} alt='avatar' />
+                <img src={user?.photo ? PF + user.photo : user.gravatar} width={200} alt='avatar' />
             </div>
             <p>Name: {user.name}</p>
             <p>

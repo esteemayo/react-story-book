@@ -9,7 +9,7 @@ import Loader from 'components/Loader';
 
 const Stories = () => {
     const { search } = useLocation();
-    const { stories, dispatch, isLoading: loading } = useGlobalContext();
+    const { stories, dispatch, isLoading } = useGlobalContext();
 
     const fetchStories = useCallback(async () => {
         dispatch({ type: LOADING });
@@ -24,7 +24,7 @@ const Stories = () => {
         fetchStories();
     }, [search, fetchStories]);
 
-    if (loading) {
+    if (isLoading) {
         return (
             <main>
                 <Loader />

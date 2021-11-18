@@ -10,7 +10,7 @@ const CommentCard = ({ body, user, createdAt }) => {
                 <p>{body}</p>
                 <div className='chip'>
                     <img
-                        src={user && user.photo ? PF + user.photo : user && user.gravatar ? user.gravatar : ''}
+                        src={user?.photo ? PF + user.photo : user.gravatar}
                         alt=''
                     />
                     <Link to={`/stories?author=${user.username}`}>{user.name}</Link>

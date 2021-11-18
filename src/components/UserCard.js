@@ -6,15 +6,15 @@ const UserCard = ({ user }) => {
     return (
         <div className='card center-align'>
             <div className='card-content'>
-                <span className='card-title'>{user && user.name}</span>
+                <span className='card-title'>{user?.name}</span>
                 <img
-                    src={user && user.photo ? PF + user.photo : user && user.gravatar ? user.gravatar : ''}
+                    src={user?.photo ? PF + user.photo : user?.gravatar}
                     className='circle responsive-img'
                     alt=''
                 />
             </div>
             <div className='card-action'>
-                <Link to={`/stories?author=${user && user.username}`}>More From {user && user.firstName}</Link>
+                <Link to={`/stories?author=${user?.username}`}>More From {user?.firstName}</Link>
             </div>
         </div>
     );
