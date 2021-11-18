@@ -1,24 +1,11 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
+import { About, Account, AddStory, DashBoard, Error, Home, Login, Register, SinglePage, Stories, Update } from 'pages';
+import { AddButton, Alert, Footer, NavBar } from 'components'
 import { useGlobalContext } from 'context/Context';
 import ProtectedRoute from 'utils/ProtectedRoute';
-import AddButton from 'components/AddButton';
-import SinglePage from 'pages/SinglePage';
 import AuthRoute from 'utils/AuthRoute';
-import DashBoard from 'pages/DashBoard';
-import NavBar from 'components/NavBar';
-import Footer from 'components/Footer';
-import AddStory from 'pages/AddStory';
-import Register from 'pages/Register';
-import Alert from 'components/Alert';
-import Account from 'pages/Account';
-import Stories from 'pages/Stories';
-import Update from 'pages/Update';
-import About from 'pages/About';
-import Error from 'pages/Error';
-import Login from 'pages/Login';
-import Home from 'pages/Home';
 
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min.js';

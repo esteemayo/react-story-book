@@ -3,9 +3,7 @@ import { FaArrowRight } from 'react-icons/fa';
 
 import { createStory } from 'services/storyService';
 import { useGlobalContext } from 'context/Context';
-import TextArea from 'components/TextArea';
-import Button from 'components/Button';
-import Input from 'components/Input';
+import { Button, Input, TextArea } from 'components';
 
 const AddStory = () => {
     const [body, setBody] = useState('');

@@ -90,7 +90,7 @@ const reducer = (state, action) => {
             };
 
         default:
-            throw new Error('No matching action type');
+            throw new Error(`No matching action type: ${action.type}`);
     };
 };
 

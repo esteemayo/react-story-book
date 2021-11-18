@@ -3,9 +3,7 @@ import { FaArrowAltCircleRight } from 'react-icons/fa';
 
 import { updateUserPassword } from 'services/userService';
 import { useGlobalContext } from 'context/Context';
-import Button from './Button';
-import Input from './Input';
-import Title from './Title';
+import { Button, Input, Title } from 'components';
 
 const UserPassword = () => {
     const { loginSuccess } = useGlobalContext();

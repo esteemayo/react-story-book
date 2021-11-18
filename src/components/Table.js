@@ -1,7 +1,6 @@
-import TableHeader from './TableHeader';
-import TableBody from './TableBody';
+import { TableBody, TableHeader } from 'components';
 
-const Table = ({data, columns, onDelete }) => {
+const Table = ({ data, columns, onDelete }) => {
     return (
         <table className='striped'>
             <TableHeader columns={columns} />

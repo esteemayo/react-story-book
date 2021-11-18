@@ -2,15 +2,15 @@ import { FaPencilAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
-import DeleteButton from './DeleteButton';
+import { DeleteButton } from 'components';
 
 const TableBody = ({ data }) => {
     return (
         <tbody>
             {data.map(item => {
-                const { _id, slug, title, status, createdAt } = item;
+                const { _id: id, slug, title, status, createdAt } = item;
                 return (
-                    <tr key={_id}>
+                    <tr key={id}>
                         <td>
                             <Link to={`/stories/details/${slug}`}>{title}</Link>
                         </td>
@@ -25,7 +25,7 @@ const TableBody = ({ data }) => {
                                 <FaPencilAlt />
                             </Link>
                             {' '}
-                            <DeleteButton id={_id} />
+                            <DeleteButton id={id} />
                         </td>
                     </tr>
                 )

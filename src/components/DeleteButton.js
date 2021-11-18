@@ -4,7 +4,7 @@ import { FaTrash } from 'react-icons/fa';
 import { deleteStory } from 'services/storyService';
 import { useGlobalContext } from 'context/Context';
 import { DELETE_STORY } from 'context/types';
-import Button from './Button';
+import { Button } from 'components';
 
 const DeleteButton = ({ id }) => {
     const { dispatch } = useGlobalContext();

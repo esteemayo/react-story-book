@@ -5,9 +5,7 @@ import { FaArrowAltCircleRight } from 'react-icons/fa';
 import { updateUserData } from 'services/userService';
 import { uploadPhoto } from 'services/uploadService';
 import { useGlobalContext } from 'context/Context';
-import Button from './Button';
-import Input from './Input';
-import Title from './Title';
+import { Button, Input, Title } from 'components';
 
 const UserData = () => {
     const { user, loginSuccess } = useGlobalContext();

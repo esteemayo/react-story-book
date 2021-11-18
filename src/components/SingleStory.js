@@ -1,12 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import { CommentCard, CommentForm, StoryDetail, UserCard, Loader } from 'components';
 import { getWithSlug } from 'services/storyService';
-import CommentCard from './CommentCard';
-import CommentForm from './CommentForm';
-import StoryDetail from './StoryDetail';
-import UserCard from './UserCard';
-import Loader from './Loader';
 
 const SingleStory = () => {
     const { pathname } = useLocation();

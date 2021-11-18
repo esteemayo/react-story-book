@@ -1,6 +1,4 @@
-import UserData from './UserData';
-import Deactivate from './Deactivate';
-import UserPassword from './UserPassword';
+import { Deactivate, UserData, UserPassword } from 'components';
 
 const AccountSettings = () => {
     return (

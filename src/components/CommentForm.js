@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { createComment } from 'services/commentService';
 import { useGlobalContext } from 'context/Context';
-import TextArea from './TextArea';
-import Button from './Button';
+import { Button, TextArea } from 'components';
 
 const CommentForm = ({ id }) => {
     const { user } = useGlobalContext();

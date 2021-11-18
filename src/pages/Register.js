@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { uploadPhoto } from 'services/uploadService';
 import { useGlobalContext } from 'context/Context';
 import { createUser } from 'services/userService';
-import Spinner from 'components/Spinner';
-import Input from 'components/Input';
+import { Input, Spinner } from 'components';
 
 const Register = () => {
     const [name, setName] = useState('');

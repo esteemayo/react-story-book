@@ -3,8 +3,7 @@ import { toast } from 'react-toastify';
 
 import { deactivateAcc } from 'services/userService';
 import { useGlobalContext } from 'context/Context';
-import Button from './Button';
-import Title from './Title';
+import { Button, Title } from 'components';
 
 const Deactivate = () => {
     const { logout } = useGlobalContext();
