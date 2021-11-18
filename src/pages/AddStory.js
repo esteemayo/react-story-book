@@ -12,31 +12,45 @@ const AddStory = () => {
     const [title, setTitle] = useState('');
     const { addStory } = useGlobalContext();
     const [status, setStatus] = useState('');
-    const [errors, setErrrors] = useState({});
+    const [errors, setErrors] = useState({});
     const [allowComments, setAllowComments] = useState(true);
+
+    const validateForm = () => {
+        const tempErrors = {};
+
+        if (title.trim() === '') {
+            tempErrors.title = 'A story must have a title';
+        }
+
+        if (body.trim() === '') {
+            tempErrors.body = 'A story must have a body';
+        }
+
+        if (status.trim() === '') {
+            tempErrors.status = 'A story must have a status';
+        }
+
+        if (Object.keys(tempErrors).length > 0) {
+            setErrors(tempErrors);
+            return false;
+        }
+        return true;
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            const newStory = {
-                body,
-                title,
-                status,
-                allowComments,
-            };
+        if (!validateForm()) return;
+        setErrors({});
 
-            const { data: story } = await createStory(newStory);
+        try {
+            const newStory = { body, title, status, allowComments };
+
+            const { data: story } = await createStory({ ...newStory });
             addStory(story);
             window.location.replace(`/stories/details/${story.slug}`);
         } catch (ex) {
-            console.log(ex.response.data.message);
-            if (ex.response && ex.response.status === 500) {
-                const tempErrors = { ...errors };
-                tempErrors.title = ex.response.data.message.slice(63, 89);
-                tempErrors.body = ex.response.data.message.slice(31, 55);
-                setErrrors(tempErrors);
-            }
+            console.error(ex);
         }
     };
 
@@ -51,15 +65,16 @@ const AddStory = () => {
                             name='title'
                             label='Title'
                             autoFocus
-                            onChange={e => setTitle(e.target.value)}
+                            onChange={(e) => setTitle(e.target.value)}
                             error={errors.title}
                         />
                         <Input
                             type='text'
                             name='status'
                             label='Status'
-                            placeholder='status can only be: public, private, unpublished'
-                            onChange={e => setStatus(e.target.value)}
+                            placeholder='status can either be: public, private, unpublished'
+                            onChange={(e) => setStatus(e.target.value)}
+                            error={errors.status}
                         />
                         <div className='row'>
                             <p>
@@ -70,7 +85,7 @@ const AddStory = () => {
                                         name='allowComments'
                                         className='filled-in'
                                         checked={allowComments}
-                                        onChange={e => setAllowComments(e.currentTarget.checked)}
+                                        onChange={(e) => setAllowComments(e.currentTarget.checked)}
                                     />
                                     <span>Allow Comments</span>
                                 </label>
@@ -80,13 +95,13 @@ const AddStory = () => {
                             name='body'
                             label='Tell Us Your Story'
                             className='materialize-textarea'
-                            onChange={e => setBody(e.target.value)}
+                            onChange={(e) => setBody(e.target.value)}
                             error={errors.body}
                         />
                         <Button
                             text='Save'
                             className='btn'
-                            icon={<FaArrowRight style={iconStyling} />}
+                            icon={<FaArrowRight style={iconStyle} />}
                         />
                     </form>
                 </div>
@@ -95,7 +110,7 @@ const AddStory = () => {
     );
 };
 
-const iconStyling = {
+const iconStyle = {
     fontSize: '0.8rem',
 };
 

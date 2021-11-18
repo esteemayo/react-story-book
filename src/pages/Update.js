@@ -18,11 +18,12 @@ const Update = () => {
     const [body, setBody] = useState('');
     const [title, setTitle] = useState('');
     const [status, setStatus] = useState('');
-    const [errors, setErrrors] = useState({});
+    const [errors, setErrors] = useState({});
     const [allowComments, setAllowComments] = useState(true);
 
     const fetchStory = useCallback(async () => {
         const { data: story } = await getWithSlug(path);
+        console.log(story);
 
         setId(story._id);
         setBody(story.body);
@@ -35,27 +36,42 @@ const Update = () => {
         fetchStory();
     }, [path, fetchStory]);
 
+    const validateForm = () => {
+        const tempErrors = {};
+
+        if (title.trim() === '') {
+            tempErrors.title = 'A story must have a title';
+        }
+
+        if (body.trim() === '') {
+            tempErrors.body = 'A story must have a body';
+        }
+
+        if (status.trim() === '') {
+            tempErrors.status = 'A story must have a status';
+        }
+
+        if (Object.keys(tempErrors).length > 0) {
+            setErrors(tempErrors);
+            return false;
+        }
+        return true;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            const updStory = {
-                body,
-                title,
-                status,
-                allowComments,
-            };
+        if (!validateForm()) return;
+        setErrors({});
 
-            await updateStory(id, updStory);
+        try {
+            const updStory = { body, title, status, allowComments };
+
+            await updateStory(id, { ...updStory });
             dispatch({ type: UPDATE_STORY });
             window.location.replace('/dashboard');
         } catch (ex) {
-            if (ex.response && ex.response.status === 500) {
-                const tempErrors = { ...errors };
-                tempErrors.title = ex.response.data.message.slice(58, 89);
-                tempErrors.body = ex.response.data.message.slice(25, 49);
-                setErrrors(tempErrors);
-            }
+            console.error(ex)
         }
     };
 
@@ -71,7 +87,7 @@ const Update = () => {
                             label='Title'
                             autoFocus
                             value={title}
-                            onChange={e => setTitle(e.target.value)}
+                            onChange={(e) => setTitle(e.target.value)}
                             error={errors.title}
                         />
                         <Input
@@ -79,7 +95,8 @@ const Update = () => {
                             name='status'
                             label='Status'
                             value={status}
-                            onChange={e => setStatus(e.target.value)}
+                            onChange={(e) => setStatus(e.target.value)}
+                            error={errors.status}
                         />
                         <div className='row'>
                             <p>
@@ -90,7 +107,7 @@ const Update = () => {
                                         name='allowComments'
                                         className='filled-in'
                                         checked={allowComments}
-                                        onChange={e => setAllowComments(e.currentTarget.checked)}
+                                        onChange={(e) => setAllowComments(e.currentTarget.checked)}
                                     />
                                     <span>Allow Comments</span>
                                 </label>
@@ -100,7 +117,7 @@ const Update = () => {
                             name='body'
                             value={body}
                             label='Tell Us Your Story'
-                            onChange={e => setBody(e.target.value)}
+                            onChange={(e) => setBody(e.target.value)}
                             error={errors.body}
                         />
 
