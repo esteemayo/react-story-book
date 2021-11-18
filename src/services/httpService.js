@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import logger from './logService';
 
-axios.defaults.baseURL = 'https://story-books-api.herokuapp.com';
+axios.defaults.baseURL = 'https://story-books-api.herokuapp.com/api/v1';
 
 axios.interceptors.response.use(null, error => {
     const expectedError =
