@@ -5,7 +5,7 @@ import { useGlobalContext } from 'context/Context';
 
 const StoryCard = ({ body, slug, user, title }) => {
     const { user: currentUser } = useGlobalContext();
-    const PF = 'http://localhost:9090/images/';
+    const PF = 'https://story-books-api.herokuapp.com/images/';
 
     return (
         <div className='col s12 m4'>

@@ -2,7 +2,7 @@ import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 
 const CommentCard = ({ body, user, createdAt }) => {
-    const PF = 'http://localhost:9090/images/';
+    const PF = 'https://story-books-api.herokuapp.com/images/';
 
     return (
         <div className='card'>

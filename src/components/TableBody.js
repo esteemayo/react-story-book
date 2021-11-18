@@ -7,7 +7,7 @@ import { DeleteButton } from 'components';
 const TableBody = ({ data }) => {
     return (
         <tbody>
-            {data.map(item => {
+            {data?.map(item => {
                 const { _id: id, slug, title, status, createdAt } = item;
                 return (
                     <tr key={id}>

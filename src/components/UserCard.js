@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const UserCard = ({ user }) => {
-    const PF = 'http://localhost:9090/images/';
+    const PF = 'https://story-books-api.herokuapp.com/images/';
 
     return (
         <div className='card center-align'>
