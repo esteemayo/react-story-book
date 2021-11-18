@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-
 import { useGlobalContext } from 'context/Context';
 
 const Alert = ({ msg, type }) => {
