@@ -10,4 +10,16 @@ import Error from './Error';
 import Login from './Login';
 import Home from './Home';
 
-export { About, Account, AddStory, DashBoard, Error, Home, Login, Register, SinglePage, Stories, Update };
+export {
+  About,
+  Account,
+  AddStory,
+  DashBoard,
+  Error,
+  Home,
+  Login,
+  Register,
+  SinglePage,
+  Stories,
+  Update,
+};

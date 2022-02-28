@@ -1,9 +1,7 @@
 import { SingleStory } from 'components';
 
 const SinglePage = () => {
-    return (
-        <SingleStory />
-    );
+  return <SingleStory />;
 };
 
 export default SinglePage;

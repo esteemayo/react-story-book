@@ -1,8 +1,20 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-import { About, Account, AddStory, DashBoard, Error, Home, Login, Register, SinglePage, Stories, Update } from 'pages';
-import { AddButton, Alert, Footer, NavBar } from 'components'
+import {
+  About,
+  Account,
+  AddStory,
+  DashBoard,
+  Error,
+  Home,
+  Login,
+  Register,
+  SinglePage,
+  Stories,
+  Update,
+} from 'pages';
+import { AddButton, Alert, Footer, NavBar } from 'components';
 import { useGlobalContext } from 'context/Context';
 import ProtectedRoute from 'utils/ProtectedRoute';
 import AuthRoute from 'utils/AuthRoute';
@@ -41,6 +53,6 @@ function App() {
       <Footer />
     </Router>
   );
-};
+}
 
 export default App;
