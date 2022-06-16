@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 
-import { useGlobalContext } from 'context/Context';
+import Spinner from 'components/Spinner';
 import { loginUser } from 'services/userService';
-import { Spinner } from 'components';
+import { useGlobalContext } from 'context/Context';
 
 const Login = () => {
   const emailRef = useRef(null);
@@ -50,7 +50,7 @@ const Login = () => {
 
       const { data } = await loginUser(userData);
       loginSuccess(data);
-      window.location.replace('/stories');
+      // window.location.replace('/stories');
     } catch (err) {
       if (err.response && err.response.status === 401) {
         const tempErrors = { ...errors };

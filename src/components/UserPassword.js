@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
-import { updateUserPassword } from 'services/userService';
+import Input from './Input';
+import Title from './Title';
+import Button from './Button';
 import { useGlobalContext } from 'context/Context';
-import { Button, Input, Title } from 'components';
+import { updateUserPassword } from 'services/userService';
 
 const UserPassword = () => {
   const { loginSuccess } = useGlobalContext();
@@ -51,7 +53,7 @@ const UserPassword = () => {
 
       const { data } = await updateUserPassword(userData);
       loginSuccess(data);
-      window.location.reload();
+      // window.location.reload();
     } catch (ex) {
       console.log(ex.response.data.message);
       if (ex.response && ex.response.status === 400) {

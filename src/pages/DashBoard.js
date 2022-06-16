@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
-import { userDashBoard } from 'services/userService';
-import { useGlobalContext } from 'context/Context';
-import Loader from 'components/Loader';
 import Table from 'components/Table';
+import Loader from 'components/Loader';
+import { useGlobalContext } from 'context/Context';
+import { userDashBoard } from 'services/userService';
 
 const DashBoard = () => {
   const { user } = useGlobalContext();

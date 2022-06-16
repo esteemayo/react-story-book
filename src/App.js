@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import AuthRoute from 'utils/AuthRoute';
+import ProtectedRoute from 'utils/ProtectedRoute';
 import {
   About,
   Account,
@@ -8,49 +9,79 @@ import {
   DashBoard,
   Error,
   Home,
+  Layout,
   Login,
   Register,
+  SharedLayout,
   SinglePage,
   Stories,
   Update,
 } from 'pages';
-import { AddButton, Alert, Footer, NavBar } from 'components';
-import { useGlobalContext } from 'context/Context';
-import ProtectedRoute from 'utils/ProtectedRoute';
-import AuthRoute from 'utils/AuthRoute';
 
-import 'materialize-css/dist/css/materialize.min.css';
-import 'materialize-css/dist/js/materialize.min.js';
-import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 function App() {
-  const { user, alert } = useGlobalContext();
-
   return (
     <Router>
-      <NavBar />
-      <ToastContainer />
-      {alert.show && <Alert {...alert} />}
-      {user && <AddButton />}
-      <main>
-        <div className='container'>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/about' component={About} />
-            <AuthRoute path='/login' component={Login} />
-            <AuthRoute path='/register' component={Register} />
-            <Route exact path='/stories' component={Stories} />
-            <ProtectedRoute path='/account' component={Account} />
-            <ProtectedRoute path='/dashboard' component={DashBoard} />
-            <ProtectedRoute path='/stories/create' component={AddStory} />
-            <Route path='/stories/details/:slug' component={SinglePage} />
-            <ProtectedRoute path='/stories/update/:slug' component={Update} />
-            <Route path='*' component={Error} />
-          </Switch>
-        </div>
-      </main>
-      <Footer />
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path='about' element={<About />} />
+          <Route
+            path='login'
+            element={
+              <ProtectedRoute>
+                <Login />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='register'
+            element={
+              <ProtectedRoute>
+                <Register />
+              </ProtectedRoute>
+            }
+          />
+          <Route path='stories' element={<SharedLayout />}>
+            <Route index element={<Stories />} />
+            <Route
+              path='create'
+              element={
+                <AuthRoute>
+                  <AddStory />
+                </AuthRoute>
+              }
+            />
+            <Route path='details/:slug' element={<SinglePage />} />
+            <Route
+              path='update/:slug'
+              element={
+                <AuthRoute>
+                  <Update />
+                </AuthRoute>
+              }
+            />
+          </Route>
+          <Route
+            path='account'
+            element={
+              <AuthRoute>
+                <Account />
+              </AuthRoute>
+            }
+          />
+          <Route
+            path='dashboard'
+            element={
+              <AuthRoute>
+                <DashBoard />
+              </AuthRoute>
+            }
+          />
+          <Route path='*' element={<Error />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }

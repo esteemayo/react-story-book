@@ -7,7 +7,7 @@ const Home = () => {
   const { user } = useGlobalContext();
 
   return (
-    <div>
+    <div className='container'>
       <h1>Welcome</h1>
       <p>Welcome to StoryBooks 1.0.0</p>
       <p>

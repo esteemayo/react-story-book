@@ -1,10 +1,11 @@
 import { v4 } from 'uuid';
 import { useState } from 'react';
 
-import { uploadPhoto } from 'services/uploadService';
-import { useGlobalContext } from 'context/Context';
+import Input from 'components/Input';
+import Spinner from 'components/Spinner';
 import { createUser } from 'services/userService';
-import { Input, Spinner } from 'components';
+import { useGlobalContext } from 'context/Context';
+import { uploadPhoto } from 'services/uploadService';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -89,7 +90,7 @@ const Register = () => {
     try {
       const { data: user } = await createUser(newUser);
       loginSuccess(user);
-      window.location.replace('/stories');
+      // window.location.replace('/stories');
     } catch (err) {
       if (err.response && err.response.status === 400) {
         const tempErrors = { ...errors };
