@@ -17,7 +17,7 @@ const CommentForm = ({ id }) => {
     try {
       const commentData = { body };
       await createComment(id, commentData);
-      window.location.reload();
+      // window.location.reload();
     } catch (err) {
       if (err.response && err.response.status === 500) {
         const tempErrors = { ...errors };
