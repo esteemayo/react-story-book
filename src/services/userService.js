@@ -2,8 +2,6 @@ import http from './httpService';
 
 const apiEndPoint = '/users';
 
-http.setJwt(getJwt());
-
 export function createUser(userData) {
   return http.post(`${apiEndPoint}/signup`, userData);
 }
@@ -28,6 +26,6 @@ export function deactivateAcc() {
   return http.delete(`${apiEndPoint}/delete-me`);
 }
 
-function getJwt() {
+export function getJwt() {
   return localStorage.getItem('jwtToken');
 }

@@ -1,9 +1,25 @@
-import { toast } from 'react-toastify';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 import logger from './logService';
+import { getJwt } from './userService';
 
-axios.defaults.baseURL = 'https://story-books-api.herokuapp.com/api/v1';
+const devEnv = process.env.NODE_ENV !== 'production';
+const { REACT_APP_DEV_API_URL, REACT_APP_PROD_API_URL } = process.env;
+
+const authFetch = axios.create({
+  baseURL: `${devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL}`,
+  headers: {
+    Accept: 'application/json',
+  },
+});
+
+axios.interceptors.request.use(
+  (request) => {
+    request.headers.common['Authorization'] = `Bearer ${getJwt()}`;
+  },
+  (error) => {}
+);
 
 axios.interceptors.response.use(null, (error) => {
   const expectedError =
@@ -20,16 +36,11 @@ axios.interceptors.response.use(null, (error) => {
   return Promise.reject(error);
 });
 
-function setJwt(jwt) {
-  axios.defaults.headers.common['Authorization'] = `Bearer ${jwt}`;
-}
-
 const http = {
-  get: axios.get,
-  post: axios.post,
-  patch: axios.patch,
-  delete: axios.delete,
-  setJwt,
+  get: authFetch.get,
+  post: authFetch.post,
+  patch: authFetch.patch,
+  delete: authFetch.delete,
 };
 
 export default http;
