@@ -18,7 +18,10 @@ axios.interceptors.request.use(
   (request) => {
     request.headers.common['Authorization'] = `Bearer ${getJwt()}`;
   },
-  (error) => {}
+  (error) => {
+    logger.log(error);
+    return Promise.reject(error);
+  }
 );
 
 axios.interceptors.response.use(null, (error) => {
