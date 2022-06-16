@@ -77,10 +77,10 @@ const Register = () => {
 
     if (file) {
       const data = new FormData();
-      const filename = v4() + file.name;
-      data.append('name', filename);
+      const fileName = v4() + file.name;
+      data.append('name', fileName);
       data.append('file', file);
-      newUser.photo = filename;
+      newUser.photo = fileName;
       try {
         await uploadPhoto(data);
       } catch (err) {
