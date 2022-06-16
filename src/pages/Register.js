@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import Input from 'components/Input';
 import Spinner from 'components/Spinner';
+import { LOGIN_START } from 'context/types';
 import { createUser } from 'services/userService';
 import { useGlobalContext } from 'context/Context';
 import { uploadPhoto } from 'services/uploadService';
@@ -61,7 +62,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ type: 'LOGIN_START' });
+    dispatch({ type: LOGIN_START });
 
     if (!validateForm()) return;
     setErrors({});
