@@ -1,5 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
 
 import Loader from './Loader';
 import UserCard from './UserCard';
