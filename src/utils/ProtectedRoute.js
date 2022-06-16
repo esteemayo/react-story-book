@@ -1,17 +1,10 @@
-import { Route, Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useGlobalContext } from 'context/Context';
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
+const ProtectedRoute = ({ children }) => {
   const { user } = useGlobalContext();
 
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        user ? <Component {...props} /> : <Redirect to='/login' />
-      }
-    />
-  );
+  return user ? <Navigate to='/' /> : children;
 };
 
 export default ProtectedRoute;

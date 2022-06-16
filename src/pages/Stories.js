@@ -1,11 +1,11 @@
 import { useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { FETCH_STORIES, LOADING } from 'context/types';
-import { useGlobalContext } from 'context/Context';
-import { getStories } from 'services/storyService';
-import StoryCard from 'components/StoryCard';
 import Loader from 'components/Loader';
+import StoryCard from 'components/StoryCard';
+import { getStories } from 'services/storyService';
+import { useGlobalContext } from 'context/Context';
+import { FETCH_STORIES, LOADING } from 'context/types';
 
 const Stories = () => {
   const { search } = useLocation();
@@ -37,11 +37,13 @@ const Stories = () => {
   }
 
   return (
-    <div className='row'>
-      <h1>Stories</h1>
-      {stories?.map((story) => {
-        return <StoryCard key={story._id} {...story} />;
-      })}
+    <div className="container">
+      <div className='row'>
+        <h1>Stories</h1>
+        {stories?.map((story) => {
+          return <StoryCard key={story._id} {...story} />;
+        })}
+      </div>
     </div>
   );
 };

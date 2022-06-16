@@ -1,7 +1,11 @@
-import { SingleStory } from 'components';
+import SingleStory from 'components/SingleStory';
 
 const SinglePage = () => {
-  return <SingleStory />;
+  return (
+    <div className='container'>
+      <SingleStory />
+    </div>
+  );
 };
 
 export default SinglePage;

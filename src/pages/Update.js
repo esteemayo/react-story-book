@@ -1,13 +1,13 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
+import { useLocation } from 'react-router-dom';
+import { useState, useEffect, useCallback } from 'react';
 
-import { getWithSlug, updateStory } from 'services/storyService';
-import { useGlobalContext } from 'context/Context';
-import { UPDATE_STORY } from 'context/types';
-import TextArea from 'components/TextArea';
-import Button from 'components/Button';
 import Input from 'components/Input';
+import Button from 'components/Button';
+import TextArea from 'components/TextArea';
+import { UPDATE_STORY } from 'context/types';
+import { useGlobalContext } from 'context/Context';
+import { getWithSlug, updateStory } from 'services/storyService';
 
 const Update = () => {
   const { pathname } = useLocation();
@@ -69,7 +69,7 @@ const Update = () => {
 
       await updateStory(id, { ...updStory });
       dispatch({ type: UPDATE_STORY });
-      window.location.replace('/dashboard');
+      // window.location.replace('/dashboard');
     } catch (ex) {
       console.error(ex);
     }
