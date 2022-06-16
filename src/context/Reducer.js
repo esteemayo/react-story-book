@@ -1,11 +1,11 @@
 import * as actions from './types';
 
-const reducer = (state, action) => {
-  switch (action.type) {
+const reducer = (state, { type, payload }) => {
+  switch (type) {
     case actions.FETCH_STORIES:
       return {
         ...state,
-        stories: action.payload,
+        stories: payload,
         isLoading: false,
       };
 
@@ -16,7 +16,7 @@ const reducer = (state, action) => {
       };
 
     case actions.ADD_STORY:
-      const newStory = [action.payload, ...state.stories];
+      const newStory = [payload, ...state.stories];
 
       return {
         ...state,
@@ -39,9 +39,7 @@ const reducer = (state, action) => {
       };
 
     case actions.DELETE_STORY:
-      const updStory = state.stories.filter(
-        (story) => story.id !== action.payload
-      );
+      const updStory = state.stories.filter((story) => story.id !== payload);
 
       return {
         ...state,
@@ -62,7 +60,7 @@ const reducer = (state, action) => {
     case actions.LOGIN_SUCCESS:
       return {
         ...state,
-        user: action.payload,
+        user: payload,
         isLoading: false,
         error: false,
       };
@@ -92,7 +90,7 @@ const reducer = (state, action) => {
       };
 
     default:
-      throw new Error(`No matching action type: ${action.type}`);
+      throw new Error(`No matching action type: ${type}`);
   }
 };
 
