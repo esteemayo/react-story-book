@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 import Spinner from 'components/Spinner';
+import { LOGIN_START } from 'context/types';
 import { loginUser } from 'services/userService';
 import { useGlobalContext } from 'context/Context';
 
@@ -37,7 +38,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ type: 'LOGIN_START' });
+    dispatch({ type: LOGIN_START });
 
     if (!validateForm()) return;
     setErrors({});
