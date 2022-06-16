@@ -1,8 +1,8 @@
-import { useContext, useReducer, createContext } from 'react';
 import jwtDecode from 'jwt-decode';
+import { useContext, useReducer, createContext } from 'react';
 
-import * as actions from './types';
 import reducer from './Reducer';
+import * as actions from './types';
 
 const initialState = {
   user: null,
