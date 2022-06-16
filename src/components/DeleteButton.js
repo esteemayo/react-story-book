@@ -1,10 +1,10 @@
 import { toast } from 'react-toastify';
 import { FaTrash } from 'react-icons/fa';
 
+import Button from './Button';
+import { DELETE_STORY } from 'context/types';
 import { deleteStory } from 'services/storyService';
 import { useGlobalContext } from 'context/Context';
-import { DELETE_STORY } from 'context/types';
-import { Button } from 'components';
 
 const DeleteButton = ({ id }) => {
   const { dispatch } = useGlobalContext();

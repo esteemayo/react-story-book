@@ -1,9 +1,10 @@
-import { FaCogs } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import { FaCogs } from 'react-icons/fa';
 
-import { deactivateAcc } from 'services/userService';
+import Title from './Title';
+import Button from './Button';
 import { useGlobalContext } from 'context/Context';
-import { Button, Title } from 'components';
+import { deactivateAcc } from 'services/userService';
 
 const Deactivate = () => {
   const { logout } = useGlobalContext();

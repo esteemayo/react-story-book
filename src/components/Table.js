@@ -1,4 +1,5 @@
-import { TableBody, TableHeader } from 'components';
+import TableBody from './TableBody';
+import TableHeader from './TableHeader';
 
 const Table = ({ data, columns, onDelete }) => {
   return (

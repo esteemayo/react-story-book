@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { createComment } from 'services/commentService';
+import Button from './Button';
+import TextArea from './TextArea';
 import { useGlobalContext } from 'context/Context';
-import { Button, TextArea } from 'components';
+import { createComment } from 'services/commentService';
 
 const CommentForm = ({ id }) => {
   const { user } = useGlobalContext();

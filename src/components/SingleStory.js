@@ -1,13 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import {
-  CommentCard,
-  CommentForm,
-  StoryDetail,
-  UserCard,
-  Loader,
-} from 'components';
+import Loader from './Loader';
+import UserCard from './UserCard';
+import CommentCard from './CommentCard';
+import CommentForm from './CommentForm';
+import StoryDetail from './StoryDetail';
 import { getWithSlug } from 'services/storyService';
 
 const SingleStory = () => {

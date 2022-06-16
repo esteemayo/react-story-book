@@ -5,8 +5,8 @@ import { FaPencilAlt } from 'react-icons/fa';
 import { useGlobalContext } from 'context/Context';
 
 const StoryDetail = ({ body, slug, title, author, createdAt }) => {
-  const [readMore, setReadMore] = useState(false);
   const { user } = useGlobalContext();
+  const [readMore, setReadMore] = useState(false);
 
   return (
     <>
