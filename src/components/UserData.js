@@ -2,10 +2,12 @@ import { v4 } from 'uuid';
 import { useState } from 'react';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
-import { updateUserData } from 'services/userService';
-import { uploadPhoto } from 'services/uploadService';
+import Input from './Input';
+import Title from './Title';
+import Button from './Button';
 import { useGlobalContext } from 'context/Context';
-import { Button, Input, Title } from 'components';
+import { uploadPhoto } from 'services/uploadService';
+import { updateUserData } from 'services/userService';
 
 const UserData = () => {
   const { user, loginSuccess } = useGlobalContext();

@@ -1,8 +1,8 @@
-import { FaPencilAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
+import { Link } from 'react-router-dom';
+import { FaPencilAlt } from 'react-icons/fa';
 
-import { DeleteButton } from 'components';
+import DeleteButton from './DeleteButton';
 
 const TableBody = ({ data }) => {
   return (

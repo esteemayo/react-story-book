@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const About = ({ title }) => {
   return (
-    <div>
+    <div className='container'>
       <h1>{title}</h1>
       <p>Version 1.0.0</p>
       <p>StoryBooks is an app to share your life</p>

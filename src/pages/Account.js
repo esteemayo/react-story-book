@@ -1,10 +1,13 @@
-import { AccountSettings, UserProfile } from 'components';
+import UserProfile from 'components/UserProfile';
+import AccountSettings from 'components/AccountSettings';
 
 const Account = () => {
   return (
-    <div className='row'>
-      <UserProfile />
-      <AccountSettings />
+    <div className='container'>
+      <div className='row'>
+        <UserProfile />
+        <AccountSettings />
+      </div>
     </div>
   );
 };
