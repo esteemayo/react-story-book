@@ -38,6 +38,12 @@ const UserPassword = () => {
     return true;
   };
 
+  const handleClear = () => {
+    setPassword('');
+    setPasswordConfirm('');
+    setPasswordCurrent('');
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -53,7 +59,7 @@ const UserPassword = () => {
 
       const { data } = await updateUserPassword(userData);
       loginSuccess(data);
-      // window.location.reload();
+      handleClear();
     } catch (ex) {
       console.log(ex.response.data.message);
       if (ex.response && ex.response.status === 400) {

@@ -1,6 +1,6 @@
 import { FaArrowRight } from 'react-icons/fa';
-import { useLocation } from 'react-router-dom';
 import { useState, useEffect, useCallback } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Input from 'components/Input';
 import Button from 'components/Button';
@@ -10,6 +10,7 @@ import { useGlobalContext } from 'context/Context';
 import { getWithSlug, updateStory } from 'services/storyService';
 
 const Update = () => {
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const path = pathname.split('/')[3];
   const { dispatch } = useGlobalContext();
@@ -69,7 +70,7 @@ const Update = () => {
 
       await updateStory(id, { ...updStory });
       dispatch({ type: UPDATE_STORY });
-      // window.location.replace('/dashboard');
+      navigate('/dashboard');
     } catch (ex) {
       console.error(ex);
     }

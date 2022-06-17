@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 
 import Spinner from 'components/Spinner';
@@ -6,11 +7,13 @@ import { loginUser } from 'services/userService';
 import { useGlobalContext } from 'context/Context';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { dispatch, isLoading, loginSuccess, loginFailure } =
+    useGlobalContext();
+
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const [errors, setErrors] = useState({});
-  const { dispatch, isLoading, loginSuccess, loginFailure } =
-    useGlobalContext();
 
   useEffect(() => {
     emailRef.current.focus();
@@ -51,7 +54,7 @@ const Login = () => {
 
       const { data } = await loginUser(userData);
       loginSuccess(data);
-      // window.location.replace('/stories');
+      navigate('/stories');
     } catch (err) {
       if (err.response && err.response.status === 401) {
         const tempErrors = { ...errors };

@@ -1,5 +1,6 @@
 import { v4 } from 'uuid';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Input from 'components/Input';
 import Spinner from 'components/Spinner';
@@ -9,6 +10,10 @@ import { useGlobalContext } from 'context/Context';
 import { uploadPhoto } from 'services/uploadService';
 
 const Register = () => {
+  const navigate = useNavigate();
+  const { dispatch, isLoading, loginSuccess, loginFailure } =
+    useGlobalContext();
+
   const [name, setName] = useState('');
   const [file, setFile] = useState(null);
   const [email, setEmail] = useState('');
@@ -16,8 +21,6 @@ const Register = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
-  const { dispatch, isLoading, loginSuccess, loginFailure } =
-    useGlobalContext();
 
   const validateForm = () => {
     const errors = {};
@@ -91,7 +94,7 @@ const Register = () => {
     try {
       const { data: user } = await createUser(newUser);
       loginSuccess(user);
-      // window.location.replace('/stories');
+      navigate('/stories');
     } catch (err) {
       if (err.response && err.response.status === 400) {
         const tempErrors = { ...errors };

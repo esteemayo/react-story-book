@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 import Input from 'components/Input';
 import Button from 'components/Button';
@@ -8,6 +9,8 @@ import { useGlobalContext } from 'context/Context';
 import { createStory } from 'services/storyService';
 
 const AddStory = () => {
+  const navigate = useNavigate();
+
   const [body, setBody] = useState('');
   const [title, setTitle] = useState('');
   const { addStory } = useGlobalContext();
@@ -48,7 +51,7 @@ const AddStory = () => {
 
       const { data: story } = await createStory({ ...newStory });
       addStory(story);
-      // window.location.replace(`/stories/details/${story.slug}`);
+      navigate(`/stories/details/${story.slug}`);
     } catch (ex) {
       console.error(ex);
     }
