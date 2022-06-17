@@ -17,6 +17,7 @@ const authFetch = axios.create({
 axios.interceptors.request.use(
   (request) => {
     request.headers.common['Authorization'] = `Bearer ${getJwt()}`;
+    return request;
   },
   (error) => {
     logger.log(error);
