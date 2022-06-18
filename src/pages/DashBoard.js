@@ -23,13 +23,11 @@ const DashBoard = () => {
     (async () => {
       try {
         const { data, status, statusText } = await axios.get(
-          `${
-            devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
+          `${devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
           }/users/dashboard`
         );
         if (status >= 200 && status < 299) {
           setLoading(false);
-          console.log(data);
           setStories(data);
         } else {
           throw new Error(statusText);
