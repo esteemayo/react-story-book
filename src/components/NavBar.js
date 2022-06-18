@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { useGlobalContext } from 'context/Context';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const NavBar = () => {
-  const { user, logout } = useGlobalContext();
+  const { user, logout } = useGlobalAuthContext();
 
   return (
     <nav>
@@ -20,7 +20,9 @@ const NavBar = () => {
           {user && (
             <>
               <li>
-                <Link to='/dashboard'>Welcome {user.firstName}</Link>
+                <Link to='/dashboard'>
+                  Welcome {user?.firstName || user?.user?.firstName}
+                </Link>
               </li>
               <li>
                 <Link to='/account'>Account</Link>
