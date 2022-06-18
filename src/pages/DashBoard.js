@@ -1,12 +1,15 @@
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 import Table from 'components/Table';
 import Loader from 'components/Loader';
-import { useGlobalContext } from 'context/Context';
-import { userDashBoard } from 'services/userService';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
+
+const devEnv = process.env.NODE_ENV !== 'production';
+const { REACT_APP_DEV_API_URL, REACT_APP_PROD_API_URL } = process.env;
 
 const DashBoard = () => {
-  const { user } = useGlobalContext();
+  const { user } = useGlobalAuthContext();
   const [stories, setStories] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -17,23 +20,27 @@ const DashBoard = () => {
   ];
 
   useEffect(() => {
-    fetchStories();
-  }, []);
-
-  const fetchStories = async () => {
-    try {
-      const res = await userDashBoard();
-      if (res.status >= 200 && res.status < 299) {
-        setStories(res.data);
-      } else {
-        throw new Error(res.statusText);
+    (async () => {
+      try {
+        const { data, status, statusText } = await axios.get(
+          `${
+            devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
+          }/users/dashboard`
+        );
+        if (status >= 200 && status < 299) {
+          setLoading(false);
+          console.log(data);
+          setStories(data);
+        } else {
+          throw new Error(statusText);
+        }
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
-    } catch (err) {
-      setLoading(true);
-      console.error(err);
-    }
-  };
+    })();
+  }, []);
 
   if (loading) {
     return (
@@ -48,7 +55,7 @@ const DashBoard = () => {
   }
 
   return (
-    <div>
+    <div className='container'>
       <h1>Welcome {user?.firstName}</h1>
       <h4>Your Stories</h4>
       <Table data={stories} columns={columns} />
