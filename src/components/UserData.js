@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { v4 } from 'uuid';
 import { useState } from 'react';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
@@ -7,7 +8,6 @@ import Title from './Title';
 import Button from './Button';
 import { uploadPhoto } from 'services/uploadService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
-import axios from 'axios';
 
 const devEnv = process.env.NODE_ENV !== 'production';
 const { REACT_APP_DEV_API_URL, REACT_APP_PROD_API_URL } = process.env;
