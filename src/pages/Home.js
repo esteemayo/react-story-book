@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { FaSignInAlt } from 'react-icons/fa';
 
-import { useGlobalContext } from 'context/Context';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
+
 
 const Home = () => {
-  const { user } = useGlobalContext();
+  const { user } = useGlobalAuthContext();
 
   return (
     <div className='container'>
