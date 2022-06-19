@@ -4,15 +4,15 @@ import { useNavigate } from 'react-router-dom';
 
 import Input from 'components/Input';
 import Spinner from 'components/Spinner';
-import { LOGIN_START } from 'context/types';
+import { LOGIN_START } from 'context/auth/AuthTypes';
 import { createUser } from 'services/userService';
-import { useGlobalContext } from 'context/Context';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
 import { uploadPhoto } from 'services/uploadService';
 
 const Register = () => {
   const navigate = useNavigate();
   const { dispatch, isLoading, loginSuccess, loginFailure } =
-    useGlobalContext();
+    useGlobalAuthContext();
 
   const [name, setName] = useState('');
   const [file, setFile] = useState(null);
