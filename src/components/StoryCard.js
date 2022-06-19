@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FaPencilAlt } from 'react-icons/fa';
 
+import { excerpt } from 'utils';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const devEnv = process.env.NODE_ENV !== 'production';
@@ -33,10 +34,13 @@ const StoryCard = ({ body, slug, user, title }) => {
         </div>
         <div className='card-content center-align'>
           <h5>{title}</h5>
-          <p className='story-text'>{body.substr(0, 130)}...</p>
+          <p className='story-text'>{body && excerpt(body, 130)}</p>
           <br />
           <div className='chip'>
-            <img src={user?.photo ? PF + user.photo : user.gravatar} alt='' />
+            <img
+              src={user?.photo ? PF + user.photo : user.gravatar}
+              alt='avatar'
+            />
             <Link to={`/stories?author=${user.username}`}>{user.name}</Link>
           </div>
         </div>
