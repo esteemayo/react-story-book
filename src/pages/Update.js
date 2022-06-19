@@ -84,8 +84,7 @@ const Update = () => {
       };
 
       const { data: story } = await axios.patch(
-        `${
-          devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
+        `${devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
         }/stories/${id}`,
         { ...updStory }
       );
@@ -151,8 +150,8 @@ const Update = () => {
             />
             <Input
               type='text'
-              name='status'
-              label='Status'
+              name='tags'
+              label='Tags'
               value={tags}
               onChange={(e) => setTags(e.target.value.split(','))}
               error={errors.tags}
