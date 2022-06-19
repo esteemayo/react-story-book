@@ -5,12 +5,15 @@ import { FaArrowAltCircleRight } from 'react-icons/fa';
 import Input from './Input';
 import Title from './Title';
 import Button from './Button';
-import { useGlobalContext } from 'context/Context';
 import { uploadPhoto } from 'services/uploadService';
-import { updateUserData } from 'services/userService';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
+import axios from 'axios';
+
+const devEnv = process.env.NODE_ENV !== 'production';
+const { REACT_APP_DEV_API_URL, REACT_APP_PROD_API_URL } = process.env;
 
 const UserData = () => {
-  const { user, loginSuccess } = useGlobalContext();
+  const { user, loginSuccess } = useGlobalAuthContext();
 
   const [name, setName] = useState('');
   const [file, setFile] = useState(null);
@@ -66,7 +69,12 @@ const UserData = () => {
     }
 
     try {
-      const { data: user } = await updateUserData(userData);
+      const { data: user } = await axios.patch(
+        `${
+          devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
+        }/users/update-me`,
+        { ...userData }
+      );
       loginSuccess(user);
       window.location.reload();
     } catch (ex) {

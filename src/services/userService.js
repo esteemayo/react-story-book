@@ -10,7 +10,7 @@ export function loginUser(userData) {
   return http.post(`${apiEndPoint}/login`, userData);
 }
 
-export function userDashBoard() {
+export function getUserStories() {
   return http.get(`${apiEndPoint}/dashboard`);
 }
 
