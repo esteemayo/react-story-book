@@ -23,7 +23,8 @@ const DashBoard = () => {
     (async () => {
       try {
         const { data, status, statusText } = await axios.get(
-          `${devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
+          `${
+            devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
           }/users/dashboard`
         );
         if (status >= 200 && status < 299) {
@@ -49,7 +50,11 @@ const DashBoard = () => {
   }
 
   if (stories.length === 0) {
-    return <p>You have not created any stories yet</p>;
+    return (
+      <div className='container dashboard-error'>
+        <p>You have not created any stories yet</p>
+      </div>
+    );
   }
 
   return (
