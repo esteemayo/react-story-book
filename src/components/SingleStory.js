@@ -42,7 +42,6 @@ const SingleStory = () => {
       dispatch({ type: LOADING });
       try {
         const { data } = await getRelatedStories(tags);
-        console.log(data);
         dispatch({
           type: RELATED_STORIES,
           payload: data,
