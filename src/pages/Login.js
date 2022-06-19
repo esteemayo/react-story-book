@@ -2,14 +2,14 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 
 import Spinner from 'components/Spinner';
-import { LOGIN_START } from 'context/types';
 import { loginUser } from 'services/userService';
-import { useGlobalContext } from 'context/Context';
+import { LOGIN_START } from 'context/auth/AuthTypes';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const Login = () => {
   const navigate = useNavigate();
   const { dispatch, isLoading, loginSuccess, loginFailure } =
-    useGlobalContext();
+    useGlobalAuthContext();
 
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
