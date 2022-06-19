@@ -445,3 +445,10 @@ span.text-danger {
   border-radius: 5px;
   cursor: pointer;
 }
+
+.dashboard-error {
+  height: 30vh;
+  text-align: center;
+  font-size: 2rem;
+  padding: 1rem;
+}

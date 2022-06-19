@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { FaArrowRight } from 'react-icons/fa';
 import { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -5,9 +6,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import TextArea from 'components/TextArea';
+import { getWithSlug } from 'services/storyService';
 import { UPDATE_STORY } from 'context/story/StoryTypes';
 import { useGlobalContext } from 'context/story/StoryContext';
-import { getWithSlug, updateStory } from 'services/storyService';
+
+const devEnv = process.env.NODE_ENV !== 'production';
+const { REACT_APP_DEV_API_URL, REACT_APP_PROD_API_URL } = process.env;
 
 const Update = () => {
   const navigate = useNavigate();
@@ -17,6 +21,7 @@ const Update = () => {
 
   const [id, setId] = useState(null);
   const [body, setBody] = useState('');
+  const [tags, setTags] = useState([]);
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState('');
   const [errors, setErrors] = useState({});
@@ -24,10 +29,10 @@ const Update = () => {
 
   const fetchStory = useCallback(async () => {
     const { data: story } = await getWithSlug(path);
-    console.log(story);
 
     setId(story._id);
     setBody(story.body);
+    setTags(story.tags);
     setTitle(story.title);
     setStatus(story.status);
     setAllowComments(story.allowComments);
@@ -52,6 +57,10 @@ const Update = () => {
       tempErrors.status = 'A story must have a status';
     }
 
+    if (!tags.length) {
+      tempErrors.tags = 'Please provide some tags';
+    }
+
     if (Object.keys(tempErrors).length > 0) {
       setErrors(tempErrors);
       return false;
@@ -66,10 +75,29 @@ const Update = () => {
     setErrors({});
 
     try {
-      const updStory = { body, title, status, allowComments };
+      const updStory = {
+        body,
+        tags,
+        title,
+        status,
+        allowComments,
+      };
 
-      await updateStory(id, { ...updStory });
-      dispatch({ type: UPDATE_STORY });
+      const { data: story } = await axios.patch(
+        `${
+          devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
+        }/stories/${id}`,
+        { ...updStory }
+      );
+
+      dispatch({
+        type: UPDATE_STORY,
+        payload: {
+          id,
+          story,
+        },
+      });
+
       navigate('/dashboard');
     } catch (ex) {
       console.error(ex);
@@ -120,6 +148,14 @@ const Update = () => {
               label='Tell Us Your Story'
               onChange={(e) => setBody(e.target.value)}
               error={errors.body}
+            />
+            <Input
+              type='text'
+              name='status'
+              label='Status'
+              value={tags}
+              onChange={(e) => setTags(e.target.value.split(','))}
+              error={errors.tags}
             />
 
             <Button
