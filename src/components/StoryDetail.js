@@ -2,17 +2,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaPencilAlt } from 'react-icons/fa';
 
-import { useGlobalContext } from 'context/Context';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const StoryDetail = ({ body, slug, title, author, createdAt }) => {
-  const { user } = useGlobalContext();
+  const { user } = useGlobalAuthContext();
   const [readMore, setReadMore] = useState(false);
 
   return (
     <>
       <h3 className='heading-tertiary'>
         {title}
-        {user && user.username === author && (
+        {user && (user.username === author || user?.user?.username === author) && (
           <Link to={`/stories/update/${slug}`}>
             <small>
               {' '}
