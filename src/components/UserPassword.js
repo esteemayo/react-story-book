@@ -1,14 +1,17 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
 import Input from './Input';
 import Title from './Title';
 import Button from './Button';
-import { useGlobalContext } from 'context/Context';
-import { updateUserPassword } from 'services/userService';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
+
+const devEnv = process.env.NODE_ENV !== 'production';
+const { REACT_APP_DEV_API_URL, REACT_APP_PROD_API_URL } = process.env;
 
 const UserPassword = () => {
-  const { loginSuccess } = useGlobalContext();
+  const { loginSuccess } = useGlobalAuthContext();
 
   const [errors, setErrors] = useState({});
   const [password, setPassword] = useState('');
@@ -57,9 +60,15 @@ const UserPassword = () => {
         passwordConfirm,
       };
 
-      const { data } = await updateUserPassword(userData);
+      const { data } = await axios.patch(
+        `${
+          devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
+        }/users/update-my-password`,
+        { ...userData }
+      );
       loginSuccess(data);
       handleClear();
+      window.location.reload();
     } catch (ex) {
       console.log(ex.response.data.message);
       if (ex.response && ex.response.status === 400) {
