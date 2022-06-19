@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import { FaPencilAlt } from 'react-icons/fa';
 
-import { useGlobalContext } from 'context/Context';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const devEnv = process.env.NODE_ENV !== 'production';
 const { REACT_APP_DEV_IMAGE_API_URL, REACT_APP_PROD_IMAGE_API_URL } =
   process.env;
 
 const StoryCard = ({ body, slug, user, title }) => {
-  const { user: currentUser } = useGlobalContext();
+  const { user: currentUser } = useGlobalAuthContext();
 
   const PF = devEnv
     ? REACT_APP_DEV_IMAGE_API_URL
@@ -18,18 +18,18 @@ const StoryCard = ({ body, slug, user, title }) => {
     <div className='col s12 m4'>
       <div className='card card-margin'>
         <div className='card-image'>
-          {currentUser && currentUser.id === user._id ? (
-            <Link to={`/stories/update/${slug}`}>
-              <span
-                className='btn-floating halfway-fab red'
-                style={{ textAlign: 'center' }}
-              >
-                <FaPencilAlt />
-              </span>
-            </Link>
-          ) : (
-            ''
-          )}
+          {currentUser &&
+            (currentUser.id === user._id ||
+              currentUser?.user?.id === user._id) && (
+              <Link to={`/stories/update/${slug}`}>
+                <span
+                  className='btn-floating halfway-fab red'
+                  style={{ textAlign: 'center' }}
+                >
+                  <FaPencilAlt />
+                </span>
+              </Link>
+            )}
         </div>
         <div className='card-content center-align'>
           <h5>{title}</h5>
