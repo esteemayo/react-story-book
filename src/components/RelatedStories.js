@@ -15,12 +15,11 @@ const RelatedStories = ({ relatedStories, storyId }) => {
                   const { _id: id, slug, title } = item;
                   return (
                     <Link
+                      key={id}
                       to={`/stories/details/${slug}`}
                       className='related-link'
                     >
-                      <li key={id} className='list-items'>
-                        {title}
-                      </li>
+                      <li className='list-items'>{title}</li>
                     </Link>
                   );
                 })}
