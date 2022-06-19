@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 
 import Input from 'components/Input';
 import Spinner from 'components/Spinner';
-import { LOGIN_START } from 'context/auth/AuthTypes';
 import { createUser } from 'services/userService';
-import { useGlobalAuthContext } from 'context/auth/AuthContext';
+import { LOGIN_START } from 'context/auth/AuthTypes';
 import { uploadPhoto } from 'services/uploadService';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const Register = () => {
   const navigate = useNavigate();
