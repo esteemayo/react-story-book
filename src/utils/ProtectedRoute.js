@@ -1,8 +1,8 @@
 import { Navigate } from 'react-router-dom';
-import { useGlobalContext } from 'context/Context';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = useGlobalContext();
+  const { user } = useGlobalAuthContext();
 
   return user ? <Navigate to='/' /> : children;
 };

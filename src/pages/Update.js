@@ -5,8 +5,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import TextArea from 'components/TextArea';
-import { UPDATE_STORY } from 'context/types';
-import { useGlobalContext } from 'context/Context';
+import { UPDATE_STORY } from 'context/story/StoryTypes';
+import { useGlobalContext } from 'context/story/StoryContext';
 import { getWithSlug, updateStory } from 'services/storyService';
 
 const Update = () => {

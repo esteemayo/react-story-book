@@ -1,8 +1,8 @@
-import { useGlobalContext } from 'context/Context';
 import LoadingToRedirect from './LoadingToRedirect';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const AuthRoute = ({ children }) => {
-  const { user } = useGlobalContext();
+  const { user } = useGlobalAuthContext();
 
   return user ? children : <LoadingToRedirect />;
 };
