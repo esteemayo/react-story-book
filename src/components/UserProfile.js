@@ -1,14 +1,14 @@
 import Moment from 'react-moment';
 
 import Title from './Title';
-import { useGlobalContext } from 'context/Context';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const devEnv = process.env.NODE_ENV !== 'production';
 const { REACT_APP_DEV_IMAGE_API_URL, REACT_APP_PROD_IMAGE_API_URL } =
   process.env;
 
 const UserProfile = () => {
-  const { user } = useGlobalContext();
+  const { user } = useGlobalAuthContext();
 
   const PF = devEnv
     ? REACT_APP_DEV_IMAGE_API_URL
