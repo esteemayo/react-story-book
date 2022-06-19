@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
@@ -5,15 +6,18 @@ import { useNavigate } from 'react-router-dom';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import TextArea from 'components/TextArea';
-import { useGlobalContext } from 'context/Context';
-import { createStory } from 'services/storyService';
+import { useGlobalContext } from 'context/story/StoryContext';
+
+const devEnv = process.env.NODE_ENV !== 'production';
+const { REACT_APP_DEV_API_URL, REACT_APP_PROD_API_URL } = process.env;
 
 const AddStory = () => {
   const navigate = useNavigate();
+  const { addStory } = useGlobalContext();
 
   const [body, setBody] = useState('');
+  const [tags, setTags] = useState([]);
   const [title, setTitle] = useState('');
-  const { addStory } = useGlobalContext();
   const [status, setStatus] = useState('');
   const [errors, setErrors] = useState({});
   const [allowComments, setAllowComments] = useState(true);
@@ -27,6 +31,10 @@ const AddStory = () => {
 
     if (body.trim() === '') {
       tempErrors.body = 'A story must have a body';
+    }
+
+    if (!tags.length) {
+      tempErrors.tags = 'Please provide some tags';
     }
 
     if (status.trim() === '') {
@@ -47,9 +55,18 @@ const AddStory = () => {
     setErrors({});
 
     try {
-      const newStory = { body, title, status, allowComments };
+      const newStory = {
+        body,
+        tags,
+        title,
+        status,
+        allowComments,
+      };
 
-      const { data: story } = await createStory({ ...newStory });
+      const { data: story } = await axios.post(
+        `${devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL}/stories`,
+        { ...newStory }
+      );
       addStory(story);
       navigate(`/stories/details/${story.slug}`);
     } catch (ex) {
@@ -100,6 +117,14 @@ const AddStory = () => {
               className='materialize-textarea'
               onChange={(e) => setBody(e.target.value)}
               error={errors.body}
+            />
+            <Input
+              type='text'
+              name='tags'
+              label='Tags'
+              placeholder='Tags'
+              onChange={(e) => setTags(e.target.value.split(','))}
+              error={errors.tags}
             />
             <Button
               text='Save'
