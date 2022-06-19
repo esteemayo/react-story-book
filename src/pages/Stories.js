@@ -3,22 +3,31 @@ import { useLocation } from 'react-router-dom';
 
 import Loader from 'components/Loader';
 import StoryCard from 'components/StoryCard';
+import Pagination from 'components/Pagination';
 import { getStories } from 'services/storyService';
 import { useGlobalContext } from 'context/story/StoryContext';
 import { FETCH_STORIES, LOADING } from 'context/story/StoryTypes';
 
 const Stories = () => {
   const { search } = useLocation();
-  const { stories, dispatch, isLoading } = useGlobalContext();
+  const {
+    counts,
+    stories,
+    dispatch,
+    isLoading,
+    currentPage,
+    numberOfPages,
+    setCurrentPage,
+  } = useGlobalContext();
 
   const fetchStories = useCallback(async () => {
     dispatch({ type: LOADING });
-    const { data } = await getStories(search);
+    const { data } = await getStories(search, currentPage);
     dispatch({
       type: FETCH_STORIES,
       payload: data,
     });
-  }, [search, dispatch]);
+  }, [search, dispatch, currentPage]);
 
   useEffect(() => {
     fetchStories();
@@ -41,14 +50,27 @@ const Stories = () => {
   }
 
   return (
-    <div className='container'>
-      <div className='row'>
-        <h1>Stories</h1>
-        {stories?.map((story) => {
-          return <StoryCard key={story._id} {...story} />;
-        })}
+    <>
+      <div className='container'>
+        <div className='row'>
+          <h1>Stories</h1>
+          {stories?.map((story) => {
+            return <StoryCard key={story._id} {...story} />;
+          })}
+        </div>
       </div>
-    </div>
+
+      <div className='container'>
+        <div className='row'>
+          <Pagination
+            counts={counts}
+            currentPage={currentPage}
+            numberOfPages={numberOfPages}
+            setCurrentPage={setCurrentPage}
+          />
+        </div>
+      </div>
+    </>
   );
 };
 

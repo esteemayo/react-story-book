@@ -6,8 +6,14 @@ function storyUrl(id) {
   return `${apiEndPoint}/${id}`;
 }
 
-export function getStories(search) {
-  return http.get(`${apiEndPoint}${search}`);
+export function getStories(search, page) {
+  return http.get(
+    search ? `${apiEndPoint}${search}` : `${apiEndPoint}?page=${page}`
+  );
+}
+
+export function getRelatedStories(tags) {
+  return http.post(`${apiEndPoint}/related-stories`, tags);
 }
 
 export function getStory(id) {

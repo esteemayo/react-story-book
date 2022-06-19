@@ -381,3 +381,67 @@ span.text-danger {
 .related-link:hover {
   text-decoration: underline;
 }
+
+.pagination {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  background: inherit;
+  color: #c8c8c8;
+  padding: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+.pagination-next {
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding: 1rem 3rem 1rem 1rem;
+}
+
+.pagination-next button:after {
+  margin-left: 1rem;
+  content: '\2192';
+}
+
+.pagination-prev {
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding: 1rem 1rem 1rem 3rem;
+}
+
+.pagination-prev button:before {
+  margin-right: 1rem;
+  content: '\2190';
+}
+
+.pagination-text {
+  -ms-flex: 3 0 auto;
+  flex: 3 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.pagination-next button:hover,
+.pagination-prev button:hover {
+  text-decoration: none;
+}
+
+.pagination-next button,
+.pagination-prev button {
+  color: #c8c8c8;
+  color: #fff;
+}
+
+.pagination-btn {
+  border: none;
+  outline: none;
+  display: inline-block;
+  padding: 0.5rem;
+  background-color: #25b09b;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
