@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useGlobalContext } from 'context/Context';
+import { useGlobalContext } from 'context/story/StoryContext';
 
 const Alert = ({ msg, type }) => {
   const { stories, hideAlert } = useGlobalContext();
