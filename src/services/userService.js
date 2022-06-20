@@ -1,5 +1,6 @@
 import http from './httpService';
 
+const tokenKey = 'jwtToken';
 const apiEndPoint = '/users';
 
 export function createUser(userData) {
@@ -27,5 +28,5 @@ export function deactivateAcc() {
 }
 
 export function getJwt() {
-  return localStorage.getItem('jwtToken');
+  return localStorage.getItem(tokenKey);
 }
