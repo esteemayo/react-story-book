@@ -1,5 +1,5 @@
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useState, useEffect, useCallback } from 'react';
 
 import Loader from './Loader';
 import UserCard from './UserCard';
@@ -7,43 +7,40 @@ import CommentCard from './CommentCard';
 import CommentForm from './CommentForm';
 import StoryDetail from './StoryDetail';
 import RelatedStories from './RelatedStories';
+import * as storyAPI from 'services/storyService';
+import * as actions from 'context/story/StoryTypes';
 import { useGlobalContext } from 'context/story/StoryContext';
-import { LOADING, RELATED_STORIES } from 'context/story/StoryTypes';
-import { getRelatedStories, getWithSlug } from 'services/storyService';
 
 const SingleStory = () => {
   const { pathname } = useLocation();
   const path = pathname.split('/')[3];
-  const [story, setStory] = useState({});
-  const [loading, setLoading] = useState(false);
 
-  const { dispatch, relatedStories } = useGlobalContext();
+  const { story, dispatch, isLoading, relatedStories } = useGlobalContext();
 
   const tags = story?.tags;
 
-  const fetchStory = useCallback(async () => {
-    setLoading(true);
-    try {
-      const { data: story } = await getWithSlug(path);
-      setStory(story);
-      setLoading(false);
-    } catch (err) {
-      console.error(err);
-      setLoading(false);
-    }
-  }, [path]);
-
   useEffect(() => {
-    fetchStory();
-  }, [fetchStory]);
+    (async () => {
+      dispatch({ type: actions.LOADING });
+      try {
+        const { data: story } = await storyAPI.getWithSlug(path);
+        dispatch({
+          type: actions.FETCH_STORY,
+          payload: story,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, [dispatch, path]);
 
   useEffect(() => {
     const fetchRelatedStories = async () => {
-      dispatch({ type: LOADING });
+      dispatch({ type: actions.LOADING });
       try {
-        const { data } = await getRelatedStories(tags);
+        const { data } = await storyAPI.getRelatedStories(tags);
         dispatch({
-          type: RELATED_STORIES,
+          type: actions.RELATED_STORIES,
           payload: data,
         });
       } catch (err) {
@@ -54,7 +51,7 @@ const SingleStory = () => {
     tags && fetchRelatedStories();
   }, [dispatch, tags]);
 
-  if (loading) {
+  if (isLoading) {
     return (
       <main>
         <Loader />
