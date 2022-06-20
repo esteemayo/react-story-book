@@ -1,17 +1,18 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import Table from 'components/Table';
 import Loader from 'components/Loader';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
+import { useGlobalContext } from 'context/story/StoryContext';
+import { FETCH_USER_STORIES, LOADING } from 'context/story/StoryTypes';
 
 const devEnv = process.env.NODE_ENV !== 'production';
 const { REACT_APP_DEV_API_URL, REACT_APP_PROD_API_URL } = process.env;
 
 const DashBoard = () => {
   const { user } = useGlobalAuthContext();
-  const [stories, setStories] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { userStories: stories, isLoading, dispatch } = useGlobalContext();
 
   const columns = [
     { path: 'title', label: 'Title' },
@@ -21,6 +22,7 @@ const DashBoard = () => {
 
   useEffect(() => {
     (async () => {
+      dispatch({ type: LOADING });
       try {
         const { data, status, statusText } = await axios.get(
           `${
@@ -28,20 +30,20 @@ const DashBoard = () => {
           }/users/dashboard`
         );
         if (status >= 200 && status < 299) {
-          setLoading(false);
-          setStories(data);
+          dispatch({
+            type: FETCH_USER_STORIES,
+            payload: data,
+          });
         } else {
           throw new Error(statusText);
         }
       } catch (err) {
         console.log(err);
-      } finally {
-        setLoading(false);
       }
     })();
-  }, []);
+  }, [dispatch]);
 
-  if (loading) {
+  if (isLoading) {
     return (
       <main>
         <Loader />

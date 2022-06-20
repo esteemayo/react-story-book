@@ -25,7 +25,6 @@ const DeleteButton = ({ id }) => {
             devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
           }/stories/${id}`
         );
-        window.location.reload();
       } catch (ex) {
         if (ex.response && ex.response.status === 404)
           toast.error('This story has already been deleted');
