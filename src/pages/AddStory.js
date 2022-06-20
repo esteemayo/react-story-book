@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
@@ -6,10 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import TextArea from 'components/TextArea';
+import { createStory } from 'services/storyService';
 import { useGlobalContext } from 'context/story/StoryContext';
-
-const devEnv = process.env.NODE_ENV !== 'production';
-const { REACT_APP_DEV_API_URL, REACT_APP_PROD_API_URL } = process.env;
 
 const AddStory = () => {
   const navigate = useNavigate();
@@ -63,10 +60,7 @@ const AddStory = () => {
         allowComments,
       };
 
-      const { data: story } = await axios.post(
-        `${devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL}/stories`,
-        { ...newStory }
-      );
+      const { data: story } = await createStory({ ...newStory });
       addStory(story);
       navigate(`/stories/details/${story.slug}`);
     } catch (ex) {
