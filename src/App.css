@@ -75,6 +75,7 @@ footer {
 
 .story-text {
   height: 120px;
+  padding: 1rem;
 }
 
 .dash-status {
@@ -470,4 +471,12 @@ span.text-danger {
 
 .card-wrapper span {
   font-size: 1.25rem;
+}
+
+.custom-card {
+  max-height: 25rem;
+}
+
+.card-title {
+  font-size: 1.5rem !important;
 }

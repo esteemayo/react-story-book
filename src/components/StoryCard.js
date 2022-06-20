@@ -17,7 +17,7 @@ const StoryCard = ({ body, slug, user, title }) => {
 
   return (
     <div className='col s12 m4'>
-      <div className='card card-margin'>
+      <div className='card card-margin custom-card'>
         <div className='card-image'>
           {currentUser &&
             (currentUser.id === user._id ||
@@ -33,7 +33,7 @@ const StoryCard = ({ body, slug, user, title }) => {
             )}
         </div>
         <div className='card-content center-align'>
-          <h5>{title}</h5>
+          <h5 className='card-title'>{title}</h5>
           <p className='story-text'>{body && excerpt(body, 130)}</p>
           <br />
           <div className='chip'>
