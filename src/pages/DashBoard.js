@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 
 import Table from 'components/Table';
 import Loader from 'components/Loader';
-import { useGlobalAuthContext } from 'context/auth/AuthContext';
 import { useGlobalContext } from 'context/story/StoryContext';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
 import { FETCH_USER_STORIES, LOADING } from 'context/story/StoryTypes';
 
 const devEnv = process.env.NODE_ENV !== 'production';
