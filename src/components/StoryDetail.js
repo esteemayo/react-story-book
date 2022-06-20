@@ -1,16 +1,20 @@
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { FaBookmark, FaRegBookmark, FaPencilAlt, FaEye } from 'react-icons/fa';
+import { FaBookmark, FaRegBookmark, FaPencilAlt } from 'react-icons/fa';
 
 import * as bookmarkAPI from 'services/bookmarkService';
 import * as actions from 'context/bookmark/BookMarkTypes';
+import * as viewAction from 'context/history/HistoryTypes';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
+import { useGlobalHistoryContext } from 'context/history/HistoryContext';
 import { useGlobalBookmarkContext } from 'context/bookmark/BookMarkContext';
+import { createHistory, getHistoriesOnStory } from 'services/historyService';
 
 const StoryDetail = ({ _id: id, body, slug, title, author, createdAt }) => {
   const { user } = useGlobalAuthContext();
   const { bookmark, dispatch } = useGlobalBookmarkContext();
+  const { views, dispatch: historyDispatch } = useGlobalHistoryContext();
 
   const [readMore, setReadMore] = useState(false);
 
@@ -53,6 +57,36 @@ const StoryDetail = ({ _id: id, body, slug, title, author, createdAt }) => {
     user && fetchBookmark();
   }, [dispatch, id, user]);
 
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await getHistoriesOnStory(id);
+        console.log(data);
+        historyDispatch({
+          type: viewAction.FETCH_HISTORIES,
+          payload: data,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, [historyDispatch, id]);
+
+  useEffect(() => {
+    user &&
+      (async () => {
+        try {
+          const { data } = await createHistory({ story: id });
+          historyDispatch({
+            type: viewAction.CREATE_HISTORIES,
+            payload: data,
+          });
+        } catch (err) {
+          console.log(err);
+        }
+      })();
+  }, [historyDispatch, id, user]);
+
   return (
     <>
       <h3 className='heading-tertiary'>
@@ -83,9 +117,7 @@ const StoryDetail = ({ _id: id, body, slug, title, author, createdAt }) => {
                 onClick={handleSetAsBookmark}
               />
             )}
-            <span>
-              views <FaEye />
-            </span>
+            <span>{views?.length} views</span>
           </div>
           <blockquote>
             {body &&
