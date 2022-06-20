@@ -1,13 +1,17 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Button from './Button';
 import TextArea from './TextArea';
-import { useGlobalContext } from 'context/Context';
-import { createComment } from 'services/commentService';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
+
+const devEnv = process.env.NODE_ENV !== 'production';
+const { REACT_APP_DEV_API_URL, REACT_APP_DEV_PROD_URL } = process.env;
 
 const CommentForm = ({ id }) => {
-  const { user } = useGlobalContext();
+  const { user } = useGlobalAuthContext();
+
   const [body, setBody] = useState('');
   const [errors, setErrors] = useState({});
 
@@ -16,8 +20,13 @@ const CommentForm = ({ id }) => {
 
     try {
       const commentData = { body };
-      await createComment(id, commentData);
-      // window.location.reload();
+      await axios.post(
+        `${
+          devEnv ? REACT_APP_DEV_API_URL : REACT_APP_DEV_PROD_URL
+        }/stories/${id}/comments`,
+        { ...commentData }
+      );
+      window.location.reload();
     } catch (err) {
       if (err.response && err.response.status === 500) {
         const tempErrors = { ...errors };
