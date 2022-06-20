@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { FaArrowRight } from 'react-icons/fa';
 import { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -6,12 +5,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import TextArea from 'components/TextArea';
-import { getWithSlug } from 'services/storyService';
 import { UPDATE_STORY } from 'context/story/StoryTypes';
 import { useGlobalContext } from 'context/story/StoryContext';
-
-const devEnv = process.env.NODE_ENV !== 'production';
-const { REACT_APP_DEV_API_URL, REACT_APP_PROD_API_URL } = process.env;
+import { getWithSlug, updateStory } from 'services/storyService';
 
 const Update = () => {
   const navigate = useNavigate();
@@ -83,11 +79,7 @@ const Update = () => {
         allowComments,
       };
 
-      const { data: story } = await axios.patch(
-        `${devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
-        }/stories/${id}`,
-        { ...updStory }
-      );
+      const { data: story } = await updateStory(id, { ...updStory });
 
       dispatch({
         type: UPDATE_STORY,
