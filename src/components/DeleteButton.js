@@ -1,13 +1,10 @@
-import axios from 'axios';
 import { toast } from 'react-toastify';
 import { FaTrash } from 'react-icons/fa';
 
 import Button from './Button';
+import { deleteStory } from 'services/storyService';
 import { DELETE_STORY } from 'context/story/StoryTypes';
 import { useGlobalContext } from 'context/story/StoryContext';
-
-const devEnv = process.env.NODE_ENV !== 'production';
-const { REACT_APP_DEV_API_URL, REACT_APP_PROD_API_URL } = process.env;
 
 const DeleteButton = ({ id }) => {
   const { dispatch } = useGlobalContext();
@@ -20,11 +17,7 @@ const DeleteButton = ({ id }) => {
           payload: id,
         });
 
-        await axios.delete(
-          `${
-            devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
-          }/stories/${id}`
-        );
+        await deleteStory(id);
       } catch (ex) {
         if (ex.response && ex.response.status === 404)
           toast.error('This story has already been deleted');
