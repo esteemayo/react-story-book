@@ -467,3 +467,7 @@ span.text-danger {
   color: #039be4;
   font-size: 1.5rem;
 }
+
+.card-wrapper span {
+  font-size: 1.25rem;
+}
