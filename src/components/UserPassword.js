@@ -1,14 +1,11 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
 import Input from './Input';
 import Title from './Title';
 import Button from './Button';
+import { updateUserPassword } from 'services/userService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
-
-const devEnv = process.env.NODE_ENV !== 'production';
-const { REACT_APP_DEV_API_URL, REACT_APP_PROD_API_URL } = process.env;
 
 const UserPassword = () => {
   const { loginSuccess } = useGlobalAuthContext();
@@ -60,12 +57,7 @@ const UserPassword = () => {
         passwordConfirm,
       };
 
-      const { data } = await axios.patch(
-        `${
-          devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
-        }/users/update-my-password`,
-        { ...userData }
-      );
+      const { data } = await updateUserPassword({ ...userData });
       loginSuccess(data);
       handleClear();
       window.location.reload();
