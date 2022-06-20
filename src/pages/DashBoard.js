@@ -1,14 +1,11 @@
-import axios from 'axios';
 import { useEffect } from 'react';
 
 import Table from 'components/Table';
 import Loader from 'components/Loader';
+import * as actions from 'context/story/StoryTypes';
+import { getUserStories } from 'services/userService';
 import { useGlobalContext } from 'context/story/StoryContext';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
-import { FETCH_USER_STORIES, LOADING } from 'context/story/StoryTypes';
-
-const devEnv = process.env.NODE_ENV !== 'production';
-const { REACT_APP_DEV_API_URL, REACT_APP_PROD_API_URL } = process.env;
 
 const DashBoard = () => {
   const { user } = useGlobalAuthContext();
@@ -22,16 +19,12 @@ const DashBoard = () => {
 
   useEffect(() => {
     (async () => {
-      dispatch({ type: LOADING });
       try {
-        const { data, status, statusText } = await axios.get(
-          `${
-            devEnv ? REACT_APP_DEV_API_URL : REACT_APP_PROD_API_URL
-          }/users/dashboard`
-        );
+        dispatch({ type: actions.LOADING });
+        const { data, status, statusText } = await getUserStories();
         if (status >= 200 && status < 299) {
           dispatch({
-            type: FETCH_USER_STORIES,
+            type: actions.FETCH_USER_STORIES,
             payload: data,
           });
         } else {
