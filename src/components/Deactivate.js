@@ -3,8 +3,8 @@ import { FaCogs } from 'react-icons/fa';
 
 import Title from './Title';
 import Button from './Button';
-import { useGlobalAuthContext } from 'context/auth/AuthContext';
 import { deactivateAcc } from 'services/userService';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const Deactivate = () => {
   const { logout } = useGlobalAuthContext();
