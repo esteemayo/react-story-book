@@ -1,4 +1,5 @@
 export const FETCH_STORIES = 'FETCH_STORIES';
+export const FETCH_STORY = 'FETCH_STORY';
 export const ADD_STORY = 'ADD_STORY';
 export const RELATED_STORIES = 'RELATED_STORIES';
 export const UPDATE_STORY = 'UPDATE_STORY';

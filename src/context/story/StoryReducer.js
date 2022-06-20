@@ -12,6 +12,13 @@ const StoryReducer = (state, { type, payload }) => {
         numberOfPages: payload.numberOfPages,
       };
 
+    case actions.FETCH_STORY:
+      return {
+        ...state,
+        isLoading: false,
+        story: payload,
+      };
+
     case actions.FETCH_USER_STORIES:
       return {
         ...state,

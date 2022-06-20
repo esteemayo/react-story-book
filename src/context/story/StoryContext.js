@@ -6,6 +6,7 @@ import StoryReducer from './StoryReducer';
 const INITIAL_STATE = {
   error: false,
   stories: [],
+  story: {},
   relatedStories: [],
   userStories: [],
   counts: null,
