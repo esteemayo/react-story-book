@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom';
 import { FaPencilAlt } from 'react-icons/fa';
 
 import { excerpt } from 'utils';
+import LikeButton from './LikeButton';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const devEnv = process.env.NODE_ENV !== 'production';
 const { REACT_APP_DEV_IMAGE_API_URL, REACT_APP_PROD_IMAGE_API_URL } =
   process.env;
 
-const StoryCard = ({ body, slug, user, title }) => {
+const StoryCard = ({ _id: id, body, slug, user, likes, title }) => {
   const { user: currentUser } = useGlobalAuthContext();
 
   const PF = devEnv
@@ -42,6 +43,9 @@ const StoryCard = ({ body, slug, user, title }) => {
               alt='avatar'
             />
             <Link to={`/stories?author=${user.username}`}>{user.name}</Link>
+          </div>
+          <div className='like-container'>
+            <LikeButton likes={likes} user={currentUser} storyId={id} />
           </div>
         </div>
         <div className='card-action center-align'>
