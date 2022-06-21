@@ -25,7 +25,7 @@ const StoryDetail = ({ _id: id, body, slug, title, author, createdAt }) => {
         type: actions.CREATE_BOOKMARK,
         payload: data,
       });
-      toast.success('Story set as bookmark');
+      toast.success('Story bookmarked');
     } catch (err) {
       console.log(err);
     }
@@ -35,7 +35,7 @@ const StoryDetail = ({ _id: id, body, slug, title, author, createdAt }) => {
     try {
       await bookmarkAPI.deleteBookmark(bookmark?._id);
       dispatch({ type: actions.DELETE_BOOKMARK });
-      toast.success('Story unset as bookmark');
+      toast.success('Story unbookmarked');
     } catch (err) {
       console.log(err);
     }
@@ -106,18 +106,21 @@ const StoryDetail = ({ _id: id, body, slug, title, author, createdAt }) => {
             {new Date(createdAt).toDateString()}
           </span>
           <div className='card-wrapper'>
-            {bookmark ? (
+            {user && bookmark && (
               <FaBookmark
                 className='bookmark-icon'
                 onClick={handleUnSetAsBookmark}
               />
-            ) : (
+            )}
+
+            {user && !bookmark && (
               <FaRegBookmark
                 className='bookmark-icon'
                 onClick={handleSetAsBookmark}
               />
             )}
-            <span>{views?.length} views</span>
+
+            {user && <span>{views?.length} views</span>}
           </div>
           <blockquote>
             {body &&
