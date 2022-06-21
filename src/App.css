@@ -298,10 +298,10 @@ footer {
     linear,
     left top,
     right top,
-    from(#ffb340),
-    to(#f44336)
+    from(#7ad4b3),
+    to(#008080)
   );
-  background-image: linear-gradient(to right, #ffb340, #f44336);
+  background-image: linear-gradient(to right, #7ad4b3, #008080);
   -webkit-background-clip: text;
   color: transparent;
   letter-spacing: 0.1rem;
@@ -320,12 +320,30 @@ footer {
 }
 
 .thumbnail img {
-  border: 2px solid #333;
+  border: 2px solid #fff;
+  border-radius: 2px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+}
+
+.user-info {
+  width: 13.5rem;
+  display: inline-block;
+  padding: 1rem 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 2px;
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
 }
 
 .card {
   -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.1);
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.1);
+}
+
+.single-story-card {
+  -webkit-box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
 }
 
 .redirect {
