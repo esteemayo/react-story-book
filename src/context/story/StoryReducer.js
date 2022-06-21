@@ -72,6 +72,15 @@ const StoryReducer = (state, { type, payload }) => {
         },
       };
 
+    case actions.LIKE_STORY:
+      return {
+        ...state,
+        stories: state.stories.map((item) =>
+          item._id === payload.id ? payload : item
+        ),
+        story: payload,
+      };
+
     case actions.DELETE_STORY:
       return {
         ...state,
