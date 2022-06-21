@@ -66,8 +66,8 @@ const SingleStory = () => {
 
         {story.allowComments && (
           <>
-            <CommentForm id={story._id} />
-            {story?.comments.map((comment) => {
+            <CommentForm id={story?._id} />
+            {story?.comments?.map((comment) => {
               return <CommentCard key={comment._id} {...comment} />;
             })}
           </>
