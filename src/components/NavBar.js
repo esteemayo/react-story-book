@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const NavBar = () => {
@@ -12,20 +12,38 @@ const NavBar = () => {
         </Link>
         <ul id='nav-mobile' className='right hide-on-med-and-down'>
           <li>
-            <Link to='/stories'>Home</Link>
+            <NavLink
+              to='/stories'
+              className={({ isActive }) => isActive && 'active'}
+            >
+              Home
+            </NavLink>
           </li>
           <li>
-            <Link to='/about'>About</Link>
+            <NavLink
+              to='/about'
+              className={({ isActive }) => isActive && 'active'}
+            >
+              About
+            </NavLink>
           </li>
           {user && (
             <>
               <li>
-                <Link to='/dashboard'>
+                <NavLink
+                  to='/dashboard'
+                  className={({ isActive }) => isActive && 'active'}
+                >
                   Welcome {user?.firstName || user?.user?.firstName}
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link to='/account'>Account</Link>
+                <NavLink
+                  to='/account'
+                  className={({ isActive }) => isActive && 'active'}
+                >
+                  Account
+                </NavLink>
               </li>
               <li>
                 <Link to='#' onClick={logout}>
@@ -37,10 +55,20 @@ const NavBar = () => {
           {!user && (
             <>
               <li>
-                <Link to='/login'>Login</Link>
+                <NavLink
+                  to='/login'
+                  className={({ isActive }) => isActive && 'active'}
+                >
+                  Login
+                </NavLink>
               </li>
               <li>
-                <Link to='/register'>Register</Link>
+                <NavLink
+                  to='/register'
+                  className={({ isActive }) => isActive && 'active'}
+                >
+                  Register
+                </NavLink>
               </li>
             </>
           )}

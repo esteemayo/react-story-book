@@ -549,3 +549,9 @@ footer {
 .query-error-msg span {
   color: #f44336;
 }
+
+.active {
+  font-weight: 700;
+  background-color: #000;
+  color: lightgray;
+}
