@@ -33,7 +33,7 @@ const StoryCard = ({ body, slug, user, title }) => {
             )}
         </div>
         <div className='card-content center-align'>
-          <h5 className='card-title'>{title}</h5>
+          <h5 className='card-header'>{title}</h5>
           <p className='story-text'>{body && excerpt(body, 130)}</p>
           <br />
           <div className='chip'>
