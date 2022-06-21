@@ -25,6 +25,7 @@ html {
   /* font-size: 62.5%; */
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 body {
@@ -309,32 +310,13 @@ footer {
 }
 
 .not-found {
+  width: 100vw;
+  height: 30vh;
   text-align: center;
-  border: 3px solid #ffab40;
-  padding: 3rem;
-  margin-top: 10rem;
-  word-wrap: break-word;
-  text-transform: capitalize;
 }
 
-.not-found h1 {
-  font-size: 3.5rem;
-  line-height: 110%;
-  font-weight: 400;
-  margin: 0;
-}
-
-.not-found h2 {
-  font-size: 2.5rem;
-}
-
-.not-found h3 {
-  font-size: 2rem;
-}
-
-span.text-danger {
-  color: #f44336;
-  text-transform: lowercase;
+.not-found img {
+  margin: 3rem 0;
 }
 
 .thumbnail img {
