@@ -464,19 +464,43 @@ span.text-danger {
   justify-content: space-between;
 }
 
-.bookmark-icon {
+.bookmark-icon,
+.like-icon {
   color: #039be4;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
 .card-wrapper span {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
 }
 
 .custom-card {
   max-height: 25rem;
 }
 
-.card-title {
+.card-header {
   font-size: 1.5rem !important;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+}
+
+.card-container span {
+  margin-left: 1rem;
+}
+
+.like-btn,
+.like-btn:focus {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.like-btn small {
+  color: #039be4;
+  font-size: 90%;
 }
