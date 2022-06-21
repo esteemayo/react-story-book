@@ -10,7 +10,7 @@ const UserCard = ({ user }) => {
     : REACT_APP_PROD_IMAGE_API_URL;
 
   return (
-    <div className='card center-align'>
+    <div className='card center-align single-story-card'>
       <div className='card-content'>
         <span className='card-title'>{user?.name}</span>
         <img

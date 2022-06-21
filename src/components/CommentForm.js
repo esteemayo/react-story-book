@@ -29,7 +29,7 @@ const CommentForm = ({ id }) => {
   };
 
   return (
-    <div className='card'>
+    <div className='card single-story-card'>
       <div className='card-content'>
         <span className='card-title'>Comments</span>
         {user ? (

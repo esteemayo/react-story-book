@@ -11,7 +11,7 @@ const CommentCard = ({ body, user, createdAt }) => {
     : REACT_APP_PROD_IMAGE_API_URL;
 
   return (
-    <div className='card'>
+    <div className='card single-story-card'>
       <div className='card-content'>
         <p>{body}</p>
         <div className='chip'>

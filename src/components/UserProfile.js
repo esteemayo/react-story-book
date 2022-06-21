@@ -19,18 +19,27 @@ const UserProfile = () => {
       <Title title='User profile' className='text-uppercase' />
       <div className='thumbnail'>
         <img
-          src={user?.photo ? PF + user.photo : user.gravatar}
+          src={
+            user?.photo
+              ? PF + user.photo
+              : user.gravatar || user?.user?.photo
+              ? PF + user?.user?.photo
+              : user?.user?.gravatar
+          }
           width={200}
           alt='avatar'
         />
       </div>
-      <p>Name: {user.name}</p>
-      <p>
-        Email: <a href={`mailto:${user.email}`}>{user.email}</a>
-      </p>
-      <p>
-        Joined: <Moment format='MMMM YYYY'>{user.createdAt}</Moment>
-      </p>
+
+      <div className='user-info'>
+        <p>Name: {user.name}</p>
+        <p>
+          Email: <a href={`mailto:${user.email}`}>{user.email}</a>
+        </p>
+        <p>
+          Joined: <Moment format='MMMM YYYY'>{user.createdAt}</Moment>
+        </p>
+      </div>
     </div>
   );
 };

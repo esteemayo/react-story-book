@@ -109,7 +109,7 @@ const StoryDetail = ({
           </Link>
         )}
       </h3>
-      <div className='card story'>
+      <div className='card story single-story-card'>
         <div className='card-content'>
           <span className='card-title'>
             {new Date(createdAt).toDateString()}
