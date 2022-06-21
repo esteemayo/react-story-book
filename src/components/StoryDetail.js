@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FaBookmark, FaRegBookmark, FaPencilAlt } from 'react-icons/fa';
 
+import LikeButton from './LikeButton';
 import * as bookmarkAPI from 'services/bookmarkService';
 import * as actions from 'context/bookmark/BookMarkTypes';
 import * as viewAction from 'context/history/HistoryTypes';
@@ -11,7 +12,15 @@ import { useGlobalHistoryContext } from 'context/history/HistoryContext';
 import { useGlobalBookmarkContext } from 'context/bookmark/BookMarkContext';
 import { createHistory, getHistoriesOnStory } from 'services/historyService';
 
-const StoryDetail = ({ _id: id, body, slug, title, author, createdAt }) => {
+const StoryDetail = ({
+  _id: id,
+  body,
+  slug,
+  likes,
+  title,
+  author,
+  createdAt,
+}) => {
   const { user } = useGlobalAuthContext();
   const { bookmark, dispatch } = useGlobalBookmarkContext();
   const { views, dispatch: historyDispatch } = useGlobalHistoryContext();
@@ -106,20 +115,22 @@ const StoryDetail = ({ _id: id, body, slug, title, author, createdAt }) => {
             {new Date(createdAt).toDateString()}
           </span>
           <div className='card-wrapper'>
-            {user && bookmark && (
-              <FaBookmark
-                className='bookmark-icon'
-                onClick={handleUnSetAsBookmark}
-              />
-            )}
+            <div className='card-container'>
+              {user && bookmark && (
+                <FaBookmark
+                  className='bookmark-icon'
+                  onClick={handleUnSetAsBookmark}
+                />
+              )}
 
-            {user && !bookmark && (
-              <FaRegBookmark
-                className='bookmark-icon'
-                onClick={handleSetAsBookmark}
-              />
-            )}
-
+              {user && !bookmark && (
+                <FaRegBookmark
+                  className='bookmark-icon'
+                  onClick={handleSetAsBookmark}
+                />
+              )}
+              <LikeButton likes={likes} user={user} storyId={id} />
+            </div>
             {user && <span>{views?.length} views</span>}
           </div>
           <blockquote>
