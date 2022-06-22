@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Loader from 'components/Loader';
@@ -28,18 +28,20 @@ const Stories = () => {
   const searchQuery = query.get('q');
   const authorQuery = query.get('author');
 
-  const fetchStories = useCallback(async () => {
-    dispatch({ type: LOADING });
-    const { data } = await getStories(search, currentPage);
-    dispatch({
-      type: FETCH_STORIES,
-      payload: data,
-    });
-  }, [search, dispatch, currentPage]);
-
   useEffect(() => {
-    fetchStories();
-  }, [search, fetchStories]);
+    (async () => {
+      try {
+        dispatch({ type: LOADING });
+        const { data } = await getStories(search, currentPage);
+        dispatch({
+          type: FETCH_STORIES,
+          payload: data,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, [currentPage, dispatch, search]);
 
   if (isLoading) {
     return (

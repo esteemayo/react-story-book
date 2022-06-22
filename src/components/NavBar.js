@@ -19,7 +19,6 @@ const NavBar = () => {
     if (search) {
       try {
         const { data } = await searchStory(search);
-        console.log(data);
         dispatch({
           type: SEARCH_STORY,
           payload: data,
