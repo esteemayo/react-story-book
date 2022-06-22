@@ -1,15 +1,16 @@
 import { useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
-import { useGlobalAuthContext } from 'context/auth/AuthContext';
 import { searchStory } from 'services/storyService';
-import { useGlobalContext } from 'context/story/StoryContext';
 import { SEARCH_STORY } from 'context/story/StoryTypes';
+import { useGlobalContext } from 'context/story/StoryContext';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const NavBar = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
+
   const { dispatch } = useGlobalContext();
   const { user, logout } = useGlobalAuthContext();
 
