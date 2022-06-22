@@ -16,6 +16,7 @@ const NavBar = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
+
     if (search) {
       dispatch({ type: LOADING });
       try {
