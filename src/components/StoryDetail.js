@@ -70,7 +70,6 @@ const StoryDetail = ({
     (async () => {
       try {
         const { data } = await getHistoriesOnStory(id);
-        console.log(data);
         historyDispatch({
           type: viewAction.FETCH_HISTORIES,
           payload: data,
