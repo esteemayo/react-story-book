@@ -24,6 +24,10 @@ export function getWithSlug(slug) {
   return http.get(`${apiEndPoint}/details/${slug}`);
 }
 
+export function searchStory(searchQuery) {
+  return http.get(`${apiEndPoint}/search?q=${searchQuery}`);
+}
+
 export function createStory(story) {
   return http.post(apiEndPoint, story);
 }
