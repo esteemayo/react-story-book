@@ -46,7 +46,7 @@ const NavBar = () => {
           <li>
             <NavLink
               to='/stories'
-              className={({ isActive }) => isActive && 'link active'}
+              className={({ isActive }) => `${isActive ? 'link active' : ''}`}
             >
               Home
             </NavLink>
@@ -54,7 +54,7 @@ const NavBar = () => {
           <li>
             <NavLink
               to='/about'
-              className={({ isActive }) => isActive && 'link active'}
+              className={({ isActive }) => `${isActive ? 'link active' : ''}`}
             >
               About
             </NavLink>
@@ -64,7 +64,9 @@ const NavBar = () => {
               <li>
                 <NavLink
                   to='/dashboard'
-                  className={({ isActive }) => isActive && 'link active'}
+                  className={({ isActive }) =>
+                    `${isActive ? 'link active' : ''}`
+                  }
                 >
                   Welcome {user?.firstName || user?.user?.firstName}
                 </NavLink>
@@ -72,7 +74,9 @@ const NavBar = () => {
               <li>
                 <NavLink
                   to='/account'
-                  className={({ isActive }) => isActive && 'link active'}
+                  className={({ isActive }) =>
+                    `${isActive ? 'link active' : ''}`
+                  }
                 >
                   Account
                 </NavLink>
@@ -89,7 +93,9 @@ const NavBar = () => {
               <li>
                 <NavLink
                   to='/login'
-                  className={({ isActive }) => isActive && 'link active'}
+                  className={({ isActive }) =>
+                    `${isActive ? 'link active' : ''}`
+                  }
                 >
                   Login
                 </NavLink>
@@ -97,7 +103,9 @@ const NavBar = () => {
               <li>
                 <NavLink
                   to='/register'
-                  className={({ isActive }) => isActive && 'link active'}
+                  className={({ isActive }) =>
+                    `${isActive ? 'link active' : ''}`
+                  }
                 >
                   Register
                 </NavLink>
