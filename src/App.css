@@ -579,13 +579,12 @@ footer {
   caret-color: #9e9e9e;
 }
 
-.btn-search {
-  border: none;
-  outline: none;
+.search-icon-container {
   background-color: transparent;
   position: absolute;
+  top: 0;
   right: 3rem;
-  top: 1.7rem;
+  padding: 3px;
   cursor: pointer;
 }
 
