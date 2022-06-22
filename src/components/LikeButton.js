@@ -56,7 +56,7 @@ const LikeButton = ({ likes, user, storyId }) => {
       {likeButton}
       &nbsp;
       {user &&
-      likes.includes(user.id || user?.user?._id) &&
+      likes?.includes(user.id || user?.user?._id) &&
       likes?.length > 2 ? (
         <small>{`You and ${likes?.length - 1} other people likes`}</small>
       ) : (
