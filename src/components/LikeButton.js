@@ -59,7 +59,8 @@ const LikeButton = ({ likes, user, storyId }) => {
         <small>{`You and ${likes?.length - 1} other people likes`}</small>
       ) : (
         <small>
-          {likes?.length} {`Like${likes?.length > 1 ? 's' : ''}`}
+          {likes?.length > 0 ? likes?.length : ''}{' '}
+          {`Like${likes?.length > 1 ? 's' : ''}`}
         </small>
       )}
     </button>
