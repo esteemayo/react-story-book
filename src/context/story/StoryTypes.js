@@ -9,3 +9,4 @@ export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const HIDE_ALERT = 'HIDE_ALERT';
 export const FETCH_USER_STORIES = 'FETCH_USER_STORIES';
 export const LIKE_STORY = 'LIKE_STORY';
+export const SEARCH_STORY = 'SEARCH_STORY';
