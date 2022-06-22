@@ -25,6 +25,7 @@ const Stories = () => {
   } = useGlobalContext();
 
   const query = useQuery();
+  const searchQuery = query.get('q');
   const authorQuery = query.get('author');
 
   const fetchStories = useCallback(async () => {
@@ -58,6 +59,16 @@ const Stories = () => {
     );
   }
 
+  if (stories.length === 0 && pathname !== '/' && searchQuery) {
+    return (
+      <div className='container error-wrapper'>
+        <h1 className='story-error-msg'>
+          We couldn't find any matches for "{searchQuery}"
+        </h1>
+      </div>
+    );
+  }
+
   if (stories.length < 1 && pathname !== '/' && authorQuery) {
     return (
       <div className='container error-wrapper'>
@@ -81,7 +92,7 @@ const Stories = () => {
 
       <div className='container'>
         <div className='row'>
-          {stories.length > 0 && !authorQuery && (
+          {stories.length > 0 && !searchQuery && !authorQuery && (
             <Pagination
               counts={counts}
               currentPage={currentPage}
