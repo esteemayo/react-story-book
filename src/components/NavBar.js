@@ -1,8 +1,37 @@
-import { Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa';
+
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
+import { searchStory } from 'services/storyService';
+import { useGlobalContext } from 'context/story/StoryContext';
+import { SEARCH_STORY } from 'context/story/StoryTypes';
 
 const NavBar = () => {
+  const navigate = useNavigate();
+  const [search, setSearch] = useState('');
+  const { dispatch } = useGlobalContext();
   const { user, logout } = useGlobalAuthContext();
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    if (search) {
+      try {
+        const { data } = await searchStory(search);
+        console.log(data);
+        dispatch({
+          type: SEARCH_STORY,
+          payload: data,
+        });
+        navigate(`/stories/search?q=${search}`);
+        setSearch('');
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      navigate('/stories');
+    }
+  };
 
   return (
     <nav>
@@ -72,6 +101,22 @@ const NavBar = () => {
               </li>
             </>
           )}
+
+          <li>
+            <form onSubmit={handleSearch}>
+              <div className='form-group'>
+                <input
+                  type='search'
+                  className='form-input'
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+                <button className='btn-search'>
+                  <FaSearch className='search-icon' />
+                </button>
+              </div>
+            </form>
+          </li>
         </ul>
       </div>
     </nav>

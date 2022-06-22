@@ -33,6 +33,12 @@ const StoryReducer = (state, { type, payload }) => {
         relatedStories: payload,
       };
 
+    case actions.SEARCH_STORY:
+      return {
+        ...state,
+        stories: payload,
+      };
+
     case actions.SET_CURRENT_PAGE:
       return {
         ...state,
