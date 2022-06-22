@@ -55,7 +55,9 @@ const LikeButton = ({ likes, user, storyId }) => {
     <button onClick={!user ? null : handleLike} className='like-btn'>
       {likeButton}
       &nbsp;
-      {user && likes?.length > 2 ? (
+      {user &&
+      likes.includes(user.id || user?.user?._id) &&
+      likes?.length > 2 ? (
         <small>{`You and ${likes?.length - 1} other people likes`}</small>
       ) : (
         <small>
