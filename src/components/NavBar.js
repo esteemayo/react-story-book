@@ -3,9 +3,9 @@ import { FaSearch } from 'react-icons/fa';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 import { searchStory } from 'services/storyService';
-import { SEARCH_STORY } from 'context/story/StoryTypes';
 import { useGlobalContext } from 'context/story/StoryContext';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
+import { HIDE_LOADING, LOADING, SEARCH_STORY } from 'context/story/StoryTypes';
 
 const NavBar = () => {
   const navigate = useNavigate();
@@ -17,12 +17,14 @@ const NavBar = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     if (search) {
+      dispatch({ type: LOADING });
       try {
         const { data } = await searchStory(search);
         dispatch({
           type: SEARCH_STORY,
           payload: data,
         });
+        dispatch({ type: HIDE_LOADING });
         navigate(`/stories/search?q=${search}`);
         setSearch('');
       } catch (err) {

@@ -51,6 +51,12 @@ const StoryReducer = (state, { type, payload }) => {
         isLoading: true,
       };
 
+    case actions.HIDE_LOADING:
+      return {
+        ...state,
+        isLoading: false,
+      };
+
     case actions.ADD_STORY:
       return {
         ...state,
