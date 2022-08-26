@@ -601,3 +601,50 @@ footer {
 .search-icon {
   color: #9e9e9e;
 }
+
+.fixed-action-btn {
+  right: 2rem;
+  bottom: 5rem;
+}
+
+.scroll {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  animation: fadeIn 700ms ease-in-out 1s both;
+  cursor: pointer;
+  font-size: 40px;
+  margin-right: 2rem;
+}
+
+.scroll-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+  border-radius: 3px;
+  transition: all 0.5s ease-in-out;
+}
+
+.scroll-icon:hover {
+  background-color: #555;
+  transform: translateY(-10px);
+}
+
+.scroll-icon > * {
+  font-size: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
