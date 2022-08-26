@@ -7,6 +7,7 @@ import Home from './Home';
 import Layout from './Layout';
 import Login from './Login';
 import Register from './Register';
+import Search from './Search';
 import SharedLayout from './SharedLayout';
 import SinglePage from './SinglePage';
 import Stories from './Stories';
@@ -22,6 +23,7 @@ export {
   Layout,
   Login,
   Register,
+  Search,
   SharedLayout,
   SinglePage,
   Stories,
