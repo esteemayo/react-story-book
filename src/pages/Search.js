@@ -1,11 +1,6 @@
-import { useLocation } from 'react-router-dom';
-
+import { useQuery } from 'utils';
 import StoryCard from 'components/StoryCard';
 import { useGlobalContext } from 'context/story/StoryContext';
-
-const useQuery = () => {
-  return new URLSearchParams(useLocation().search);
-};
 
 const Search = () => {
   const { stories } = useGlobalContext();
