@@ -403,7 +403,8 @@ footer {
   padding: 1rem 3rem 1rem 1rem;
 }
 
-.pagination-next button:after {
+.pagination-next button:after,
+.pagination-next a:after {
   margin-left: 1rem;
   content: '\2192';
 }
@@ -414,7 +415,8 @@ footer {
   padding: 1rem 1rem 1rem 3rem;
 }
 
-.pagination-prev button:before {
+.pagination-prev button:before,
+.pagination-prev a:before {
   margin-right: 1rem;
   content: '\2190';
 }
@@ -428,12 +430,16 @@ footer {
 }
 
 .pagination-next button:hover,
-.pagination-prev button:hover {
+.pagination-next a:hover,
+.pagination-prev button:hover,
+.pagination-prev a:hover {
   text-decoration: none;
 }
 
 .pagination-next button,
-.pagination-prev button {
+.pagination-next a,
+.pagination-prev button,
+.pagination-prev a {
   color: #c8c8c8;
   color: #fff;
 }
