@@ -3,22 +3,30 @@ import { useContext, useReducer, createContext } from 'react';
 
 import * as actions from './AuthTypes';
 import AuthReducer from './AuthReducer';
+import { getJwt } from 'services/userService';
+import {
+  getFromStorage,
+  removeFromStorage,
+  setToStorage,
+  tokenKey,
+} from 'utils';
+
+const token = getJwt();
+const user = getFromStorage(tokenKey);
 
 const INITIAL_STATE = {
-  user: null,
+  user: user ?? null,
   error: false,
   isLoading: false,
 };
-
-const tokenKey = 'jwtToken';
-const token = localStorage.getItem(tokenKey);
 
 if (token) {
   const decodedToken = jwtDecode(token);
   const expiryDate = Date.now();
 
   if (decodedToken.exp * 1000 < expiryDate) {
-    localStorage.removeItem(tokenKey);
+    removeFromStorage(tokenKey);
+    INITIAL_STATE.user = null;
   } else {
     INITIAL_STATE.user = decodedToken;
   }
@@ -34,7 +42,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const loginSuccess = (userData) => {
-    localStorage.setItem(tokenKey, userData.token);
+    setToStorage(tokenKey, userData);
     dispatch({
       type: actions.LOGIN_SUCCESS,
       payload: userData,
@@ -46,7 +54,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem(tokenKey);
+    removeFromStorage(tokenKey);
     dispatch({ type: actions.LOGOUT });
   };
 
