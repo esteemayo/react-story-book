@@ -12,6 +12,7 @@ import {
   Layout,
   Login,
   Register,
+  Search,
   SharedLayout,
   SinglePage,
   Stories,
@@ -45,7 +46,7 @@ function App() {
           />
           <Route path='stories' element={<SharedLayout />}>
             <Route index element={<Stories />} />
-            <Route path='search' element={<Stories />} />
+            <Route path='search' element={<Search />} />
             <Route
               path='create'
               element={
