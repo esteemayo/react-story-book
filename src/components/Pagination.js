@@ -1,4 +1,6 @@
-const Pagination = ({ counts, currentPage, numberOfPages, setCurrentPage }) => {
+import { Link } from 'react-router-dom';
+
+const Pagination = ({ counts, currentPage, numberOfPages }) => {
   const renderPagination = () => {
     if (currentPage === numberOfPages && currentPage === 1) return null;
     if (currentPage === 1) {
@@ -10,12 +12,12 @@ const Pagination = ({ counts, currentPage, numberOfPages, setCurrentPage }) => {
             </p>
           </div>
           <div className='pagination-next'>
-            <button
-              onClick={() => setCurrentPage(currentPage + 1)}
+            <Link
+              to={`/stories?page=${currentPage + 1}`}
               className='pagination-btn'
             >
               Next
-            </button>
+            </Link>
           </div>
         </div>
       );
@@ -23,12 +25,12 @@ const Pagination = ({ counts, currentPage, numberOfPages, setCurrentPage }) => {
       return (
         <div className='pagination'>
           <div className='pagination-prev'>
-            <button
-              onClick={() => setCurrentPage(currentPage - 1)}
+            <Link
+              to={`/stories?page=${currentPage - 1}`}
               className='pagination-btn'
             >
               Prev
-            </button>
+            </Link>
           </div>
           <div className='pagination-text'>
             <p>
@@ -36,12 +38,12 @@ const Pagination = ({ counts, currentPage, numberOfPages, setCurrentPage }) => {
             </p>
           </div>
           <div className='pagination-next'>
-            <button
-              onClick={() => setCurrentPage(currentPage + 1)}
+            <Link
+              to={`/stories?page=${currentPage + 1}`}
               className='pagination-btn'
             >
               Next
-            </button>
+            </Link>
           </div>
         </div>
       );
@@ -49,12 +51,12 @@ const Pagination = ({ counts, currentPage, numberOfPages, setCurrentPage }) => {
       return (
         <div className='pagination'>
           <div className='pagination-prev'>
-            <button
-              onClick={() => setCurrentPage(currentPage - 1)}
+            <Link
+              to={`/stories?page=${currentPage - 1}`}
               className='pagination-btn'
             >
               Prev
-            </button>
+            </Link>
           </div>
           <div className='pagination-text'>
             <p>
