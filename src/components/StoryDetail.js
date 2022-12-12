@@ -28,30 +28,38 @@ const StoryDetail = ({
   const [readMore, setReadMore] = useState(false);
 
   const handleSetAsBookmark = async () => {
+    await setAsBookmark();
+    await toast.success('Story bookmarked');
+  };
+
+  const setAsBookmark = async () => {
     try {
       const { data } = await bookmarkAPI.createBookmark({ story: id });
       dispatch({
         type: actions.CREATE_BOOKMARK,
         payload: data,
       });
-      toast.success('Story bookmarked');
     } catch (err) {
       console.log(err);
     }
   };
 
   const handleUnSetAsBookmark = async () => {
+    await unsetBookmark();
+    await toast.success('Story unbookmarked');
+  };
+
+  const unsetBookmark = async () => {
     try {
       await bookmarkAPI.deleteBookmark(bookmark?._id);
       dispatch({ type: actions.DELETE_BOOKMARK });
-      toast.success('Story unbookmarked');
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
-    const fetchBookmark = async () => {
+    user && (async () => {
       try {
         const { data } = await bookmarkAPI.getOneBookmark(id);
         dispatch({
@@ -61,9 +69,7 @@ const StoryDetail = ({
       } catch (err) {
         console.log(err);
       }
-    };
-
-    user && fetchBookmark();
+    })();
   }, [dispatch, id, user]);
 
   useEffect(() => {
