@@ -46,6 +46,11 @@ const Login = () => {
     if (!validateForm()) return;
     setErrors({});
 
+    await handleLogin();
+    await navigate('/stories');
+  };
+
+  const handleLogin = async () => {
     try {
       const userData = {
         email: emailRef.current.value,
@@ -54,7 +59,6 @@ const Login = () => {
 
       const { data } = await loginUser(userData);
       loginSuccess(data);
-      navigate('/stories');
     } catch (err) {
       if (err.response && err.response.status === 401) {
         const tempErrors = { ...errors };
