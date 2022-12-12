@@ -70,6 +70,11 @@ const Update = () => {
     if (!validateForm()) return;
     setErrors({});
 
+    await handleUpdate();
+    await navigate('/dashboard');
+  };
+
+  const handleUpdate = async () => {
     try {
       const updStory = {
         body,
@@ -88,8 +93,6 @@ const Update = () => {
           story,
         },
       });
-
-      navigate('/dashboard');
     } catch (ex) {
       console.error(ex);
     }
