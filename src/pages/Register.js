@@ -5,13 +5,12 @@ import { useNavigate } from 'react-router-dom';
 import Input from 'components/Input';
 import Spinner from 'components/Spinner';
 import { createUser } from 'services/userService';
-import { LOGIN_START } from 'context/auth/AuthTypes';
 import { uploadPhoto } from 'services/uploadService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const Register = () => {
   const navigate = useNavigate();
-  const { user, dispatch, isLoading, loginSuccess, loginFailure } =
+  const { user, isLoading, loginStart, loginSuccess, loginFailure } =
     useGlobalAuthContext();
 
   const [name, setName] = useState('');
@@ -65,7 +64,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ type: LOGIN_START });
+    loginStart();
 
     if (!validateForm()) return;
     setErrors({});
