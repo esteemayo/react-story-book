@@ -51,6 +51,10 @@ const AddStory = () => {
     if (!validateForm()) return;
     setErrors({});
 
+    await handleCreate();
+  };
+
+  const handleCreate = async () => {
     try {
       const newStory = {
         body,
