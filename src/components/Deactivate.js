@@ -10,9 +10,13 @@ const Deactivate = () => {
   const { logout } = useGlobalAuthContext();
 
   const deleteMe = async () => {
+    await handleDelete();
+    await logout();
+  };
+
+  const handleDelete = async () => {
     try {
       await deactivateAcc();
-      logout();
     } catch (ex) {
       console.error(ex.response.data.message);
       toast.error(ex.response.data.message);
