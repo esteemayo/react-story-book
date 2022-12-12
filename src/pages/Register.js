@@ -11,7 +11,7 @@ import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const Register = () => {
   const navigate = useNavigate();
-  const { dispatch, isLoading, loginSuccess, loginFailure } =
+  const { user, dispatch, isLoading, loginSuccess, loginFailure } =
     useGlobalAuthContext();
 
   const [name, setName] = useState('');
@@ -71,7 +71,7 @@ const Register = () => {
     setErrors({});
 
     await handleRegister();
-    await navigate('/stories');
+    user && await navigate('/stories');
   };
 
   const handleRegister = async () => {
