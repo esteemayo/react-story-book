@@ -8,7 +8,7 @@ import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { dispatch, isLoading, loginSuccess, loginFailure } =
+  const { user, dispatch, isLoading, loginSuccess, loginFailure } =
     useGlobalAuthContext();
 
   const emailRef = useRef(null);
@@ -47,7 +47,7 @@ const Login = () => {
     setErrors({});
 
     await handleLogin();
-    await navigate('/stories');
+    user && await navigate('/stories');
   };
 
   const handleLogin = async () => {
