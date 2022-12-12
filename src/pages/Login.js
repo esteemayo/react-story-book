@@ -3,12 +3,11 @@ import { useState, useEffect, useRef } from 'react';
 
 import Spinner from 'components/Spinner';
 import { loginUser } from 'services/userService';
-import { LOGIN_START } from 'context/auth/AuthTypes';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { user, dispatch, isLoading, loginSuccess, loginFailure } =
+  const { user, isLoading, loginStart, loginSuccess, loginFailure } =
     useGlobalAuthContext();
 
   const emailRef = useRef(null);
@@ -41,7 +40,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ type: LOGIN_START });
+    loginStart();
 
     if (!validateForm()) return;
     setErrors({});
