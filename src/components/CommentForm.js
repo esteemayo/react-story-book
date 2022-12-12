@@ -14,7 +14,10 @@ const CommentForm = ({ id }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    await handleComment();
+  };
 
+  const handleComment = async () => {
     try {
       const commentData = { body };
       await createComment(id, { ...commentData });
