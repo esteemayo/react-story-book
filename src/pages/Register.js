@@ -70,6 +70,11 @@ const Register = () => {
     if (!validateForm()) return;
     setErrors({});
 
+    await handleRegister();
+    await navigate('/stories');
+  };
+
+  const handleRegister = async () => {
     const newUser = {
       name,
       email,
@@ -94,7 +99,6 @@ const Register = () => {
     try {
       const { data: user } = await createUser(newUser);
       loginSuccess(user);
-      navigate('/stories');
     } catch (err) {
       if (err.response && err.response.status === 400) {
         const tempErrors = { ...errors };
