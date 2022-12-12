@@ -11,17 +11,20 @@ const DeleteButton = ({ id }) => {
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this story')) {
-      try {
-        dispatch({
-          type: DELETE_STORY,
-          payload: id,
-        });
+      await handleDeleteStory(id);
+    }
+  };
 
-        await deleteStory(id);
-      } catch (ex) {
-        if (ex.response && ex.response.status === 404)
-          toast.error('This story has already been deleted');
-      }
+  const handleDeleteStory = async (id) => {
+    try {
+      dispatch({
+        type: DELETE_STORY,
+        payload: id,
+      });
+      await deleteStory(id);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404)
+        toast.error('This story has already been deleted');
     }
   };
 
