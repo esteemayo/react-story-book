@@ -46,6 +46,10 @@ const UserData = () => {
     if (!validateForm()) return;
     setErrors({});
 
+    await handleUpdateUserData();
+  };
+
+  const handleUpdateUserData = async () => {
     const userData = {
       name,
       email,
