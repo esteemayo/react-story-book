@@ -15,21 +15,25 @@ const Search = () => {
     e.preventDefault();
 
     if (search) {
-      dispatch({ type: LOADING });
-      try {
-        const { data } = await searchStory(search);
-        dispatch({
-          type: SEARCH_STORY,
-          payload: data,
-        });
-        dispatch({ type: HIDE_LOADING });
-        navigate(`/stories/search?q=${search}`);
-        setSearch('');
-      } catch (err) {
-        console.log(err);
-      }
+      await handleSearchStory();
+      await navigate(`/stories/search?q=${search}`);
     } else {
       navigate('/stories');
+    }
+  };
+
+  const handleSearchStory = async () => {
+    dispatch({ type: LOADING });
+    try {
+      const { data } = await searchStory(search);
+      dispatch({
+        type: SEARCH_STORY,
+        payload: data,
+      });
+      dispatch({ type: HIDE_LOADING });
+      setSearch('');
+    } catch (err) {
+      console.log(err);
     }
   };
 
