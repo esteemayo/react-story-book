@@ -50,6 +50,10 @@ const UserPassword = () => {
     if (!validateForm()) return;
     setErrors({});
 
+    await handleUpdatePassword();
+  };
+
+  const handleUpdatePassword = async () => {
     try {
       const userData = {
         password,
