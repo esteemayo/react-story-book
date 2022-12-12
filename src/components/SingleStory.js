@@ -35,7 +35,7 @@ const SingleStory = () => {
   }, [dispatch, path]);
 
   useEffect(() => {
-    const fetchRelatedStories = async () => {
+    tags && (async () => {
       dispatch({ type: actions.LOADING });
       try {
         const { data } = await storyAPI.getRelatedStories(tags);
@@ -46,9 +46,7 @@ const SingleStory = () => {
       } catch (err) {
         console.log(err);
       }
-    };
-
-    tags && fetchRelatedStories();
+    })();
   }, [dispatch, tags]);
 
   if (isLoading) {
