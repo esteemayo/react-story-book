@@ -32,6 +32,16 @@ const StoryProvider = ({ children }) => {
     });
   };
 
+  const editStory = (id, story) => {
+    dispatch({
+      type: actions.UPDATE_STORY,
+      payload: {
+        id,
+        story,
+      },
+    });
+  };
+
   const setCurrentPage = (page) => {
     dispatch({
       type: actions.SET_CURRENT_PAGE,
@@ -49,6 +59,7 @@ const StoryProvider = ({ children }) => {
         ...state,
         dispatch,
         addStory,
+        editStory,
         hideAlert,
         setCurrentPage,
       }}
