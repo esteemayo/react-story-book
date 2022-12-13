@@ -14,7 +14,8 @@ const SingleStory = () => {
   const { pathname } = useLocation();
   const path = pathname.split('/')[3];
 
-  const { story, fetchStory, showLoading, fetchRelatedStories, isLoading, relatedStories } = useGlobalContext();
+  const { story, fetchStory, showLoading, fetchRelatedStories, isLoading, relatedStories }
+    = useGlobalContext();
 
   const tags = story?.tags;
 
