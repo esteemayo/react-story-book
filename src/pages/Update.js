@@ -5,7 +5,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import TextArea from 'components/TextArea';
-import { UPDATE_STORY } from 'context/story/StoryTypes';
 import { useGlobalContext } from 'context/story/StoryContext';
 import { getWithSlug, updateStory } from 'services/storyService';
 
@@ -13,7 +12,7 @@ const Update = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const path = pathname.split('/')[3];
-  const { dispatch } = useGlobalContext();
+  const { editStory } = useGlobalContext();
 
   const [id, setId] = useState(null);
   const [body, setBody] = useState('');
@@ -85,14 +84,7 @@ const Update = () => {
       };
 
       const { data: story } = await updateStory(id, { ...updStory });
-
-      dispatch({
-        type: UPDATE_STORY,
-        payload: {
-          id,
-          story,
-        },
-      });
+      editStory(id, story);
     } catch (ex) {
       console.error(ex);
     }
