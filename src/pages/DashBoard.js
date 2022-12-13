@@ -9,7 +9,7 @@ import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const DashBoard = () => {
   const { user } = useGlobalAuthContext();
-  const { userStories: stories, isLoading, dispatch } = useGlobalContext();
+  const { userStories: stories, isLoading, dispatch, showLoading, } = useGlobalContext();
 
   const columns = [
     { path: 'title', label: 'Title' },
@@ -20,7 +20,7 @@ const DashBoard = () => {
   useEffect(() => {
     (async () => {
       try {
-        dispatch({ type: actions.LOADING });
+        showLoading();
         const { data, status, statusText } = await getUserStories();
         if (status >= 200 && status < 299) {
           dispatch({
