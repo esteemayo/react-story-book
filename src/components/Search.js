@@ -4,11 +4,10 @@ import { useNavigate } from 'react-router-dom';
 
 import { searchStory } from 'services/storyService';
 import { useGlobalContext } from 'context/story/StoryContext';
-import { HIDE_LOADING, LOADING, SEARCH_STORY } from 'context/story/StoryTypes';
 
 const Search = () => {
   const navigate = useNavigate();
-  const { dispatch } = useGlobalContext();
+  const { findStory, showLoading, hideLoading } = useGlobalContext();
   const [search, setSearch] = useState('');
 
   const handleSearch = async (e) => {
@@ -23,14 +22,11 @@ const Search = () => {
   };
 
   const handleSearchStory = async () => {
-    dispatch({ type: LOADING });
+    showLoading();
     try {
       const { data } = await searchStory(search);
-      dispatch({
-        type: SEARCH_STORY,
-        payload: data,
-      });
-      dispatch({ type: HIDE_LOADING });
+      findStory(data);
+      hideLoading();
       setSearch('');
     } catch (err) {
       console.log(err);
