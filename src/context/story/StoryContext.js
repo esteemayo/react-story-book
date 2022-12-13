@@ -83,7 +83,9 @@ const StoryProvider = ({ children }) => {
   };
 
   const hideAlert = () => {
-    dispatch({ type: actions.HIDE_ALERT });
+    dispatch({
+      type: actions.HIDE_ALERT,
+    });
   };
 
   return (
