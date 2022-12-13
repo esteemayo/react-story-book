@@ -2,14 +2,14 @@ import { useEffect } from 'react';
 
 import Table from 'components/Table';
 import Loader from 'components/Loader';
-import * as actions from 'context/story/StoryTypes';
 import { getUserStories } from 'services/userService';
 import { useGlobalContext } from 'context/story/StoryContext';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const DashBoard = () => {
   const { user } = useGlobalAuthContext();
-  const { userStories: stories, isLoading, dispatch, showLoading, } = useGlobalContext();
+  const { userStories: stories, isLoading, showLoading, fetchUserStories }
+    = useGlobalContext();
 
   const columns = [
     { path: 'title', label: 'Title' },
@@ -23,10 +23,7 @@ const DashBoard = () => {
         showLoading();
         const { data, status, statusText } = await getUserStories();
         if (status >= 200 && status < 299) {
-          dispatch({
-            type: actions.FETCH_USER_STORIES,
-            payload: data,
-          });
+          fetchUserStories(data);
         } else {
           throw new Error(statusText);
         }
@@ -34,7 +31,7 @@ const DashBoard = () => {
         console.log(err);
       }
     })();
-  }, [dispatch]);
+  }, [fetchUserStories, showLoading]);
 
   if (isLoading) {
     return (
