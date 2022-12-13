@@ -32,6 +32,13 @@ const StoryProvider = ({ children }) => {
     });
   };
 
+  const fetchStory = (story) => {
+    dispatch({
+      type: actions.FETCH_STORY,
+      payload: story,
+    });
+  };
+
   const addStory = (story) => {
     dispatch({
       type: actions.ADD_STORY,
@@ -109,6 +116,7 @@ const StoryProvider = ({ children }) => {
         dispatch,
         addStory,
         fetchStories,
+        fetchStory,
         editStory,
         favStory,
         findStory,
