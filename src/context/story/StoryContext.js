@@ -42,6 +42,13 @@ const StoryProvider = ({ children }) => {
     });
   };
 
+  const likeStory = (story) => {
+    dispatch({
+      type: actions.LIKE_STORY,
+      payload: story,
+    });
+  };
+
   const removeStory = (storyId) => {
     dispatch({
       type: actions.DELETE_STORY,
@@ -67,6 +74,7 @@ const StoryProvider = ({ children }) => {
         dispatch,
         addStory,
         editStory,
+        likeStory,
         hideAlert,
         removeStory,
         setCurrentPage,
