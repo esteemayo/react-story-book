@@ -32,6 +32,13 @@ const StoryProvider = ({ children }) => {
     });
   };
 
+  const fetchUserStories = (stories) => {
+    dispatch({
+      type: actions.FETCH_USER_STORIES,
+      payload: stories,
+    });
+  };
+
   const editStory = (id, story) => {
     dispatch({
       type: actions.UPDATE_STORY,
@@ -102,6 +109,7 @@ const StoryProvider = ({ children }) => {
         hideAlert,
         removeStory,
         setCurrentPage,
+        fetchUserStories,
       }}
     >
       {children}
