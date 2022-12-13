@@ -70,6 +70,18 @@ const StoryProvider = ({ children }) => {
     });
   };
 
+  const showLoading = () => {
+    dispatch({
+      type: actions.LOADING,
+    });
+  };
+
+  const hideLoading = () => {
+    dispatch({
+      type: actions.HIDE_LOADING,
+    });
+  };
+
   const hideAlert = () => {
     dispatch({ type: actions.HIDE_ALERT });
   };
