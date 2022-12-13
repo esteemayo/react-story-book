@@ -8,14 +8,13 @@ import CommentForm from './CommentForm';
 import StoryDetail from './StoryDetail';
 import RelatedStories from './RelatedStories';
 import * as storyAPI from 'services/storyService';
-import * as actions from 'context/story/StoryTypes';
 import { useGlobalContext } from 'context/story/StoryContext';
 
 const SingleStory = () => {
   const { pathname } = useLocation();
   const path = pathname.split('/')[3];
 
-  const { story, fetchStory, showLoading, dispatch, isLoading, relatedStories } = useGlobalContext();
+  const { story, fetchStory, showLoading, fetchRelatedStories, isLoading, relatedStories } = useGlobalContext();
 
   const tags = story?.tags;
 
@@ -33,18 +32,15 @@ const SingleStory = () => {
 
   useEffect(() => {
     tags && (async () => {
-      dispatch({ type: actions.LOADING });
+      showLoading();
       try {
         const { data } = await storyAPI.getRelatedStories(tags);
-        dispatch({
-          type: actions.RELATED_STORIES,
-          payload: data,
-        });
+        fetchRelatedStories(data);
       } catch (err) {
         console.log(err);
       }
     })();
-  }, [dispatch, tags]);
+  }, [fetchRelatedStories, showLoading, tags]);
 
   if (isLoading) {
     return (
