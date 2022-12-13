@@ -25,6 +25,13 @@ const StoryContext = createContext(INITIAL_STATE);
 const StoryProvider = ({ children }) => {
   const [state, dispatch] = useReducer(StoryReducer, INITIAL_STATE);
 
+  const fetchStories = (stories) => {
+    dispatch({
+      type: actions.FETCH_STORIES,
+      payload: stories,
+    });
+  };
+
   const addStory = (story) => {
     dispatch({
       type: actions.ADD_STORY,
@@ -101,6 +108,7 @@ const StoryProvider = ({ children }) => {
         ...state,
         dispatch,
         addStory,
+        fetchStories,
         editStory,
         favStory,
         findStory,
