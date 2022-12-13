@@ -39,6 +39,13 @@ const StoryProvider = ({ children }) => {
     });
   };
 
+  const fetchRelatedStories = (stories) => {
+    dispatch({
+      type: actions.RELATED_STORIES,
+      payload: stories,
+    });
+  };
+
   const addStory = (story) => {
     dispatch({
       type: actions.ADD_STORY,
@@ -126,6 +133,7 @@ const StoryProvider = ({ children }) => {
         removeStory,
         setCurrentPage,
         fetchUserStories,
+        fetchRelatedStories,
       }}
     >
       {children}
