@@ -56,6 +56,13 @@ const StoryProvider = ({ children }) => {
     });
   };
 
+  const findStory = (stories) => {
+    dispatch({
+      type: actions.SEARCH_STORY,
+      payload: stories,
+    });
+  };
+
   const setCurrentPage = (page) => {
     dispatch({
       type: actions.SET_CURRENT_PAGE,
