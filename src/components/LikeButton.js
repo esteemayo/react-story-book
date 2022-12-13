@@ -3,11 +3,10 @@ import { useEffect, useState } from 'react';
 import { FaThumbsUp, FaRegThumbsUp } from 'react-icons/fa';
 
 import { likeStory } from 'services/storyService';
-import { LIKE_STORY } from 'context/story/StoryTypes';
 import { useGlobalContext } from 'context/story/StoryContext';
 
 const LikeButton = ({ likes, user, storyId }) => {
-  const { dispatch } = useGlobalContext();
+  const { favStory } = useGlobalContext();
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
@@ -42,10 +41,7 @@ const LikeButton = ({ likes, user, storyId }) => {
   const handleLike = async () => {
     try {
       const { data: story } = await likeStory(storyId);
-      dispatch({
-        type: LIKE_STORY,
-        payload: story,
-      });
+      favStory(story);
     } catch (err) {
       console.log(err);
     }
@@ -56,8 +52,8 @@ const LikeButton = ({ likes, user, storyId }) => {
       {likeButton}
       &nbsp;
       {user &&
-      likes?.includes(user.id || user?.user?._id) &&
-      likes?.length > 2 ? (
+        likes?.includes(user.id || user?.user?._id) &&
+        likes?.length > 2 ? (
         <small>{`You and ${likes?.length - 1} others`}</small>
       ) : (
         <small>
