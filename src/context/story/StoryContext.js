@@ -42,7 +42,7 @@ const StoryProvider = ({ children }) => {
     });
   };
 
-  const likeStory = (story) => {
+  const favStory = (story) => {
     dispatch({
       type: actions.LIKE_STORY,
       payload: story,
@@ -74,7 +74,7 @@ const StoryProvider = ({ children }) => {
         dispatch,
         addStory,
         editStory,
-        likeStory,
+        favStory,
         hideAlert,
         removeStory,
         setCurrentPage,
