@@ -42,6 +42,13 @@ const StoryProvider = ({ children }) => {
     });
   };
 
+  const removeStory = (storyId) => {
+    dispatch({
+      type: actions.DELETE_STORY,
+      payload: storyId,
+    });
+  };
+
   const setCurrentPage = (page) => {
     dispatch({
       type: actions.SET_CURRENT_PAGE,
@@ -61,6 +68,7 @@ const StoryProvider = ({ children }) => {
         addStory,
         editStory,
         hideAlert,
+        removeStory,
         setCurrentPage,
       }}
     >
