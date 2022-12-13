@@ -15,24 +15,21 @@ const SingleStory = () => {
   const { pathname } = useLocation();
   const path = pathname.split('/')[3];
 
-  const { story, dispatch, isLoading, relatedStories } = useGlobalContext();
+  const { story, fetchStory, showLoading, dispatch, isLoading, relatedStories } = useGlobalContext();
 
   const tags = story?.tags;
 
   useEffect(() => {
     (async () => {
-      dispatch({ type: actions.LOADING });
+      showLoading();
       try {
         const { data: story } = await storyAPI.getWithSlug(path);
-        dispatch({
-          type: actions.FETCH_STORY,
-          payload: story,
-        });
+        fetchStory(story);
       } catch (err) {
         console.log(err);
       }
     })();
-  }, [dispatch, path]);
+  }, [fetchStory, showLoading, path]);
 
   useEffect(() => {
     tags && (async () => {
