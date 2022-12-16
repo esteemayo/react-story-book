@@ -5,11 +5,11 @@ import Loader from 'components/Loader';
 import { getUserStories } from 'services/userService';
 import { useGlobalContext } from 'context/story/StoryContext';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
+import { FETCH_USER_STORIES, LOADING } from 'context/story/StoryTypes';
 
 const DashBoard = () => {
   const { user } = useGlobalAuthContext();
-  const { userStories: stories, isLoading, showLoading, fetchUserStories }
-    = useGlobalContext();
+  const { userStories: stories, isLoading, dispatch } = useGlobalContext();
 
   const columns = [
     { path: 'title', label: 'Title' },
@@ -20,10 +20,13 @@ const DashBoard = () => {
   useEffect(() => {
     (async () => {
       try {
-        showLoading();
+        dispatch({ type: LOADING });
         const { data, status, statusText } = await getUserStories();
         if (status >= 200 && status < 299) {
-          fetchUserStories(data);
+          dispatch({
+            type: FETCH_USER_STORIES,
+            payload: data,
+          });
         } else {
           throw new Error(statusText);
         }
@@ -31,7 +34,7 @@ const DashBoard = () => {
         console.log(err);
       }
     })();
-  }, [fetchUserStories, showLoading]);
+  }, [dispatch]);
 
   if (isLoading) {
     return (
