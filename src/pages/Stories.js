@@ -7,10 +7,11 @@ import StoryCard from 'components/StoryCard';
 import Pagination from 'components/Pagination';
 import { getStories } from 'services/storyService';
 import { useGlobalContext } from 'context/story/StoryContext';
+import { FETCH_STORIES, LOADING } from 'context/story/StoryTypes';
 
 const Stories = () => {
   const { search, pathname } = useLocation();
-  const { counts, stories, showLoading, fetchStories, dispatch, isLoading, currentPage, numberOfPages } =
+  const { counts, stories, dispatch, isLoading, currentPage, numberOfPages } =
     useGlobalContext();
 
   const query = useQuery();
@@ -19,14 +20,17 @@ const Stories = () => {
   useEffect(() => {
     (async () => {
       try {
-        showLoading();
+        dispatch({ type: LOADING });
         const { data } = await getStories(search, currentPage);
-        fetchStories(data);
+        dispatch({
+          type: FETCH_STORIES,
+          payload: data,
+        });
       } catch (err) {
         console.log(err);
       }
     })();
-  }, [fetchStories, showLoading, currentPage, dispatch, search]);
+  }, [currentPage, dispatch, search]);
 
   if (isLoading) {
     return (
