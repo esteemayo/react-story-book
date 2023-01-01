@@ -8,7 +8,7 @@ import CommentForm from './CommentForm';
 import StoryDetail from './StoryDetail';
 import RelatedStories from './RelatedStories';
 import * as storyAPI from 'services/storyService';
-import { FETCH_STORY, LOADING, RELATED_STORIES } from 'context/story/StoryTypes';
+import * as actions from 'context/story/StoryTypes';
 import { useGlobalContext } from 'context/story/StoryContext';
 
 const SingleStory = () => {
@@ -21,11 +21,11 @@ const SingleStory = () => {
 
   useEffect(() => {
     (async () => {
-      dispatch({ type: LOADING });
+      dispatch({ type: actions.LOADING });
       try {
         const { data: story } = await storyAPI.getWithSlug(path);
         dispatch({
-          type: FETCH_STORY,
+          type: actions.FETCH_STORY,
           payload: story,
         });
       } catch (err) {
@@ -36,11 +36,11 @@ const SingleStory = () => {
 
   useEffect(() => {
     tags && (async () => {
-      dispatch({ type: LOADING });
+      dispatch({ type: actions.LOADING });
       try {
         const { data } = await storyAPI.getRelatedStories(tags);
         dispatch({
-          type: RELATED_STORIES,
+          type: actions.RELATED_STORIES,
           payload: data,
         });
       } catch (err) {
