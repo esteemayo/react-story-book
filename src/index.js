@@ -8,17 +8,15 @@ import { HistoryProvider } from 'context/history/HistoryContext';
 import { BookmarkProvider } from 'context/bookmark/BookMarkContext';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <HistoryProvider>
-      <BookmarkProvider>
-        <StoryProvider>
-          <AuthProvider>
-            <App />
-          </AuthProvider>
-        </StoryProvider>
-      </BookmarkProvider>
-    </HistoryProvider>
-  </React.StrictMode>,
+  <HistoryProvider>
+    <BookmarkProvider>
+      <StoryProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </StoryProvider>
+    </BookmarkProvider>
+  </HistoryProvider>,
   document.getElementById('root')
 );
 
