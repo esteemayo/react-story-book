@@ -8,40 +8,46 @@ import CommentForm from './CommentForm';
 import StoryDetail from './StoryDetail';
 import RelatedStories from './RelatedStories';
 import * as storyAPI from 'services/storyService';
+import { FETCH_STORY, LOADING, RELATED_STORIES } from 'context/story/StoryTypes';
 import { useGlobalContext } from 'context/story/StoryContext';
 
 const SingleStory = () => {
   const { pathname } = useLocation();
   const path = pathname.split('/')[3];
 
-  const { story, fetchStory, showLoading, fetchRelatedStories, isLoading, relatedStories }
-    = useGlobalContext();
+  const { story, dispatch, isLoading, relatedStories } = useGlobalContext();
 
   const tags = story?.tags;
 
   useEffect(() => {
     (async () => {
-      showLoading();
+      dispatch({ type: LOADING });
       try {
         const { data: story } = await storyAPI.getWithSlug(path);
-        fetchStory(story);
+        dispatch({
+          type: FETCH_STORY,
+          payload: story,
+        });
       } catch (err) {
         console.log(err);
       }
     })();
-  }, [fetchStory, showLoading, path]);
+  }, [dispatch, path]);
 
   useEffect(() => {
     tags && (async () => {
-      showLoading();
+      dispatch({ type: LOADING });
       try {
         const { data } = await storyAPI.getRelatedStories(tags);
-        fetchRelatedStories(data);
+        dispatch({
+          type: RELATED_STORIES,
+          payload: data,
+        });
       } catch (err) {
         console.log(err);
       }
     })();
-  }, [fetchRelatedStories, showLoading, tags]);
+  }, [dispatch, tags]);
 
   if (isLoading) {
     return (
