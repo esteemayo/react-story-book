@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import { FaPencilAlt } from 'react-icons/fa';
 
-import DeleteButton from '../DeleteButton';
+import DeleteButton from '../button/DeleteButton';
 
 const TableBody = ({ data }) => {
   return (

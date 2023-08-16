@@ -4,7 +4,7 @@ import { FaArrowRight } from 'react-icons/fa';
 
 import Input from 'components/Input';
 import TextArea from 'components/TextArea';
-import Button from 'components/Button';
+import Button from 'components/button/Button';
 
 import { createStory } from 'services/storyService';
 import { useGlobalContext } from 'context/story/StoryContext';

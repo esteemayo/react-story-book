@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import Input from 'components/Input';
 import TextArea from 'components/TextArea';
-import Button from 'components/Button';
+import Button from 'components/button/Button';
 
 import { useGlobalContext } from 'context/story/StoryContext';
 import { getWithSlug, updateStory } from 'services/storyService';

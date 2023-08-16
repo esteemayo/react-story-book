@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
 import Input from './Input';
-import Button from './Button';
+import Button from './button/Button';
 import Title from './Title';
 
 import { updateUserPassword } from 'services/userService';

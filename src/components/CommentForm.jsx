@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { createComment } from 'services/commentService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
-import Button from './Button';
+import Button from './button/Button';
 import TextArea from './TextArea';
 
 const CommentForm = ({ id }) => {

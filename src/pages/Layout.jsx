@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import Alert from 'components/Alert';
-import AddButton from 'components/AddButton';
+import AddButton from 'components/button/AddButton';
 import Footer from 'components/Footer';
 import ScrollToTop from 'components/ScrollToTop';
 import NavBar from 'components/NavBar';
