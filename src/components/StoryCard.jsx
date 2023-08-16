@@ -25,6 +25,10 @@ const StoryCard = ({
     ? REACT_APP_DEV_IMAGE_API_URL
     : REACT_APP_PROD_IMAGE_API_URL;
 
+  const url = useMemo(() => {
+    return `/stories/update/${slug}`;
+  }, [slug]);
+
   return (
     <div className='col s12 m4'>
       <div className='card card-margin custom-card'>
@@ -32,7 +36,7 @@ const StoryCard = ({
           {currentUser &&
             (currentUser.id === user._id ||
               currentUser?.user?.id === user._id) && (
-              <Link to={`/stories/update/${slug}`}>
+              <Link to={url}>
                 <span
                   className='btn-floating halfway-fab red'
                   style={{ textAlign: 'center' }}
