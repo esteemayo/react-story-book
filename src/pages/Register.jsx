@@ -23,7 +23,7 @@ const Register = () => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [password, setPassword] = useState('');
 
-  const validateForm = () => {
+  const validateForm = useCallback(() => {
     const errors = {};
 
     if (name.trim() === '') {
@@ -62,7 +62,16 @@ const Register = () => {
     }
 
     return true;
-  };
+  },
+    [
+      name,
+      email,
+      username,
+      password,
+      passwordConfirm,
+      loginFailure,
+    ]
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
