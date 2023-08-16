@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Input from 'components/Input';
 import Spinner from 'components/Spinner';
+
 import { createUser } from 'services/userService';
 import { uploadPhoto } from 'services/uploadService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
