@@ -1,6 +1,6 @@
 import { useQuery } from 'utils';
-import StoryCard from 'components/StoryCard';
 import { useGlobalContext } from 'context/story/StoryContext';
+import StoryCard from 'components/StoryCard';
 
 const Search = () => {
   const { stories } = useGlobalContext();
