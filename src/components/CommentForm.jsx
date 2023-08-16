@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import Button from './Button';
-import TextArea from './TextArea';
 import { createComment } from 'services/commentService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
+
+import Button from './Button';
+import TextArea from './TextArea';
 
 const CommentForm = ({ id }) => {
   const { user } = useGlobalAuthContext();
