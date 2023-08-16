@@ -38,6 +38,7 @@ const UserData = () => {
       setErrors(tempErrors);
       return false;
     }
+
     return true;
   }, [name, email, username]);
 
