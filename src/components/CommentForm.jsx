@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useCallback, useState } from 'react';
 
 import { createComment } from 'services/commentService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
