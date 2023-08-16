@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import Moment from 'react-moment';
 
 import Title from './Title';
@@ -23,8 +24,8 @@ const UserProfile = () => {
             user?.photo
               ? PF + user.photo
               : user.gravatar || user?.user?.photo
-              ? PF + user?.user?.photo
-              : user?.user?.gravatar
+                ? PF + user?.user?.photo
+                : user?.user?.gravatar
           }
           width={200}
           alt='avatar'
