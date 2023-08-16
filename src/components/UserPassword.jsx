@@ -39,11 +39,11 @@ const UserPassword = () => {
     return true;
   }, [password, passwordConfirm, passwordCurrent]);
 
-  const handleClear = () => {
+  const handleClear = useCallback(() => {
     setPassword('');
     setPasswordConfirm('');
     setPasswordCurrent('');
-  };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
