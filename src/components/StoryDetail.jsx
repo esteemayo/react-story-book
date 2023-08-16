@@ -60,6 +60,10 @@ const StoryDetail = ({
     await toast.success('Story unbookmarked');
   }, [unsetBookmark]);
 
+  const url = useMemo(() => {
+    return `/stories/update/${slug}`;
+  }, [slug]);
+
   useEffect(() => {
     user && (async () => {
       try {
@@ -108,7 +112,7 @@ const StoryDetail = ({
       <h3 className='heading-tertiary'>
         {title}
         {user && (user.username === author || user?.user?.username === author) && (
-          <Link to={`/stories/update/${slug}`}>
+          <Link to={url}>
             <small>
               {' '}
               <FaPencilAlt />
