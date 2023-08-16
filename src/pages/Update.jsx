@@ -12,6 +12,7 @@ import { getWithSlug, updateStory } from 'services/storyService';
 const Update = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+
   const path = pathname.split('/')[3];
   const { editStory } = useGlobalContext();
 
