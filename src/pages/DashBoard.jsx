@@ -3,10 +3,11 @@ import { useEffect } from 'react';
 import Table from 'components/Table';
 import Loader from 'components/Loader';
 
-import { getUserStories } from 'services/userService';
 import { useGlobalContext } from 'context/story/StoryContext';
-import { useGlobalAuthContext } from 'context/auth/AuthContext';
 import { FETCH_USER_STORIES, LOADING } from 'context/story/StoryTypes';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
+
+import { getUserStories } from 'services/userService';
 
 const DashBoard = () => {
   const { user } = useGlobalAuthContext();
