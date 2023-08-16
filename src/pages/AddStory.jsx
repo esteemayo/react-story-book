@@ -46,16 +46,7 @@ const AddStory = () => {
     return true;
   }, [title, body, status, tags]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!validateForm()) return;
-    setErrors({});
-
-    await handleCreate();
-  };
-
-  const handleCreate = async () => {
+  const handleCreate = useCallback(async () => {
     try {
       const newStory = {
         body,
@@ -71,7 +62,26 @@ const AddStory = () => {
     } catch (ex) {
       console.error(ex);
     }
-  };
+  },
+    [
+      title,
+      body,
+      status,
+      tags,
+      allowComments,
+      addStory,
+      navigate,
+    ]
+  );
+
+  const handleSubmit = useCallback(async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+    setErrors({});
+
+    await handleCreate();
+  }, [validateForm, handleCreate]);
 
   return (
     <div className='row'>
