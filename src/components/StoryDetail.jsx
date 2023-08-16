@@ -46,20 +46,19 @@ const StoryDetail = ({
     await toast.success('Story bookmarked');
   }, [setAsBookmark]);
 
-
-  const handleUnSetAsBookmark = async () => {
-    await unsetBookmark();
-    await toast.success('Story unbookmarked');
-  };
-
-  const unsetBookmark = async () => {
+  const unsetBookmark = useCallback(async () => {
     try {
       await bookmarkAPI.deleteBookmark(bookmark?._id);
       dispatch({ type: actions.DELETE_BOOKMARK });
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [bookmark?._id, dispatch]);
+
+  const handleUnSetAsBookmark = useCallback(async () => {
+    await unsetBookmark();
+    await toast.success('Story unbookmarked');
+  }, [unsetBookmark]);
 
   useEffect(() => {
     user && (async () => {
