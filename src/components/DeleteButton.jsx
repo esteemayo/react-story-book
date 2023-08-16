@@ -10,13 +10,7 @@ import Button from './Button';
 const DeleteButton = ({ id }) => {
   const { removeStory } = useGlobalContext();
 
-  const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this story')) {
-      await handleDeleteStory(id);
-    }
-  };
-
-  const handleDeleteStory = async (id) => {
+  const handleDeleteStory = useCallback(async (id) => {
     try {
       removeStory(id);
       await deleteStory(id);
@@ -24,7 +18,13 @@ const DeleteButton = ({ id }) => {
       if (ex.response && ex.response.status === 404)
         toast.error('This story has already been deleted');
     }
-  };
+  }, [removeStory]);
+
+  const handleDelete = useCallback(async (id) => {
+    if (window.confirm('Are you sure you want to delete this story')) {
+      await handleDeleteStory(id);
+    }
+  }, [handleDeleteStory]);
 
   return (
     <Button
