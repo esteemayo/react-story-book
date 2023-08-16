@@ -6,9 +6,9 @@ import { uploadPhoto } from 'services/uploadService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 import { updateUserData } from 'services/userService';
 
-import Input from './input/Input';
-import Button from './button/Button';
-import Title from './Title';
+import Input from '../input/Input';
+import Button from '../button/Button';
+import Title from '../Title';
 
 const UserData = () => {
   const { user, loginSuccess } = useGlobalAuthContext();

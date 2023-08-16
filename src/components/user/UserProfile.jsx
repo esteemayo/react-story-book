@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import Moment from 'react-moment';
 
-import Title from './Title';
+import Title from '../Title';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const devEnv = process.env.NODE_ENV !== 'production';

@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
-import Input from './input/Input';
-import Button from './button/Button';
-import Title from './Title';
+import Input from '../input/Input';
+import Button from '../button/Button';
+import Title from '../Title';
 
 import { updateUserPassword } from 'services/userService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';

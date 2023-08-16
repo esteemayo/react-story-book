@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 
 import Loader from './Loader';
 import CommentCard from './CommentCard';
-import UserCard from './UserCard';
+import UserCard from './user/UserCard';
 import RelatedStories from './RelatedStories';
 import CommentForm from './CommentForm';
 import StoryDetail from './StoryDetail';
