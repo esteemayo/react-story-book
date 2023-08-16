@@ -1,5 +1,5 @@
-import { FaArrowRight } from 'react-icons/fa';
 import { useState, useEffect, useCallback } from 'react';
+import { FaArrowRight } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import Input from 'components/Input';
