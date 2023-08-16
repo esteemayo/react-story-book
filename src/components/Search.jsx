@@ -10,18 +10,7 @@ const Search = () => {
   const { findStory, showLoading, hideLoading } = useGlobalContext();
   const [search, setSearch] = useState('');
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-
-    if (search) {
-      await handleSearchStory();
-      await navigate(`/stories/search?q=${search}`);
-    } else {
-      navigate('/stories');
-    }
-  };
-
-  const handleSearchStory = async () => {
+  const handleSearchStory = useCallback(async () => {
     showLoading();
     try {
       const { data } = await searchStory(search);
@@ -31,7 +20,18 @@ const Search = () => {
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [findStory, hideLoading, search, showLoading]);
+
+  const handleSearch = useCallback(async (e) => {
+    e.preventDefault();
+
+    if (search) {
+      await handleSearchStory();
+      await navigate(`/stories/search?q=${search}`);
+    } else {
+      navigate('/stories');
+    }
+  }, [handleSearchStory, navigate, search]);
 
   return (
     <form onSubmit={handleSearch}>
