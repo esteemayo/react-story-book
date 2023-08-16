@@ -19,7 +19,7 @@ const UserData = () => {
   const [errors, setErrors] = useState({});
   const [username, setUsername] = useState('');
 
-  const validateForm = () => {
+  const validateForm = useCallback(() => {
     const tempErrors = {};
 
     if (name.trim() === '') {
@@ -39,7 +39,7 @@ const UserData = () => {
       return false;
     }
     return true;
-  };
+  }, [name, email, username]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
