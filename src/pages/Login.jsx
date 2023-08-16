@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 
 import Spinner from 'components/Spinner';
-import { loginUser } from 'services/userService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
+import { loginUser } from 'services/userService';
 
 const Login = () => {
   const navigate = useNavigate();
