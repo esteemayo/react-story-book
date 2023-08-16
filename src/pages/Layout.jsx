@@ -2,10 +2,11 @@ import { Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import Alert from 'components/Alert';
-import Footer from 'components/Footer';
-import NavBar from 'components/NavBar';
 import AddButton from 'components/AddButton';
+import Footer from 'components/Footer';
 import ScrollToTop from 'components/ScrollToTop';
+import NavBar from 'components/NavBar';
+
 import { useGlobalContext } from 'context/story/StoryContext';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
