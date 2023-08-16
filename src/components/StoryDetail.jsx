@@ -9,9 +9,10 @@ import * as viewAction from 'context/history/HistoryTypes';
 import { useGlobalHistoryContext } from 'context/history/HistoryContext';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
-import LikeButton from './LikeButton';
 import * as bookmarkAPI from 'services/bookmarkService';
 import { createHistory, getHistoriesOnStory } from 'services/historyService';
+
+import LikeButton from './LikeButton';
 
 const StoryDetail = ({
   _id: id,
