@@ -16,12 +16,12 @@ const Register = () => {
     useGlobalAuthContext();
 
   const [name, setName] = useState('');
-  const [file, setFile] = useState(null);
-  const [email, setEmail] = useState('');
   const [errors, setErrors] = useState({});
+  const [file, setFile] = useState(null);
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [password, setPassword] = useState('');
 
   const validateForm = () => {
     const errors = {};
