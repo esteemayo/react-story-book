@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+import { useCallback } from 'react';
 import { FaTrash } from 'react-icons/fa';
 
 import { deleteStory } from 'services/storyService';
