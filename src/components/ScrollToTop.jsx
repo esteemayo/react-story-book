@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
 import { FaArrowAltCircleUp } from 'react-icons/fa';
+import { useCallback, useEffect, useState } from 'react';
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
