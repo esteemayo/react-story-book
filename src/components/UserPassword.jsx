@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
 import Input from './Input';
