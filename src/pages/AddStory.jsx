@@ -3,8 +3,9 @@ import { FaArrowRight } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 import Input from 'components/Input';
-import Button from 'components/Button';
 import TextArea from 'components/TextArea';
+import Button from 'components/Button';
+
 import { createStory } from 'services/storyService';
 import { useGlobalContext } from 'context/story/StoryContext';
 
