@@ -8,12 +8,12 @@ const ScrollToTop = () => {
     setIsVisible(window.scrollY > 250 ? true : false);
   };
 
-  const handleScrollToTop = () => {
+  const handleScrollToTop = useCallback(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
-  };
+  }, []);
 
   useEffect(() => {
     document.addEventListener('scroll', toggleVisibility);
