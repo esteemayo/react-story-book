@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Spinner from 'components/Spinner';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
