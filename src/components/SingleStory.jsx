@@ -61,7 +61,6 @@ const SingleStory = () => {
     <div className='row'>
       <div className='col s12 m8'>
         <StoryDetail {...story} />
-
         {story.allowComments && (
           <>
             <CommentForm id={story?._id} />
