@@ -7,8 +7,8 @@ import { useGlobalAuthContext } from 'context/auth/AuthContext';
 import { updateUserData } from 'services/userService';
 
 import Input from './Input';
-import Title from './Title';
 import Button from './Button';
+import Title from './Title';
 
 const UserData = () => {
   const { user, loginSuccess } = useGlobalAuthContext();
