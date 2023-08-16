@@ -5,10 +5,11 @@ import StoryCard from 'components/StoryCard';
 import Loader from 'components/Loader';
 import Pagination from 'components/Pagination';
 
-import { useQuery } from 'utils';
-import { getStories } from 'services/storyService';
 import { useGlobalContext } from 'context/story/StoryContext';
 import { FETCH_STORIES, LOADING } from 'context/story/StoryTypes';
+
+import { useQuery } from 'utils';
+import { getStories } from 'services/storyService';
 
 const Stories = () => {
   const { search, pathname } = useLocation();
