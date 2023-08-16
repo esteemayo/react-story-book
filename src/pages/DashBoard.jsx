@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import Table from 'components/Table';
+import Table from 'components/table/Table';
 import Loader from 'components/Loader';
 
 import { useGlobalContext } from 'context/story/StoryContext';
