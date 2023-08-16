@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { FaBookmark, FaRegBookmark, FaPencilAlt } from 'react-icons/fa';
 
+import * as actions from 'context/bookmark/BookMarkTypes';
+import { useGlobalBookmarkContext } from 'context/bookmark/BookMarkContext';
+import * as viewAction from 'context/history/HistoryTypes';
+import { useGlobalHistoryContext } from 'context/history/HistoryContext';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
+
 import LikeButton from './LikeButton';
 import * as bookmarkAPI from 'services/bookmarkService';
-import * as actions from 'context/bookmark/BookMarkTypes';
-import * as viewAction from 'context/history/HistoryTypes';
-import { useGlobalAuthContext } from 'context/auth/AuthContext';
-import { useGlobalHistoryContext } from 'context/history/HistoryContext';
-import { useGlobalBookmarkContext } from 'context/bookmark/BookMarkContext';
 import { createHistory, getHistoriesOnStory } from 'services/historyService';
 
 const StoryDetail = ({
