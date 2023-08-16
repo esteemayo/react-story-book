@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Loader from './Loader';
-import CommentCard from './CommentCard';
+import CommentCard from './comment/CommentCard';
 import UserCard from './user/UserCard';
 import RelatedStories from './RelatedStories';
-import CommentForm from './CommentForm';
+import CommentForm from './comment/CommentForm';
 import StoryDetail from './StoryDetail';
 
 import * as storyAPI from 'services/storyService';
