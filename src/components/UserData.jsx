@@ -41,16 +41,8 @@ const UserData = () => {
     return true;
   }, [name, email, username]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
 
-    if (!validateForm()) return;
-    setErrors({});
-
-    await handleUpdateUserData();
-  };
-
-  const handleUpdateUserData = async () => {
+  const handleUpdateUserData = useCallback(async () => {
     const userData = {
       name,
       email,
@@ -77,7 +69,16 @@ const UserData = () => {
     } catch (ex) {
       console.error(ex.response.data.message);
     }
-  };
+  }, [name, email, username, file, loginSuccess]);
+
+  const handleSubmit = useCallback(async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+    setErrors({});
+
+    await handleUpdateUserData();
+  }, [validateForm, handleUpdateUserData]);
 
   return (
     <div>
