@@ -6,7 +6,7 @@ import { uploadPhoto } from 'services/uploadService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 import { updateUserData } from 'services/userService';
 
-import Input from './Input';
+import Input from './input/Input';
 import Button from './button/Button';
 import Title from './Title';
 

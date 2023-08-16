@@ -2,8 +2,8 @@ import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 
-import Input from 'components/Input';
-import TextArea from 'components/TextArea';
+import Input from 'components/input/Input';
+import TextArea from 'components/input/TextArea';
 import Button from 'components/button/Button';
 
 import { createStory } from 'services/storyService';

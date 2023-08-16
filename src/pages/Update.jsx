@@ -2,8 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import Input from 'components/Input';
-import TextArea from 'components/TextArea';
+import Input from 'components/input/Input';
+import TextArea from 'components/input/TextArea';
 import Button from 'components/button/Button';
 
 import { useGlobalContext } from 'context/story/StoryContext';

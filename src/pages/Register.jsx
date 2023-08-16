@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { v4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 
-import Input from 'components/Input';
+import Input from 'components/input/Input';
 import Spinner from 'components/Spinner';
 
 import { createUser } from 'services/userService';

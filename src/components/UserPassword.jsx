@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
-import Input from './Input';
+import Input from './input/Input';
 import Button from './button/Button';
 import Title from './Title';
 
