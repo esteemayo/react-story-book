@@ -66,17 +66,7 @@ const Update = () => {
     return true;
   }, [title, body, status, tags]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!validateForm()) return;
-    setErrors({});
-
-    await handleUpdate();
-    await navigate('/dashboard');
-  };
-
-  const handleUpdate = async () => {
+  const handleUpdate = useCallback(async () => {
     try {
       const updStory = {
         body,
@@ -91,7 +81,27 @@ const Update = () => {
     } catch (ex) {
       console.error(ex);
     }
-  };
+  },
+    [
+      allowComments,
+      body,
+      id,
+      status,
+      tags,
+      title,
+      editStory,
+    ]
+  );
+
+  const handleSubmit = useCallback(async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+    setErrors({});
+
+    await handleUpdate();
+    await navigate('/dashboard');
+  }, [handleUpdate, validateForm, navigate]);
 
   return (
     <div className='row'>
