@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import StoryCard from 'components/StoryCard';
+import StoryCard from 'components/story/StoryCard';
 import Loader from 'components/Loader';
 import Pagination from 'components/Pagination';
 

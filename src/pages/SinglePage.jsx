@@ -1,4 +1,4 @@
-import SingleStory from 'components/SingleStory';
+import SingleStory from 'components/story/SingleStory';
 
 const SinglePage = () => {
   return (
