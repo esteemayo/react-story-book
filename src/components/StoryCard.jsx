@@ -58,7 +58,11 @@ const StoryCard = ({
             <Link to={`/stories?author=${user.username}`}>{user.name}</Link>
           </div>
           <div className='like-container'>
-            <LikeButton likes={likes} user={currentUser} storyId={id} />
+            <LikeButton
+              likes={likes}
+              user={currentUser}
+              storyId={id}
+            />
           </div>
         </div>
         <div className='card-action center-align'>
