@@ -15,18 +15,20 @@ const UserProfile = () => {
     ? REACT_APP_DEV_IMAGE_API_URL
     : REACT_APP_PROD_IMAGE_API_URL;
 
+  const avatar = useMemo(() => {
+    return user?.photo
+      ? PF + user.photo
+      : user.gravatar || user?.user?.photo
+        ? PF + user?.user?.photo
+        : user?.user?.gravatar;
+  }, [PF, user]);
+
   return (
     <div className='col s6'>
       <Title title='User profile' className='text-uppercase' />
       <div className='thumbnail'>
         <img
-          src={
-            user?.photo
-              ? PF + user.photo
-              : user.gravatar || user?.user?.photo
-                ? PF + user?.user?.photo
-                : user?.user?.gravatar
-          }
+          src={avatar}
           width={200}
           alt='avatar'
         />
