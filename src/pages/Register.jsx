@@ -73,18 +73,8 @@ const Register = () => {
     ]
   );
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    loginStart();
 
-    if (!validateForm()) return;
-    setErrors({});
-
-    await handleRegister();
-    user && await navigate('/stories');
-  };
-
-  const handleRegister = async () => {
+  const handleRegister = useCallback(async () => {
     const newUser = {
       name,
       email,
@@ -117,7 +107,38 @@ const Register = () => {
         loginFailure();
       }
     }
-  };
+  },
+    [
+      name,
+      email,
+      username,
+      password,
+      passwordConfirm,
+      file,
+      errors,
+      loginFailure,
+      loginSuccess,
+    ]
+  );
+
+  const handleSubmit = useCallback(async (e) => {
+    e.preventDefault()
+    loginStart();;
+
+    if (!validateForm()) return;
+    setErrors({});
+
+    await handleRegister();
+    user && await navigate('/stories');
+  },
+    [
+      user,
+      validateForm,
+      loginStart,
+      handleRegister,
+      navigate,
+    ]
+  );
 
   return (
     <main className='main'>
