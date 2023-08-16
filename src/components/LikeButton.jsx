@@ -1,5 +1,5 @@
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { FaThumbsUp, FaRegThumbsUp } from 'react-icons/fa';
 
 import { likeStory } from 'services/storyService';
@@ -38,14 +38,14 @@ const LikeButton = ({ likes, user, storyId }) => {
     </span>
   );
 
-  const handleLike = async () => {
+  const handleLike = useCallback(async () => {
     try {
       const { data: story } = await likeStory(storyId);
       favStory(story);
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [favStory, storyId]);
 
   return (
     <button onClick={!user ? null : handleLike} className='like-btn'>
