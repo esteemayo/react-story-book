@@ -18,7 +18,7 @@ const CommentForm = ({ id }) => {
     await handleComment();
   };
 
-  const handleComment = async () => {
+  const handleComment = useCallback(async () => {
     try {
       const commentData = { body };
       await createComment(id, { ...commentData });
@@ -30,7 +30,7 @@ const CommentForm = ({ id }) => {
         setErrors(tempErrors);
       }
     }
-  };
+  }, [id, body, errors]);
 
   return (
     <div className='card single-story-card'>
