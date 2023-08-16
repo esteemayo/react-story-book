@@ -32,6 +32,10 @@ const CommentForm = ({ id }) => {
     await handleComment();
   }, [handleComment]);
 
+  const disableBtn = useMemo(() => {
+    return !!body.trim() === '';
+  }, [body]);
+
   return (
     <div className='card single-story-card'>
       <div className='card-content'>
@@ -46,7 +50,7 @@ const CommentForm = ({ id }) => {
             <Button
               text='Submit'
               className='btn'
-              disabled={body.trim() === ''}
+              disabled={disableBtn}
             />
           </form>
         ) : (
