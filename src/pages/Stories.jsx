@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { useQuery } from 'utils';
-import Loader from 'components/Loader';
 import StoryCard from 'components/StoryCard';
+import Loader from 'components/Loader';
 import Pagination from 'components/Pagination';
+
+import { useQuery } from 'utils';
 import { getStories } from 'services/storyService';
 import { useGlobalContext } from 'context/story/StoryContext';
 import { FETCH_STORIES, LOADING } from 'context/story/StoryTypes';
