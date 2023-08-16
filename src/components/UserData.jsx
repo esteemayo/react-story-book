@@ -1,5 +1,5 @@
-import { v4 } from 'uuid';
 import { useCallback, useState } from 'react';
+import { v4 } from 'uuid';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
 import Input from './Input';
