@@ -29,12 +29,7 @@ const StoryDetail = ({
 
   const [readMore, setReadMore] = useState(false);
 
-  const handleSetAsBookmark = async () => {
-    await setAsBookmark();
-    await toast.success('Story bookmarked');
-  };
-
-  const setAsBookmark = async () => {
+  const setAsBookmark = useCallback(async () => {
     try {
       const { data } = await bookmarkAPI.createBookmark({ story: id });
       dispatch({
@@ -44,7 +39,13 @@ const StoryDetail = ({
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [id, dispatch]);
+
+  const handleSetAsBookmark = useCallback(async () => {
+    await setAsBookmark();
+    await toast.success('Story bookmarked');
+  }, [setAsBookmark]);
+
 
   const handleUnSetAsBookmark = async () => {
     await unsetBookmark();
