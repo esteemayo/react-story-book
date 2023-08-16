@@ -13,11 +13,6 @@ const CommentForm = ({ id }) => {
   const [body, setBody] = useState('');
   const [errors, setErrors] = useState({});
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await handleComment();
-  };
-
   const handleComment = useCallback(async () => {
     try {
       const commentData = { body };
@@ -31,6 +26,11 @@ const CommentForm = ({ id }) => {
       }
     }
   }, [id, body, errors]);
+
+  const handleSubmit = useCallback(async (e) => {
+    e.preventDefault();
+    await handleComment();
+  }, [handleComment]);
 
   return (
     <div className='card single-story-card'>
