@@ -12,7 +12,7 @@ import { useGlobalAuthContext } from 'context/auth/AuthContext';
 import * as bookmarkAPI from 'services/bookmarkService';
 import { createHistory, getHistoriesOnStory } from 'services/historyService';
 
-import LikeButton from './LikeButton';
+import LikeButton from './button/LikeButton';
 
 const StoryDetail = ({
   _id: id,

@@ -3,7 +3,7 @@ import { useMemo } from 'react';
 import { FaPencilAlt } from 'react-icons/fa';
 
 import { excerpt } from 'utils';
-import LikeButton from './LikeButton';
+import LikeButton from './button/LikeButton';
 
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
