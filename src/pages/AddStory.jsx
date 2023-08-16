@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
-import { FaArrowRight } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa';
 
 import Input from 'components/Input';
 import TextArea from 'components/TextArea';
