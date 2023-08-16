@@ -2,12 +2,13 @@ import { useCallback, useState } from 'react';
 import { v4 } from 'uuid';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
+import { uploadPhoto } from 'services/uploadService';
+import { useGlobalAuthContext } from 'context/auth/AuthContext';
+import { updateUserData } from 'services/userService';
+
 import Input from './Input';
 import Title from './Title';
 import Button from './Button';
-import { uploadPhoto } from 'services/uploadService';
-import { updateUserData } from 'services/userService';
-import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const UserData = () => {
   const { user, loginSuccess } = useGlobalAuthContext();
