@@ -18,7 +18,7 @@ const Login = () => {
     emailRef.current.focus();
   }, []);
 
-  const validateForm = () => {
+  const validateForm = useCallback(() => {
     const errors = {};
 
     if (emailRef.current.value.trim() === '') {
@@ -36,7 +36,7 @@ const Login = () => {
     }
 
     return true;
-  };
+  }, [loginFailure]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
