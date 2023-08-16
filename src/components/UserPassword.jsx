@@ -16,7 +16,7 @@ const UserPassword = () => {
   const [passwordCurrent, setPasswordCurrent] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
-  const validateForm = () => {
+  const validateForm = useCallback(() => {
     const tempErrors = {};
 
     if (!password) {
@@ -37,7 +37,7 @@ const UserPassword = () => {
     }
 
     return true;
-  };
+  }, [password, passwordConfirm, passwordCurrent]);
 
   const handleClear = () => {
     setPassword('');
