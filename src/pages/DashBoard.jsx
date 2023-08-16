@@ -56,7 +56,10 @@ const DashBoard = () => {
     <div className='container'>
       <h1>Welcome {user?.firstName}</h1>
       <h4>Your Stories</h4>
-      <Table data={stories} columns={columns} />
+      <Table
+        data={stories}
+        columns={columns}
+      />
     </div>
   );
 };
