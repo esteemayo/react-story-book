@@ -16,12 +16,12 @@ const Update = () => {
   const { editStory } = useGlobalContext();
 
   const [id, setId] = useState(null);
-  const [body, setBody] = useState('');
-  const [tags, setTags] = useState([]);
   const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
   const [status, setStatus] = useState('');
-  const [errors, setErrors] = useState({});
+  const [tags, setTags] = useState([]);
   const [allowComments, setAllowComments] = useState(true);
+  const [errors, setErrors] = useState({});
 
   const fetchStory = useCallback(async () => {
     const { data: story } = await getWithSlug(path);
