@@ -45,16 +45,7 @@ const UserPassword = () => {
     setPasswordCurrent('');
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!validateForm()) return;
-    setErrors({});
-
-    await handleUpdatePassword();
-  };
-
-  const handleUpdatePassword = async () => {
+  const handleUpdatePassword = useCallback(async () => {
     try {
       const userData = {
         password,
@@ -76,7 +67,25 @@ const UserPassword = () => {
         setErrors(tempErrors);
       }
     }
-  };
+  },
+    [
+      password,
+      passwordConfirm,
+      passwordCurrent,
+      errors,
+      handleClear,
+      loginSuccess
+    ]
+  );
+
+  const handleSubmit = useCallback(async (e) => {
+    e.preventDefault();
+
+    if (!validateForm()) return;
+    setErrors({});
+
+    await handleUpdatePassword();
+  }, [validateForm, handleUpdatePassword]);
 
   return (
     <div className='user-password'>
