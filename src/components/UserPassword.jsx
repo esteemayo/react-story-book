@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { FaArrowAltCircleRight } from 'react-icons/fa';
 
 import Input from './Input';
-import Title from './Title';
 import Button from './Button';
+import Title from './Title';
+
 import { updateUserPassword } from 'services/userService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
