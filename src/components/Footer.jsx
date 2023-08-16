@@ -2,7 +2,9 @@ import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const year = new Date().getFullYear();
+  const year = useMemo(() => {
+    return new Date().getFullYear();
+  }, []);
 
   return (
     <footer className='page-footer grey darken-3'>
