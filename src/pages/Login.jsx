@@ -38,18 +38,7 @@ const Login = () => {
     return true;
   }, [loginFailure]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    loginStart();
-
-    if (!validateForm()) return;
-    setErrors({});
-
-    await handleLogin();
-    user && await navigate('/stories');
-  };
-
-  const handleLogin = async () => {
+  const handleLogin = useCallback(async () => {
     try {
       const userData = {
         email: emailRef.current.value,
@@ -67,7 +56,26 @@ const Login = () => {
         loginFailure();
       }
     }
-  };
+  }, [errors, loginFailure, loginSuccess]);
+
+  const handleSubmit = useCallback(async (e) => {
+    e.preventDefault();
+    loginStart();
+
+    if (!validateForm()) return;
+    setErrors({});
+
+    await handleLogin();
+    user && await navigate('/stories');
+  },
+    [
+      user,
+      validateForm,
+      loginStart,
+      handleLogin,
+      navigate
+    ]
+  );
 
   return (
     <main className='main'>
