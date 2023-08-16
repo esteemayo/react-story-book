@@ -25,6 +25,10 @@ const StoryCard = ({
     ? REACT_APP_DEV_IMAGE_API_URL
     : REACT_APP_PROD_IMAGE_API_URL;
 
+  const url = useMemo(() => {
+    return `/stories/details/${slug}`;
+  }, [slug]);
+
   const updateUrl = useMemo(() => {
     return `/stories/update/${slug}`;
   }, [slug]);
@@ -66,7 +70,7 @@ const StoryCard = ({
           </div>
         </div>
         <div className='card-action center-align'>
-          <Link to={`/stories/details/${slug}`} className='btn grey'>
+          <Link to={url} className='btn grey'>
             Read More
           </Link>
         </div>
