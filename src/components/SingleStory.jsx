@@ -71,7 +71,10 @@ const SingleStory = () => {
           </>
         )}
 
-        <RelatedStories relatedStories={relatedStories} storyId={story?._id} />
+        <RelatedStories
+          storyId={story?._id}
+          relatedStories={relatedStories}
+        />
       </div>
       <div className='col s12 m4'>
         <UserCard {...story} />
