@@ -9,7 +9,14 @@ const devEnv = process.env.NODE_ENV !== 'production';
 const { REACT_APP_DEV_IMAGE_API_URL, REACT_APP_PROD_IMAGE_API_URL } =
   process.env;
 
-const StoryCard = ({ _id: id, body, slug, user, likes, title }) => {
+const StoryCard = ({
+  _id: id,
+  body,
+  slug,
+  user,
+  likes,
+  title,
+}) => {
   const { user: currentUser } = useGlobalAuthContext();
 
   const PF = devEnv
