@@ -39,7 +39,7 @@ const Update = () => {
     fetchStory();
   }, [path, fetchStory]);
 
-  const validateForm = () => {
+  const validateForm = useCallback(() => {
     const tempErrors = {};
 
     if (title.trim() === '') {
@@ -62,8 +62,9 @@ const Update = () => {
       setErrors(tempErrors);
       return false;
     }
+
     return true;
-  };
+  }, [title, body, status, tags]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
