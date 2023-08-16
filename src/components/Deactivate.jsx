@@ -10,19 +10,19 @@ import { useGlobalAuthContext } from 'context/auth/AuthContext';
 const Deactivate = () => {
   const { logout } = useGlobalAuthContext();
 
-  const deleteMe = async () => {
-    await handleDelete();
-    await logout();
-  };
-
-  const handleDelete = async () => {
+  const handleDelete = useCallback(async () => {
     try {
       await deactivateAcc();
     } catch (ex) {
       console.error(ex.response.data.message);
       toast.error(ex.response.data.message);
     }
-  };
+  }, []);
+
+  const deleteMe = useCallback(async () => {
+    await handleDelete();
+    await logout();
+  }, [handleDelete, logout]);
 
   return (
     <div className='deactivate'>
