@@ -14,16 +14,7 @@ const NavItems = ({ user, logout }) => {
             url='/dashboard'
             label={`Welcome ${user?.firstName || user?.user?.firstName}`}
           />
-          <li>
-            <NavLink
-              to='/account'
-              className={({ isActive }) =>
-                `${isActive ? 'link active' : ''}`
-              }
-            >
-              Account
-            </NavLink>
-          </li>
+          <NavItem url='/account' label='Account' />
           <li>
             <Link to='#' onClick={logout}>
               Logout
