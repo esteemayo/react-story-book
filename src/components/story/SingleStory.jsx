@@ -72,7 +72,6 @@ const SingleStory = () => {
             })}
           </>
         )}
-
         <RelatedStories
           storyId={story?._id}
           relatedStories={relatedStories}
