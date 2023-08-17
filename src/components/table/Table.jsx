@@ -5,7 +5,10 @@ const Table = ({ data, columns, onDelete }) => {
   return (
     <table className='striped'>
       <TableHeader columns={columns} />
-      <TableBody data={data} onDelete={onDelete} />
+      <TableBody
+        data={data}
+        onDelete={onDelete}
+      />
     </table>
   );
 };
