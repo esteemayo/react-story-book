@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { Link } from 'react-router-dom';
 
 import MenuItems from './MenuItems';
+import CopyRight from './CopyRight';
 
 const Footer = () => {
   const year = useMemo(() => {
@@ -24,15 +24,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className='footer-copyright'>
-        <div className='container'>
-          © {year} StoryBooks <br />
-          All rights reserved. Design by Emmanuel Adebayo&trade;
-          <Link className='grey-text text-lighten-4 right' to='#!'>
-            More Links
-          </Link>
-        </div>
-      </div>
+      <CopyRight year={year} />
     </footer>
   );
 };
