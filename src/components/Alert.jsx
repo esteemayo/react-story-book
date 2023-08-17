@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import PropTypes from 'prop-types';
+
 import { useGlobalContext } from 'context/story/StoryContext';
 
 const Alert = ({ msg, type }) => {
