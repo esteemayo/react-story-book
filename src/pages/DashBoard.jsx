@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
-import Table from 'components/table/Table';
 import Loader from 'components/Loader';
+import Table from 'components/table/Table';
 
 import { useGlobalContext } from 'context/story/StoryContext';
 import { FETCH_USER_STORIES, LOADING } from 'context/story/StoryTypes';
