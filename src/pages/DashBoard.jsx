@@ -7,6 +7,7 @@ import { useGlobalContext } from 'context/story/StoryContext';
 import { FETCH_USER_STORIES, LOADING } from 'context/story/StoryTypes';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
+import { columns } from 'data';
 import { getUserStories } from 'services/userService';
 
 const DashBoard = () => {
