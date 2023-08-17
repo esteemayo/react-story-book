@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import MenuItem from './MenuItem';
 
 const MenuItems = () => {
   return (
