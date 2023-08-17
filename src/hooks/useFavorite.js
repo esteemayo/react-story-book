@@ -7,7 +7,7 @@ const useFavorite = ({ likes, user, actionId, onAction }) => {
   const hasFavorited = useMemo(() => {
     const userId = user.id ?? user?.user?._id;
     const story = likes || [];
-    return story.includes(userId);
+    return !!story.includes(userId);
   }, [likes, user]);
 
   const toggleFavorite = useCallback(async () => {
