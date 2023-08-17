@@ -14,12 +14,6 @@ const DashBoard = () => {
   const { user } = useGlobalAuthContext();
   const { userStories: stories, isLoading, dispatch } = useGlobalContext();
 
-  const columns = [
-    { path: 'title', label: 'Title' },
-    { path: 'createdAt', label: 'Date' },
-    { path: 'status', label: 'Status' },
-  ];
-
   useEffect(() => {
     (async () => {
       try {
