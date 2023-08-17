@@ -22,9 +22,11 @@ const StoryCard = ({
 }) => {
   const { user: currentUser } = useGlobalAuthContext();
 
-  const PF = devEnv
-    ? REACT_APP_DEV_IMAGE_API_URL
-    : REACT_APP_PROD_IMAGE_API_URL;
+  const PF = useMemo(() => {
+    return devEnv
+      ? REACT_APP_DEV_IMAGE_API_URL
+      : REACT_APP_PROD_IMAGE_API_URL;
+  }, []);
 
   const url = useMemo(() => {
     return `/stories/details/${slug}`;
