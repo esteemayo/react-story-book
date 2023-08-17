@@ -31,4 +31,10 @@ const CommentCard = ({ body, user, createdAt }) => {
   );
 };
 
+CommentCard.propTypes = {
+  body: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
+  createdAt: PropTypes.string.isRequired,
+};
+
 export default CommentCard;
