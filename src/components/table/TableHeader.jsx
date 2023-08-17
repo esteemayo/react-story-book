@@ -12,4 +12,13 @@ const TableHeader = ({ columns }) => {
   );
 };
 
+TableHeader.propTypes = {
+  columns: PropTypes.arrayOf(
+    PropTypes.shape({
+      path: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }),
+  ),
+};
+
 export default TableHeader;
