@@ -1,4 +1,4 @@
-import MenuItems from './MenuItems'
+import MenuItems from './MenuItems';
 import FooterInfo from './FooterInfo';
 
 const FooterHead = () => {
