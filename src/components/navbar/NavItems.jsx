@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
+import NavItem from './NavItem';
 import Search from '../Search';
 import NavButton from './NavButton';
-import NavItem from './NavItem';
 
 const NavItems = ({ currentUser, onClick }) => {
   const username = useMemo(() => {
