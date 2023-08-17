@@ -21,4 +21,4 @@ export const useGlobalBookmarkContext = () => {
   return useContext(BookmarkContext);
 };
 
-export { BookmarkProvider };
+export default BookmarkProvider;
