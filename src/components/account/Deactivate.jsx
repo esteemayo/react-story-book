@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import { useCallback } from 'react';
 import { FaCogs } from 'react-icons/fa';
 
-import Title from './Title';
+import Title from '../Title';
 import Button from './button/Button';
 
 import { deactivateAcc } from 'services/userService';
