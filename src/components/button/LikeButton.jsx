@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 import LikeIcon from 'components/LikeIcon';
 import useFavorite from 'hooks/useFavorite';
