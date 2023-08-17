@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 
 import LikeIcon from 'components/LikeIcon';
 import useFavorite from 'hooks/useFavorite';
