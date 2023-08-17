@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useCallback, useMemo } from 'react';
+
 import { likeStory } from 'services/storyService';
 
 const useFavorite = ({ likes, user, actionId, onAction }) => {
