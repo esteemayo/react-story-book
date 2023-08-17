@@ -14,7 +14,7 @@ const NavItems = ({ currentUser, onClick }) => {
     <ul id='nav-mobile' className='right hide-on-med-and-down'>
       <NavItem url='/stories' label='Home' />
       <NavItem url='/about' label='About' />
-      {currentUser && (
+      {!!currentUser && (
         <>
           <NavItem
             url='/dashboard'
