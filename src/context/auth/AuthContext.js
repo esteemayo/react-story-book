@@ -78,4 +78,4 @@ export const useGlobalAuthContext = () => {
   return useContext(AuthContext);
 };
 
-export { AuthProvider };
+export default AuthProvider;
