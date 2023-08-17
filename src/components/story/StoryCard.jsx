@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useMemo } from 'react';
 import { FaPencilAlt } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 import { excerpt } from 'utils';
 import LikeButton from '../button/LikeButton';
