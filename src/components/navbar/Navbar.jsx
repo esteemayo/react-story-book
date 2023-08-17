@@ -1,6 +1,8 @@
 import { Link, NavLink } from 'react-router-dom';
 
+import Logo from './Logo';
 import Search from '../Search';
+
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 const Navbar = () => {
@@ -9,9 +11,7 @@ const Navbar = () => {
   return (
     <nav>
       <div className='nav-wrapper'>
-        <Link to='/' className='brand-logo'>
-          StoryBooks
-        </Link>
+        <Logo />
         <ul id='nav-mobile' className='right hide-on-med-and-down'>
           <li>
             <NavLink
