@@ -1,6 +1,7 @@
 import { toast } from 'react-toastify';
 import { useCallback } from 'react';
 import { FaTrash } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 import { deleteStory } from 'services/storyService';
 import { useGlobalContext } from 'context/story/StoryContext';
