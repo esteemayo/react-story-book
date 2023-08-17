@@ -25,24 +25,6 @@ const LikeButton = ({ likes, user, actionId }) => {
     }
   }, [likes, user]);
 
-  const likeButton = user ? (
-    liked ? (
-      <span>
-        <FaThumbsUp className='like-icon' />
-      </span>
-    ) : (
-      <span>
-        <FaRegThumbsUp className='like-icon' />
-      </span>
-    )
-  ) : (
-    <span>
-      <Link to='/login'>
-        <FaRegThumbsUp className='like-icon' />
-      </Link>
-    </span>
-  );
-
   const handleLike = useCallback(async () => {
     // 
   }, []);
