@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+
 import Logo from './Logo';
 import NavItems from './NavItems';
 
