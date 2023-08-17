@@ -3,11 +3,18 @@ import { Link } from 'react-router-dom';
 import { FaThumbsUp, FaRegThumbsUp } from 'react-icons/fa';
 
 import { likeStory } from 'services/storyService';
+import LikeIcon from 'components/LikeIcon';
 import { useGlobalContext } from 'context/story/StoryContext';
+import useFavorite from 'hooks/useFavorite';
 
-const LikeButton = ({ likes, user, storyId }) => {
+const LikeButton = ({ likes, user, actionId }) => {
   const { favStory } = useGlobalContext();
   const [liked, setLiked] = useState(false);
+  const { hasFavorited, toggleFavorite } = useFavorite({
+    likes,
+    user,
+    actionId,
+  });
 
   useEffect(() => {
     if (
@@ -39,17 +46,15 @@ const LikeButton = ({ likes, user, storyId }) => {
   );
 
   const handleLike = useCallback(async () => {
-    try {
-      const { data: story } = await likeStory(storyId);
-      favStory(story);
-    } catch (err) {
-      console.log(err);
-    }
-  }, [favStory, storyId]);
+    // 
+  }, []);
 
   return (
     <button onClick={!user ? null : handleLike} className='like-btn'>
-      {likeButton}
+      <LikeIcon
+        user={user}
+        liked={hasFavorited}
+      />
       &nbsp;
       {user &&
         likes?.includes(user.id || user?.user?._id) &&
