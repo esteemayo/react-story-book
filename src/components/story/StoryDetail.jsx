@@ -65,6 +65,10 @@ const StoryDetail = ({
     return `/stories/update/${slug}`;
   }, [slug]);
 
+  const buttonLabel = useMemo(() => {
+    return readMore ? 'Show less' : 'Read more';
+  }, [readMore]);
+
   useEffect(() => {
     user && (async () => {
       try {
@@ -153,7 +157,7 @@ const StoryDetail = ({
                 onClick={() => setReadMore(!readMore)}
                 className='btn-readMore'
               >
-                {readMore ? 'Show less' : 'Read more'}
+                {buttonLabel}
               </button>
             ) : (
               body
