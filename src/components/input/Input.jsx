@@ -12,4 +12,11 @@ const Input = ({ name, label, error, ...rest }) => {
   );
 };
 
+Input.propTypes = {
+  name: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  error: PropTypes.string,
+  rest: PropTypes.any,
+};
+
 export default Input;
