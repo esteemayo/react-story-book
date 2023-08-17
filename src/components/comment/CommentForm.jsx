@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useCallback, useMemo, useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { createComment } from 'services/commentService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
