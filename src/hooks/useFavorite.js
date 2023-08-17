@@ -2,8 +2,11 @@ import PropTypes from 'prop-types';
 import { useCallback, useMemo } from 'react';
 
 import { likeStory } from 'services/storyService';
+import { useGlobalContext } from 'context/story/StoryContext';
 
-const useFavorite = ({ likes, user, actionId, onAction }) => {
+const useFavorite = ({ likes, user, actionId }) => {
+  const { favStory } = useGlobalContext();
+
   const hasFavorited = useMemo(() => {
     const userId = user.id ?? user?.user?._id;
     const story = likes || [];
@@ -13,11 +16,11 @@ const useFavorite = ({ likes, user, actionId, onAction }) => {
   const toggleFavorite = useCallback(async () => {
     try {
       const { data } = await likeStory(actionId);
-      onAction(data);
+      favStory(data);
     } catch (err) {
       console.log(err);
     }
-  }, [actionId, onAction]);
+  }, [actionId, favStory]);
 
   return {
     hasFavorited,
