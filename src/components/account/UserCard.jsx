@@ -6,9 +6,11 @@ const { REACT_APP_DEV_IMAGE_API_URL, REACT_APP_PROD_IMAGE_API_URL } =
   process.env;
 
 const UserCard = ({ user }) => {
-  const PF = devEnv
-    ? REACT_APP_DEV_IMAGE_API_URL
-    : REACT_APP_PROD_IMAGE_API_URL;
+  const PF = useMemo(() => {
+    return devEnv ?
+      REACT_APP_DEV_IMAGE_API_URL :
+      REACT_APP_PROD_IMAGE_API_URL;
+  }, []);
 
   return (
     <div className='card center-align single-story-card'>
