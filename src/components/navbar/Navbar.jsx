@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className='nav-wrapper'>
         <Logo />
         <NavItems
-          user={user}
+          currentUser={user}
           logout={logout}
         />
       </div>
