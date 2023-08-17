@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Search from '../Search';
+import NavButton from './NavButton';
 import NavItem from './NavItem';
 
 const NavItems = ({ currentUser, logout }) => {
@@ -21,11 +22,10 @@ const NavItems = ({ currentUser, logout }) => {
             label={`Welcome ${username}`}
           />
           <NavItem url='/account' label='Account' />
-          <li>
-            <Link to='#' onClick={logout}>
-              Logout
-            </Link>
-          </li>
+          <NavButton
+            label='Logout'
+            onClick={logout}
+          />
         </>
       )}
       {!currentUser && (
