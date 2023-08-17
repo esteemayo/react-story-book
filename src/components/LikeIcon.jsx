@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FaThumbsUp, FaRegThumbsUp } from 'react-icons/fa';
 
