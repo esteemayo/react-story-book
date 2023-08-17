@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Input = ({ name, label, error, ...rest }) => {
   return (
     <div className='row'>
