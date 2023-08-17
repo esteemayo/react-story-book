@@ -1,4 +1,4 @@
-import UserProfile from 'components/user/UserProfile';
+import UserProfile from 'components/account/UserProfile';
 import AccountSettings from 'components/account/AccountSettings';
 
 const Account = () => {
