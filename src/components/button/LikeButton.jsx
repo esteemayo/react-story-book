@@ -11,17 +11,6 @@ const LikeButton = ({ likes, user, actionId }) => {
     actionId,
   });
 
-  useEffect(() => {
-    if (
-      user &&
-      likes?.find((like) => like === user.id || like === user?.user?._id)
-    ) {
-      setLiked(true);
-    } else {
-      setLiked(false);
-    }
-  }, [likes, user]);
-
   const handleLike = useCallback(async () => {
     // 
   }, []);
