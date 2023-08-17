@@ -165,4 +165,14 @@ const StoryDetail = ({
   );
 };
 
+StoryDetail.propTypes = {
+  _id: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  likes: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+};
+
 export default StoryDetail;
