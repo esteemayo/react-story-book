@@ -9,9 +9,10 @@ import RelatedStories from './RelatedStories';
 import Loader from '../Loader';
 import StoryDetail from './StoryDetail';
 
-import * as storyAPI from 'services/storyService';
 import * as actions from 'context/story/StoryTypes';
 import { useGlobalContext } from 'context/story/StoryContext';
+
+import * as storyAPI from 'services/storyService';
 
 const SingleStory = () => {
   const { pathname } = useLocation();
