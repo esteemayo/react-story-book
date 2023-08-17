@@ -147,7 +147,7 @@ const StoryDetail = ({
               <LikeButton
                 likes={likes}
                 user={user}
-                storyId={id}
+                actionId={id}
               />
             </div>
             {user && <span>{views?.length} views</span>}
