@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
+import MenuItems from './MenuItems';
+
 const Footer = () => {
   const year = useMemo(() => {
     return new Date().getFullYear();
@@ -18,18 +20,7 @@ const Footer = () => {
           </div>
           <div className='col l4 offset-l2 s12'>
             <h5 className='white-text'>Links</h5>
-            <ul>
-              <li>
-                <Link className='grey-text text-lighten-3' to='/stories'>
-                  Public Stories
-                </Link>
-              </li>
-              <li>
-                <Link className='grey-text text-lighten-3' to='/about'>
-                  About
-                </Link>
-              </li>
-            </ul>
+            <MenuItems />
           </div>
         </div>
       </div>
