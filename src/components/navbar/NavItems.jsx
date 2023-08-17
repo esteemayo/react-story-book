@@ -5,7 +5,7 @@ import Search from '../Search';
 import NavButton from './NavButton';
 import NavItem from './NavItem';
 
-const NavItems = ({ currentUser, logout }) => {
+const NavItems = ({ currentUser, onClick }) => {
   const username = useMemo(() => {
     return (currentUser?.firstName || currentUser?.currentUser?.firstName);
   }, [currentUser]);
@@ -23,7 +23,7 @@ const NavItems = ({ currentUser, logout }) => {
           <NavItem url='/account' label='Account' />
           <NavButton
             label='Logout'
-            onClick={logout}
+            onClick={onClick}
           />
         </>
       )}
@@ -42,7 +42,7 @@ const NavItems = ({ currentUser, logout }) => {
 
 NavItems.propTypes = {
   currentUser: PropTypes.object,
-  logout: PropTypes.any.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default NavItems;
