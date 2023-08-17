@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import Search from './Search';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
-const NavBar = () => {
+const Navbar = () => {
   const { user, logout } = useGlobalAuthContext();
 
   return (
@@ -92,4 +92,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Navbar;
