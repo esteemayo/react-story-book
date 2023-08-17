@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import Search from '../Search';
 import NavItem from './NavItem';
 
-const NavItems = ({ user, logout }) => {
+const NavItems = ({ currentUser, logout }) => {
   return (
     <ul id='nav-mobile' className='right hide-on-med-and-down'>
       <NavItem url='/stories' label='Home' />
       <NavItem url='/about' label='About' />
-      {user && (
+      {currentUser && (
         <>
           <NavItem
             url='/dashboard'
@@ -22,7 +22,7 @@ const NavItems = ({ user, logout }) => {
           </li>
         </>
       )}
-      {!user && (
+      {!currentUser && (
         <>
           <NavItem url='/login' label='Login' />
           <NavItem url='/register' label='Register' />
