@@ -15,4 +15,23 @@ const Table = ({ data, columns, onDelete }) => {
   );
 };
 
+Table.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      status: PropTypes.bool.isRequired,
+      createdAt: PropTypes.string.isRequired,
+    }),
+  ),
+  columns: PropTypes.arrayOf(
+    PropTypes.shape({
+      path: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }),
+  ),
+  onDelete: PropTypes.func.isRequired,
+};
+
 export default Table;
