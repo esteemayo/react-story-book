@@ -18,10 +18,7 @@ const Footer = () => {
               Share your life with the world
             </p>
           </div>
-          <div className='col l4 offset-l2 s12'>
-            <h5 className='white-text'>Links</h5>
-            <MenuItems />
-          </div>
+          <MenuItems />
         </div>
       </div>
       <CopyRight year={year} />
