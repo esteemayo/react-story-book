@@ -1,15 +1,18 @@
 import PropTypes from 'prop-types'
 
-const NavButton = ({ logout }) => {
+const NavButton = ({ label, onClick }) => {
   return (
     <li>
-      <button onClick={logout}>
-        Logout
+      <button onClick={onClick} className='btn-logout'>
+        {label}
       </button>
     </li>
   );
 };
 
-NavButton.propTypes = {};
+NavButton.propTypes = {
+  label: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default NavButton;
