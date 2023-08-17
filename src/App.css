@@ -70,6 +70,14 @@ nav .nav-wrapper {
   font-size: 25px;
 }
 
+.btn-logout {
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
 footer {
   margin-top: 25rem;
 }
