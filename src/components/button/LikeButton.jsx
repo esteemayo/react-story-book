@@ -37,4 +37,10 @@ const LikeButton = ({ likes, user, actionId }) => {
   );
 };
 
+LikeButton.propTypes = {
+  likes: PropTypes.array.isRequired,
+  user: PropTypes.object.isRequired,
+  actionId: PropTypes.string.isRequired,
+};
+
 export default LikeButton;
