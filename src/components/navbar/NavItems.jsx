@@ -1,17 +1,12 @@
 import { Link, NavLink } from 'react-router-dom';
+
 import Search from '../Search';
+import NavItem from './NavItem';
 
 const NavItems = ({ user, logout }) => {
   return (
     <ul id='nav-mobile' className='right hide-on-med-and-down'>
-      <li>
-        <NavLink
-          to='/stories'
-          className={({ isActive }) => `${isActive ? 'link active' : ''}`}
-        >
-          Home
-        </NavLink>
-      </li>
+      <NavItem url='/stories' label='Home' />
       <li>
         <NavLink
           to='/about'
