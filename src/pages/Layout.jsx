@@ -1,5 +1,4 @@
 import { Outlet } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
 
 import Alert from 'components/Alert';
 import AddButton from 'components/button/AddButton';
@@ -12,7 +11,6 @@ import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 import ToastProvider from 'providers/ToastProvider';
 
-import 'react-toastify/dist/ReactToastify.css';
 import 'materialize-css/dist/css/materialize.min.css';
 import 'materialize-css/dist/js/materialize.min.js';
 
