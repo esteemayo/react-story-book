@@ -19,7 +19,7 @@ const Navbar = () => {
         <Logo />
         <NavItems
           currentUser={user}
-          logout={logout}
+          onClick={handleLogout}
         />
       </div>
     </nav>
