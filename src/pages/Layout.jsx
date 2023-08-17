@@ -4,7 +4,7 @@ import Alert from 'components/Alert';
 import AddButton from 'components/button/AddButton';
 import Footer from 'components/Footer';
 import ScrollToTop from 'components/ScrollToTop';
-import NavBar from 'components/Navbar';
+import NavBar from 'components/navbar/Navbar';
 
 import { useGlobalContext } from 'context/story/StoryContext';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
