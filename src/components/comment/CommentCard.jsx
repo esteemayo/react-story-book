@@ -14,13 +14,17 @@ const CommentCard = ({ body, user, createdAt }) => {
       REACT_APP_PROD_IMAGE_API_URL;
   }, []);
 
+  const url = useMemo(() => {
+    return `/stories?author=${user.username}`;
+  }, [user]);
+
   return (
     <div className='card single-story-card'>
       <div className='card-content'>
         <p>{body}</p>
         <div className='chip'>
           <img src={user?.photo ? PF + user.photo : user.gravatar} alt='' />
-          <Link to={`/stories?author=${user.username}`}>{user.name}</Link>
+          <Link to={url}>{user.name}</Link>
         </div>
         <br />
         <small>
