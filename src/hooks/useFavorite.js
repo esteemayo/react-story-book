@@ -27,7 +27,7 @@ const useFavorite = ({ likes, user, actionId, onAction }) => {
 
 useFavorite.propTypes = {
   likes: PropTypes.array.isRequired,
-  user: PropTypes.object.isRequired,
+  user: PropTypes.object,
   actionId: PropTypes.string.isRequired,
   onAction: PropTypes.any.isRequired,
 };

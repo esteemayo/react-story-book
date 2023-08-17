@@ -24,4 +24,9 @@ const LikeIcon = ({ user, liked }) => {
   return likeButton;
 };
 
+LikeIcon.propTypes = {
+  user: PropTypes.object,
+  liked: PropTypes.bool.isRequired,
+};
+
 export default LikeIcon;
