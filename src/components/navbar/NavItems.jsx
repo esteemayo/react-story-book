@@ -1,9 +1,14 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 import Search from '../Search';
 import NavItem from './NavItem';
 
 const NavItems = ({ currentUser, logout }) => {
+  const username = useMemo(() => {
+    return (currentUser?.firstName || currentUser?.currentUser?.firstName);
+  }, [currentUser]);
+
   return (
     <ul id='nav-mobile' className='right hide-on-med-and-down'>
       <NavItem url='/stories' label='Home' />
@@ -12,7 +17,7 @@ const NavItems = ({ currentUser, logout }) => {
         <>
           <NavItem
             url='/dashboard'
-            label={`Welcome ${user?.firstName || user?.user?.firstName}`}
+            label={`Welcome ${username}`}
           />
           <NavItem url='/account' label='Account' />
           <li>
