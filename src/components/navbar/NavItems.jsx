@@ -10,16 +10,10 @@ const NavItems = ({ user, logout }) => {
       <NavItem url='/about' label='About' />
       {user && (
         <>
-          <li>
-            <NavLink
-              to='/dashboard'
-              className={({ isActive }) =>
-                `${isActive ? 'link active' : ''}`
-              }
-            >
-              Welcome {user?.firstName || user?.user?.firstName}
-            </NavLink>
-          </li>
+          <NavItem
+            url='/dashboard'
+            label={`Welcome ${user?.firstName || user?.user?.firstName}`}
+          />
           <li>
             <NavLink
               to='/account'
