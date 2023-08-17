@@ -8,6 +8,7 @@ import { useGlobalContext } from 'context/story/StoryContext';
 const Search = () => {
   const navigate = useNavigate();
   const { findStory, showLoading, hideLoading } = useGlobalContext();
+
   const [search, setSearch] = useState('');
 
   const handleSearchStory = useCallback(async () => {
