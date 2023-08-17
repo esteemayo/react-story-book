@@ -41,4 +41,9 @@ const NavItems = ({ currentUser, logout }) => {
   );
 };
 
+NavItems.propTypes = {
+  currentUser: PropTypes.object,
+  logout: PropTypes.any,
+};
+
 export default NavItems;
