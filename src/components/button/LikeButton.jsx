@@ -4,7 +4,6 @@ import LikeIcon from 'components/LikeIcon';
 import useFavorite from 'hooks/useFavorite';
 
 const LikeButton = ({ likes, user, actionId }) => {
-  const [liked, setLiked] = useState(false);
   const { hasFavorited, toggleFavorite } = useFavorite({
     likes,
     user,
