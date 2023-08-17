@@ -72,4 +72,10 @@ const Pagination = ({ counts, currentPage, numberOfPages }) => {
   return renderPagination();
 };
 
+Pagination.propTypes = {
+  counts: PropTypes.number.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  numberOfPages: PropTypes.number.isRequired,
+};
+
 export default Pagination;
