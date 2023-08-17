@@ -16,7 +16,7 @@ const LikeButton = ({ likes, user, actionId }) => {
   }, [user, toggleFavorite]);
 
   return (
-    <button onClick={!user ? null : handleLike} className='like-btn'>
+    <button onClick={handleLike} className='like-btn'>
       <LikeIcon
         user={user}
         liked={hasFavorited}
