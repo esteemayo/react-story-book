@@ -80,4 +80,13 @@ const StoryCard = ({
   );
 };
 
+StoryCard.propTypes = {
+  _id: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
+  likes: PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
 export default StoryCard;
