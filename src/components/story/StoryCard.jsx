@@ -68,7 +68,7 @@ const StoryCard = ({
             <LikeButton
               likes={likes}
               user={currentUser}
-              storyId={id}
+              actionId={id}
             />
           </div>
         </div>
