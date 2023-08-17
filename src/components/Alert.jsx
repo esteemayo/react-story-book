@@ -21,4 +21,9 @@ const Alert = ({ msg, type }) => {
   );
 };
 
+Alert.propTypes = {
+  msg: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+};
+
 export default Alert;
