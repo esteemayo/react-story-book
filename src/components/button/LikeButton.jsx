@@ -7,7 +7,6 @@ import { useGlobalContext } from 'context/story/StoryContext';
 import useFavorite from 'hooks/useFavorite';
 
 const LikeButton = ({ likes, user, actionId }) => {
-  const { favStory } = useGlobalContext();
   const [liked, setLiked] = useState(false);
   const { hasFavorited, toggleFavorite } = useFavorite({
     likes,
