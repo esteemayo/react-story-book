@@ -25,19 +25,9 @@ const NavItems = ({ user, logout }) => {
       {!user && (
         <>
           <NavItem url='/login' label='Login' />
-          <li>
-            <NavLink
-              to='/register'
-              className={({ isActive }) =>
-                `${isActive ? 'link active' : ''}`
-              }
-            >
-              Register
-            </NavLink>
-          </li>
+          <NavItem url='/register' label='Register' />
         </>
       )}
-
       <li>
         <Search />
       </li>
