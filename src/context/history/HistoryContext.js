@@ -21,4 +21,4 @@ export const useGlobalHistoryContext = () => {
   return useContext(HistoryContext);
 };
 
-export { HistoryProvider };
+export default HistoryProvider;
