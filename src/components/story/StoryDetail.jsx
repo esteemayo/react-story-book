@@ -145,7 +145,11 @@ const StoryDetail = ({
                   onClick={handleSetAsBookmark}
                 />
               )}
-              <LikeButton likes={likes} user={user} storyId={id} />
+              <LikeButton
+                likes={likes}
+                user={user}
+                storyId={id}
+              />
             </div>
             {user && <span>{views?.length} views</span>}
           </div>
