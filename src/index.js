@@ -8,6 +8,8 @@ import AuthProvider from 'context/auth/AuthContext';
 import BookmarkProvider from 'context/bookmark/BookMarkContext';
 import HistoryProvider from 'context/history/HistoryContext';
 
+import './index.css';
+
 ReactDOM.render(
   <HistoryProvider>
     <BookmarkProvider>
