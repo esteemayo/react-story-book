@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import LikeIcon from 'components/LikeIcon';
-import { useGlobalContext } from 'context/story/StoryContext';
 import useFavorite from 'hooks/useFavorite';
 
 const LikeButton = ({ likes, user, actionId }) => {
