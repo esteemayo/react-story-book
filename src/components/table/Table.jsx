@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import TableBody from './TableBody';
 import TableHeader from './TableHeader';
 
