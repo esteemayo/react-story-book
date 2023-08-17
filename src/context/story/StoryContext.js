@@ -145,4 +145,4 @@ export const useGlobalContext = () => {
   return useContext(StoryContext);
 };
 
-export { StoryProvider };
+export default StoryProvider;
