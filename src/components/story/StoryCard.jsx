@@ -40,7 +40,7 @@ const StoryCard = ({
     <div className='col s12 m4'>
       <div className='card card-margin custom-card'>
         <div className='card-image'>
-          {currentUser &&
+          {!!currentUser &&
             (currentUser.id === user._id ||
               currentUser?.user?.id === user._id) && (
               <Link to={updateUrl}>
