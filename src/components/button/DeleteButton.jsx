@@ -38,4 +38,8 @@ const DeleteButton = ({ id }) => {
   );
 };
 
+DeleteButton.propTypes = {
+  id: PropTypes.string.isRequired,
+};
+
 export default DeleteButton;
