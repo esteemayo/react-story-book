@@ -7,14 +7,7 @@ const NavItems = ({ user, logout }) => {
   return (
     <ul id='nav-mobile' className='right hide-on-med-and-down'>
       <NavItem url='/stories' label='Home' />
-      <li>
-        <NavLink
-          to='/about'
-          className={({ isActive }) => `${isActive ? 'link active' : ''}`}
-        >
-          About
-        </NavLink>
-      </li>
+      <NavItem url='/about' label='About' />
       {user && (
         <>
           <li>
