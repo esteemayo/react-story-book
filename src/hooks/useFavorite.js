@@ -12,8 +12,8 @@ const useFavorite = ({ likes, user, actionId, onAction }) => {
 
   const toggleFavorite = useCallback(async () => {
     try {
-      const { data: story } = await likeStory(actionId);
-      onAction(story);
+      const { data } = await likeStory(actionId);
+      onAction(data);
     } catch (err) {
       console.log(err);
     }
