@@ -138,7 +138,6 @@ const StoryDetail = ({
                   onClick={handleUnSetAsBookmark}
                 />
               )}
-
               {user && !bookmark && (
                 <FaRegBookmark
                   className='bookmark-icon'
