@@ -32,4 +32,15 @@ const RelatedStories = ({ relatedStories, storyId }) => {
   );
 };
 
+RelatedStories.propTypes = {
+  relatedStories: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      slug: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    }),
+  ),
+  storyId: PropTypes.string.isRequired,
+};
+
 export default RelatedStories;
