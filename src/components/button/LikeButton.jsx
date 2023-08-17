@@ -12,8 +12,8 @@ const LikeButton = ({ likes, user, actionId }) => {
   });
 
   const handleLike = useCallback(async () => {
-    // 
-  }, []);
+    return !user ? null : toggleFavorite();
+  }, [user, toggleFavorite]);
 
   return (
     <button onClick={!user ? null : handleLike} className='like-btn'>
