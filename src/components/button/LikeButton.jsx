@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 import LikeIcon from 'components/LikeIcon';
 import useFavorite from 'hooks/useFavorite';
