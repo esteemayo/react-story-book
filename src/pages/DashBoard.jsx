@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import Loader from 'components/Loader';
 import Table from 'components/table/Table';
