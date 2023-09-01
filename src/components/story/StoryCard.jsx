@@ -28,6 +28,10 @@ const StoryCard = ({
       : REACT_APP_PROD_IMAGE_API_URL;
   }, []);
 
+  const avatar = useMemo(() => {
+    return user?.photo ? PF + user.photo : user.gravatar;
+  }, [user, PF]);
+
   const url = useMemo(() => {
     return `/stories/details/${slug}`;
   }, [slug]);
@@ -58,10 +62,7 @@ const StoryCard = ({
           <p className='story-text'>{body && excerpt(body, 100)}</p>
           <br />
           <div className='chip'>
-            <img
-              src={user?.photo ? PF + user.photo : user.gravatar}
-              alt='avatar'
-            />
+            <img src={avatar} alt='avatar' />
             <Link to={`/stories?author=${user.username}`}>{user.name}</Link>
           </div>
           <div className='like-container'>
