@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import Moment from 'react-moment';
 
 import Title from '../Title';
 import DateTime from 'components/DateTime';
