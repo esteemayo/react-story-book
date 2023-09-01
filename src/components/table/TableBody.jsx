@@ -45,6 +45,7 @@ TableBody.propTypes = {
       createdAt: PropTypes.string.isRequired,
     }),
   ),
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default TableBody;
