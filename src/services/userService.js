@@ -13,9 +13,8 @@ export const getUserStories = () => {
   return http.get(`${apiEndPoint}/dashboard`);
 }
 
-export const updateUserData = (userData) => {
-  return http.patch(`${apiEndPoint}/update-me`, userData);
-}
+export const updateUserData = (userData) =>
+  http.patch(`${apiEndPoint}/update-me`, userData);
 
 export const updateUserPassword = (userData) =>
   http.patch(`${apiEndPoint}/update-my-password`, userData);
