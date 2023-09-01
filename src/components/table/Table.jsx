@@ -21,7 +21,7 @@ Table.propTypes = {
       _id: PropTypes.string.isRequired,
       slug: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
-      status: PropTypes.bool.isRequired,
+      status: PropTypes.string.isRequired,
       createdAt: PropTypes.string.isRequired,
     }),
   ),
