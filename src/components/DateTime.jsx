@@ -1,9 +1,11 @@
 import Moment from 'react-moment';
 
-const DateTime = () => {
+const DateTime = ({ date }) => {
   return (
-    <div>DateTime</div>
-  )
-}
+    <Moment format='MMMM Do YYYY'>
+      {date}
+    </Moment>
+  );
+};
 
-export default DateTime
+export default DateTime;
