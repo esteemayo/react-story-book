@@ -173,7 +173,7 @@ const StoryDetail = ({
 };
 
 StoryDetail.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
   body: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   likes: PropTypes.array.isRequired,
