@@ -69,6 +69,10 @@ const StoryDetail = ({
     return readMore ? 'Show less' : 'Read more';
   }, [readMore]);
 
+  const viewLabel = useMemo(() => {
+    return `${views?.length} views`;
+  }, [views]);
+
   useEffect(() => {
     user && (async () => {
       try {
@@ -150,7 +154,7 @@ const StoryDetail = ({
                 actionId={id}
               />
             </div>
-            {user && <span>{views?.length} views</span>}
+            {user && <span>viewLabel</span>}
           </div>
           <blockquote>
             {body &&
