@@ -20,6 +20,13 @@ const LikeButton = ({ likes, user, actionId }) => {
     return `You and ${likes?.length - 1} others`;
   }, [likes]);
 
+  const likeText = useMemo(() => {
+    return (
+      likes?.length > 0 ? likes?.length : ''
+        `Like${likes?.length > 1 ? 's' : ''}`
+    );
+  }, [likes]);
+
   return (
     <button onClick={handleLike} className='like-btn'>
       <LikeIcon
@@ -32,10 +39,7 @@ const LikeButton = ({ likes, user, actionId }) => {
         likes?.length > 2 ? (
         <small>{likeLabel}</small>
       ) : (
-        <small>
-          {likes?.length > 0 ? likes?.length : ''}{' '}
-          {`Like${likes?.length > 1 ? 's' : ''}`}
-        </small>
+        <small>{likeText}</small>
       )}
     </button>
   );
