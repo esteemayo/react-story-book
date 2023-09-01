@@ -9,6 +9,7 @@ import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
 import { columns } from 'data';
 import { getUserStories } from 'services/userService';
+import { deleteStory } from 'services/storyService';
 
 const DashBoard = () => {
   const { user } = useGlobalAuthContext();
