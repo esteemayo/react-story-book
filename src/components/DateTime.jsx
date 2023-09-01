@@ -9,4 +9,8 @@ const DateTime = ({ date }) => {
   );
 };
 
+DateTime.propTypes = {
+  date: PropTypes.string.isRequired,
+};
+
 export default DateTime;
