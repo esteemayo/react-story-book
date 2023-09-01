@@ -34,7 +34,7 @@ const CommentCard = ({ body, user, createdAt }) => {
         </div>
         <br />
         <small>
-          Posted: <Moment format='MMMM Do YYYY'>{createdAt}</Moment>
+          Posted: <DateTime date={createdAt} />
         </small>
       </div>
     </div>
