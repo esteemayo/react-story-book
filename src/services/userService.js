@@ -9,9 +9,7 @@ export const createUser = (userData) =>
 export const loginUser = (userData) =>
   http.post(`${apiEndPoint}/login`, userData);
 
-export const getUserStories = () => {
-  return http.get(`${apiEndPoint}/dashboard`);
-}
+export const getUserStories = () => http.get(`${apiEndPoint}/dashboard`);
 
 export const updateUserData = (userData) =>
   http.patch(`${apiEndPoint}/update-me`, userData);
