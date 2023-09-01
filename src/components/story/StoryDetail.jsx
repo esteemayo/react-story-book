@@ -76,15 +76,23 @@ const StoryDetail = ({
 
   useEffect(() => {
     user && (async () => {
+      const { token } = axios.CancelToken.source();
       try {
-        const { data } = await bookmarkAPI.getOneBookmark(id);
+        const { data } = await bookmarkAPI.getOneBookmark(id, token);
         dispatch({
           type: actions.FETCH_BOOKMARK,
           payload: data,
         });
       } catch (err) {
+        if (axios.isCancel(err)) {
+          console.log('cancelled');
+        } else {
+          // TODO:
+        }
         console.log(err);
       }
+
+      return () => axios.Cancel();
     })();
   }, [dispatch, id, user]);
 
