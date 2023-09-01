@@ -74,6 +74,7 @@ const DashBoard = () => {
       <Table
         data={stories}
         columns={columns}
+        onDelete={handleDelete}
       />
     </div>
   );
