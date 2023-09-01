@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import { useCallback, useEffect } from 'react';
+import { withSwal } from 'react-sweetalert2';
 
 import Loader from 'components/Loader';
 import Table from 'components/table/Table';
