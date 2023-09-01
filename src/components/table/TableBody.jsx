@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import Moment from 'react-moment';
-import { FaPencilAlt } from 'react-icons/fa';
 import PropTypes from 'prop-types';
+import { FaPencilAlt } from 'react-icons/fa';
 
 import DateTime from 'components/DateTime';
 import DeleteButton from '../button/DeleteButton';
