@@ -1,4 +1,3 @@
-import Moment from 'react-moment';
 import { Link } from 'react-router-dom';
 import { useMemo } from 'react';
 import PropTypes from 'prop-types';
