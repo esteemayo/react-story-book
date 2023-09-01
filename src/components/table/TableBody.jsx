@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import DeleteButton from '../button/DeleteButton';
 
-const TableBody = ({ data }) => {
+const TableBody = ({ data, onDelete }) => {
   return (
     <tbody>
       {data?.map((item) => {
