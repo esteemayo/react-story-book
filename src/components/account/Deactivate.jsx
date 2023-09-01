@@ -48,7 +48,10 @@ const Deactivate = ({ swal }) => {
 
   return (
     <div className='deactivate'>
-      <Title title='Deactivate your account' className='text-uppercase' />
+      <Title
+        title='Deactivate your account'
+        className='text-uppercase'
+      />
       <hr />
       <blockquote>
         I would like to hereby formally request the removal of all my personal
