@@ -2,6 +2,7 @@ import { toast } from 'react-toastify';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBookmark, FaRegBookmark, FaPencilAlt } from 'react-icons/fa';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 
 import * as actions from 'context/bookmark/BookMarkTypes';
