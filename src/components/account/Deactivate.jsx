@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import { useCallback } from 'react';
+import { withSwal } from 'react-sweetalert2';
 import { FaCogs } from 'react-icons/fa';
 
 import Title from '../Title';
