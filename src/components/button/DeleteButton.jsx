@@ -8,7 +8,7 @@ import { useGlobalContext } from 'context/story/StoryContext';
 
 import Button from './Button';
 
-const DeleteButton = ({ id }) => {
+const DeleteButton = ({ onAction }) => {
   const { removeStory } = useGlobalContext();
 
   const handleDeleteStory = useCallback(async (id) => {
