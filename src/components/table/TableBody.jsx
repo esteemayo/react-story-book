@@ -17,7 +17,7 @@ const TableBody = ({ data, onDelete }) => {
               <Link to={`/stories/details/${slug}`}>{title}</Link>
             </td>
             <td>
-              <Moment format='MMMM Do YYYY'>{createdAt}</Moment>
+              <DateTime date={createdAt} />
             </td>
             <td className='dash-status'>{status}</td>
             <td>
