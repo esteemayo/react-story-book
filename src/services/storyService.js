@@ -2,9 +2,7 @@ import http from './httpService';
 
 const apiEndPoint = '/stories';
 
-function storyUrl(storyId) {
-  return `${apiEndPoint}/${storyId}`;
-}
+const storyUrl = (storyId) => `${apiEndPoint}/${storyId}`;
 
 export function getStories(search, page) {
   return http.get(
