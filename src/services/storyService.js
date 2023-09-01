@@ -4,40 +4,29 @@ const apiEndPoint = '/stories';
 
 const storyUrl = (storyId) => `${apiEndPoint}/${storyId}`;
 
-export function getStories(search, page) {
-  return http.get(
+export const getStories = (search, page) =>
+  http.get(
     search ? `${apiEndPoint}${search}` : `${apiEndPoint}?page=${page}`
   );
-}
 
-export function getRelatedStories(tags) {
-  return http.post(`${apiEndPoint}/related-stories`, tags);
-}
+export const getRelatedStories = (tags) =>
+  http.post(`${apiEndPoint}/related-stories`, tags);
 
-export function getStory(storyId) {
-  return http.get(storyUrl(storyId));
-}
+export const getStory = (storyId) => http.get(storyUrl(storyId));
 
-export function getWithSlug(slug) {
-  return http.get(`${apiEndPoint}/details/${slug}`);
-}
+export const getWithSlug = (slug) =>
+  http.get(`${apiEndPoint}/details/${slug}`);
 
-export function searchStory(searchQuery) {
-  return http.get(`${apiEndPoint}/search?q=${searchQuery}`);
-}
+export const searchStory = (searchQuery) =>
+  http.get(`${apiEndPoint}/search?q=${searchQuery}`);
 
-export function createStory(story) {
-  return http.post(apiEndPoint, story);
-}
+export const createStory = (story) => http.post(apiEndPoint, story);
 
-export function updateStory(storyId, story) {
-  return http.patch(storyUrl(storyId), story);
-}
+export const updateStory = (storyId, story) =>
+  http.patch(storyUrl(storyId), story);
 
-export function likeStory(storyId) {
-  return http.patch(`${apiEndPoint}/like/${storyId}`);
-}
+export const likeStory = (storyId) =>
+  http.patch(`${apiEndPoint}/like/${storyId}`);
 
-export function deleteStory(storyId) {
-  return http.delete(storyUrl(storyId));
-}
+export const deleteStory = (storyId) =>
+  http.delete(storyUrl(storyId));
