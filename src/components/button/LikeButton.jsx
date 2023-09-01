@@ -16,6 +16,10 @@ const LikeButton = ({ likes, user, actionId }) => {
     return !!user ? toggleFavorite() : null;
   }, [user, toggleFavorite]);
 
+  const likeLabel = useMemo(() => {
+    return `You and ${likes?.length - 1} others`;
+  }, [likes]);
+
   return (
     <button onClick={handleLike} className='like-btn'>
       <LikeIcon
@@ -26,7 +30,7 @@ const LikeButton = ({ likes, user, actionId }) => {
       {user &&
         likes?.includes(user.id || user?.user?._id) &&
         likes?.length > 2 ? (
-        <small>{`You and ${likes?.length - 1} others`}</small>
+        <small>{likeLabel}</small>
       ) : (
         <small>
           {likes?.length > 0 ? likes?.length : ''}{' '}
