@@ -1,7 +1,5 @@
-import { toast } from 'react-toastify';
-import { useCallback } from 'react';
-import { FaTrash } from 'react-icons/fa';
 import PropTypes from 'prop-types';
+import { FaTrash } from 'react-icons/fa';
 
 import Button from './Button';
 
@@ -18,7 +16,8 @@ const DeleteButton = ({ actionId, onAction }) => {
 };
 
 DeleteButton.propTypes = {
-  id: PropTypes.string.isRequired,
+  actionId: PropTypes.string.isRequired,
+  onAction: PropTypes.func.isRequired,
 };
 
 export default DeleteButton;
