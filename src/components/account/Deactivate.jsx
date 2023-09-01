@@ -3,7 +3,7 @@ import { useCallback } from 'react';
 import { FaCogs } from 'react-icons/fa';
 
 import Title from '../Title';
-import Button from './button/Button';
+import Button from '../button/Button';
 
 import { deactivateAcc } from 'services/userService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
