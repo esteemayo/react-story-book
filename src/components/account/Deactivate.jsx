@@ -21,10 +21,29 @@ const Deactivate = ({ swal }) => {
     }
   }, []);
 
-  const deleteMe = useCallback(async () => {
-    await handleDelete();
-    await logout();
-  }, [handleDelete, logout]);
+  const deleteMe = useCallback(() => {
+    swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await handleDelete();
+        await logout();
+        await swal.fire(
+          'Deactivated!',
+          'Your account has been deactivated.',
+          'success'
+        );
+      }
+    }).then((err) => {
+      console.log(err);
+    });
+  }, [swal, handleDelete, logout]);
 
   return (
     <div className='deactivate'>
