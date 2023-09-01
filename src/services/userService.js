@@ -17,12 +17,9 @@ export const updateUserData = (userData) => {
   return http.patch(`${apiEndPoint}/update-me`, userData);
 }
 
-export const updateUserPassword = (userData) => {
-  return http.patch(`${apiEndPoint}/update-my-password`, userData);
-}
+export const updateUserPassword = (userData) =>
+  http.patch(`${apiEndPoint}/update-my-password`, userData);
 
-export const deactivateAcc = () => {
-  return http.delete(`${apiEndPoint}/delete-me`);
-}
+export const deactivateAcc = () => http.delete(`${apiEndPoint}/delete-me`);
 
 export const getJwt = () => getFromStorage(tokenKey)?.token;
