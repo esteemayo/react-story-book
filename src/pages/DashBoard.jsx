@@ -17,17 +17,17 @@ const DashBoard = ({ swal }) => {
   const { user } = useGlobalAuthContext();
   const { userStories: stories, removeStory, isLoading, dispatch } = useGlobalContext();
 
-  const handleDeleteStory = useCallback(async (id) => {
+  const handleDeleteStory = useCallback(async (storyId) => {
     try {
-      removeStory(id);
-      await deleteStory(id);
+      removeStory(storyId);
+      await deleteStory(storyId);
     } catch (ex) {
       if (ex.response && ex.response.status === 404)
         toast.error('This story has already been deleted');
     }
   }, [removeStory]);
 
-  const handleDelete = useCallback(async (id) => {
+  const handleDelete = useCallback(async (storyId) => {
     swal.fire({
       title: 'Are you sure?',
       text: 'You won\'t be able to revert this!',
@@ -39,7 +39,7 @@ const DashBoard = ({ swal }) => {
       reverseButtons: true,
     }).then(async (result) => {
       if (result.isConfirmed) {
-        await handleDeleteStory(id);
+        await handleDeleteStory(storyId);
         await swal.fire(
           'Deleted!',
           'Your file has been deleted.',
