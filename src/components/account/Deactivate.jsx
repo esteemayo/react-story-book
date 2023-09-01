@@ -9,7 +9,7 @@ import Button from '../button/Button';
 import { deactivateAcc } from 'services/userService';
 import { useGlobalAuthContext } from 'context/auth/AuthContext';
 
-const Deactivate = () => {
+const Deactivate = ({ swal }) => {
   const { logout } = useGlobalAuthContext();
 
   const handleDelete = useCallback(async () => {
@@ -52,4 +52,6 @@ const iconStyling = {
   fontSize: '0.8rem',
 };
 
-export default Deactivate;
+export default withSwal(({ swal }, ref) => (
+  <Deactivate swal={swal} />
+));
