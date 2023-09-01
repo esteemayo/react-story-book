@@ -29,7 +29,8 @@ const Deactivate = ({ swal }) => {
       showCancelButton: true,
       confirmButtonColor: '#26a69a',
       cancelButtonColor: '#f44336',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Yes, Deactivate',
+      reverseButtons: true,
     }).then(async (result) => {
       if (result.isConfirmed) {
         await handleDelete();
