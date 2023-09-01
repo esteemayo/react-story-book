@@ -30,7 +30,7 @@ const StoryCard = ({
 
   const avatar = useMemo(() => {
     return user?.photo ? PF + user.photo : user.gravatar;
-  }, [user, PF]);
+  }, [PF, user]);
 
   const url = useMemo(() => {
     return `/stories/details/${slug}`;
