@@ -31,7 +31,7 @@ Table.propTypes = {
       label: PropTypes.string.isRequired,
     }),
   ),
-  onDelete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func,
 };
 
 export default Table;
