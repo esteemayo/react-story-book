@@ -1,4 +1,5 @@
 import Moment from 'react-moment';
+import PropTypes from 'prop-types';
 
 const DateTime = ({ date }) => {
   return (
