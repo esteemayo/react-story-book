@@ -2,10 +2,7 @@ import http from './httpService';
 
 const apiEndpoint = '/histories';
 
-export function getHistoriesOnStory(storyId, cancelToken) {
-  return http.get(`${apiEndpoint}/story/${storyId}`, { cancelToken });
-}
+export const getHistoriesOnStory = (storyId, cancelToken) =>
+  http.get(`${apiEndpoint}/story/${storyId}`, { cancelToken });
 
-export function createHistory(story) {
-  return http.post(apiEndpoint, story);
-}
+export const createHistory = (story) => http.post(apiEndpoint, story);
