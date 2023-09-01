@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import { useCallback, useEffect } from 'react';
 
 import Loader from 'components/Loader';
