@@ -23,7 +23,7 @@ const TableBody = ({ data, onDelete }) => {
               <Link to={`/stories/update/${slug}`} className='btn left-align'>
                 Update <FaPencilAlt />
               </Link>{' '}
-              <DeleteButton id={id} />
+              <DeleteButton onAction={onDelete} />
             </td>
           </tr>
         );
