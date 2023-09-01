@@ -63,7 +63,9 @@ const StoryCard = ({
           <br />
           <div className='chip'>
             <img src={avatar} alt='avatar' />
-            <Link to={`/stories?author=${user.username}`}>{user.name}</Link>
+            <Link to={`/stories?author=${user.username}`}>
+              {user.name}
+            </Link>
           </div>
           <div className='like-container'>
             <LikeButton
