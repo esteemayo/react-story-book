@@ -12,12 +12,16 @@ const UserCard = ({ user }) => {
       REACT_APP_PROD_IMAGE_API_URL;
   }, []);
 
+  const avatar = useMemo(() => {
+    return user?.photo ? PF + user.photo : user?.gravatar;
+  }, [PF, user]);
+
   return (
     <div className='card center-align single-story-card'>
       <div className='card-content'>
         <span className='card-title'>{user?.name}</span>
         <img
-          src={user?.photo ? PF + user.photo : user?.gravatar}
+          src={avatar}
           className='circle responsive-img'
           alt=''
         />
