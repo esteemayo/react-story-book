@@ -8,7 +8,7 @@ const useFavorite = ({ likes, user, actionId }) => {
   const { favStory } = useGlobalContext();
 
   const hasFavorited = useMemo(() => {
-    const userId = user.id ?? user?.user?._id;
+    const userId = user?.id ?? user?.user?._id;
     const story = likes || [];
     return !!story.includes(userId);
   }, [likes, user]);
