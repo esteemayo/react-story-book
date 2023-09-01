@@ -32,7 +32,7 @@ const DashBoard = ({ swal }) => {
     }
   }, [removeStory]);
 
-  const handleDelete = useCallback(async (storyId) => {
+  const handleDelete = useCallback((storyId) => {
     swal.fire({
       title: 'Are you sure?',
       text: 'You won\'t be able to revert this!',
