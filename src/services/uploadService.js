@@ -2,6 +2,4 @@ import http from './httpService';
 
 const apiEndPoint = '/uploads';
 
-export function uploadPhoto(file) {
-  return http.post(apiEndPoint, file);
-}
+export const uploadPhoto = (file) => http.post(apiEndPoint, file);
