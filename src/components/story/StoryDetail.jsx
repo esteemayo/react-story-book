@@ -154,7 +154,7 @@ const StoryDetail = ({
                 actionId={id}
               />
             </div>
-            {user && <span>viewLabel</span>}
+            {user && <span>{viewLabel}</span>}
           </div>
           <blockquote>
             {body &&
