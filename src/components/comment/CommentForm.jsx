@@ -34,7 +34,7 @@ const CommentForm = ({ id }) => {
   }, [handleComment]);
 
   const disableBtn = useMemo(() => {
-    return !!body.trim() === '';
+    return body.trim() === '';
   }, [body]);
 
   return (
