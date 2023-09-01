@@ -3,6 +3,7 @@ import Moment from 'react-moment';
 import { FaPencilAlt } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
+import DateTime from 'components/DateTime';
 import DeleteButton from '../button/DeleteButton';
 
 const TableBody = ({ data, onDelete }) => {
