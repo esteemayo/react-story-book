@@ -3,30 +3,26 @@ import { getFromStorage, tokenKey } from 'utils';
 
 const apiEndPoint = '/users';
 
-export function createUser(userData) {
-  return http.post(`${apiEndPoint}/signup`, userData);
-}
+export const createUser = (userData) =>
+  http.post(`${apiEndPoint}/signup`, userData);
 
-export function loginUser(userData) {
-  return http.post(`${apiEndPoint}/login`, userData);
-}
+export const loginUser = (userData) =>
+  http.post(`${apiEndPoint}/login`, userData);
 
-export function getUserStories() {
+export const getUserStories = () => {
   return http.get(`${apiEndPoint}/dashboard`);
 }
 
-export function updateUserData(userData) {
+export const updateUserData = (userData) => {
   return http.patch(`${apiEndPoint}/update-me`, userData);
 }
 
-export function updateUserPassword(userData) {
+export const updateUserPassword = (userData) => {
   return http.patch(`${apiEndPoint}/update-my-password`, userData);
 }
 
-export function deactivateAcc() {
+export const deactivateAcc = () => {
   return http.delete(`${apiEndPoint}/delete-me`);
 }
 
-export function getJwt() {
-  return getFromStorage(tokenKey)?.token;
-}
+export const getJwt = () => getFromStorage(tokenKey)?.token;
