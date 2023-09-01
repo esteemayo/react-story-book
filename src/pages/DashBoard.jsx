@@ -47,7 +47,7 @@ const DashBoard = ({ swal }) => {
         await handleDeleteStory(storyId);
         await swal.fire(
           'Deleted!',
-          'Your file has been deleted.',
+          'Your story has been deleted.',
           'success'
         );
       }
