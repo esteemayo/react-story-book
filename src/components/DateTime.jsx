@@ -1,4 +1,4 @@
-
+import Moment from 'react-moment';
 
 const DateTime = () => {
   return (
