@@ -28,10 +28,28 @@ const DashBoard = ({ swal }) => {
   }, [removeStory]);
 
   const handleDelete = useCallback(async (id) => {
-    if (window.confirm('Are you sure you want to delete this story')) {
-      await handleDeleteStory(id);
-    }
-  }, [handleDeleteStory]);
+    swal.fire({
+      title: 'Are you sure?',
+      text: 'You won\'t be able to revert this!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#26a69a',
+      cancelButtonColor: '#f44336',
+      confirmButtonText: 'Yes, Delete!',
+      reverseButtons: true,
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await handleDeleteStory(id);
+        await swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        );
+      }
+    }).catch((err) => {
+      console.log(err);
+    });
+  }, [swal, handleDeleteStory]);
 
   useEffect(() => {
     (async () => {
