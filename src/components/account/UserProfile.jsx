@@ -43,7 +43,7 @@ const UserProfile = () => {
           Email: <a href={`mailto:${user.email}`}>{user.email}</a>
         </p>
         <p>
-          Joined: <Moment format='MMMM YYYY'>{user.createdAt}</Moment>
+          Joined: <DateTime date={user.createdAt} />
         </p>
       </div>
     </div>
