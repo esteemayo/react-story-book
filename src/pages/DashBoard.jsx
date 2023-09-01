@@ -15,7 +15,12 @@ import { deleteStory } from 'services/storyService';
 
 const DashBoard = ({ swal }) => {
   const { user } = useGlobalAuthContext();
-  const { userStories: stories, removeStory, isLoading, dispatch } = useGlobalContext();
+  const {
+    userStories: stories,
+    removeStory,
+    isLoading,
+    dispatch,
+  } = useGlobalContext();
 
   const handleDeleteStory = useCallback(async (storyId) => {
     try {
