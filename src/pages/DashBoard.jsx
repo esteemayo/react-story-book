@@ -13,7 +13,7 @@ import { columns } from 'data';
 import { getUserStories } from 'services/userService';
 import { deleteStory } from 'services/storyService';
 
-const DashBoard = () => {
+const DashBoard = ({ swal }) => {
   const { user } = useGlobalAuthContext();
   const { userStories: stories, removeStory, isLoading, dispatch } = useGlobalContext();
 
@@ -81,4 +81,6 @@ const DashBoard = () => {
   );
 };
 
-export default DashBoard;
+export default withSwal(({ swal }, ref) => (
+  <DashBoard swal={swal} />
+));
