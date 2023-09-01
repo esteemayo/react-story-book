@@ -14,6 +14,10 @@ const CommentCard = ({ body, user, createdAt }) => {
       REACT_APP_PROD_IMAGE_API_URL;
   }, []);
 
+  const avatar = useMemo(() => {
+    return user?.photo ? PF + user.photo : user.gravatar;
+  }, [PF, user]);
+
   const url = useMemo(() => {
     return `/stories?author=${user.username}`;
   }, [user]);
@@ -23,7 +27,7 @@ const CommentCard = ({ body, user, createdAt }) => {
       <div className='card-content'>
         <p>{body}</p>
         <div className='chip'>
-          <img src={user?.photo ? PF + user.photo : user.gravatar} alt='' />
+          <img src={avatar} alt='' />
           <Link to={url}>{user.name}</Link>
         </div>
         <br />
