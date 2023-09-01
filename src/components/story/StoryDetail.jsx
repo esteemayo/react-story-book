@@ -85,29 +85,40 @@ const StoryDetail = ({
         });
       } catch (err) {
         if (axios.isCancel(err)) {
+          console.log(err);
           console.log('cancelled');
         } else {
           // TODO:
         }
-        console.log(err);
       }
-
-      return () => axios.Cancel();
     })();
+
+    return () => axios.Cancel();
   }, [dispatch, id, user]);
 
   useEffect(() => {
+    const { token } = axios.CancelToken.source();
+
     (async () => {
       try {
-        const { data } = await getHistoriesOnStory(id);
+        const { data } = await getHistoriesOnStory(id, token);
         historyDispatch({
           type: viewAction.FETCH_HISTORIES,
           payload: data,
         });
       } catch (err) {
-        console.log(err);
+        if (axios.isCancel(err)) {
+          console.log(err);
+          console.log('cancelled');
+        } else {
+          // TODO:
+        }
       }
     })();
+
+    return () => {
+      axios.Cancel();
+    };
   }, [historyDispatch, id]);
 
   useEffect(() => {
