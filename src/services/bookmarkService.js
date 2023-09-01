@@ -2,8 +2,8 @@ import http from './httpService';
 
 const apiEndpoint = '/bookmarks';
 
-export function getOneBookmark(storyId) {
-  return http.get(`${apiEndpoint}/story/${storyId}`);
+export function getOneBookmark(storyId, cancelToken) {
+  return http.get(`${apiEndpoint}/story/${storyId}`, { cancelToken });
 }
 
 export function createBookmark(storyId) {
