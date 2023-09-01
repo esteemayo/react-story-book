@@ -14,7 +14,23 @@ import { deleteStory } from 'services/storyService';
 
 const DashBoard = () => {
   const { user } = useGlobalAuthContext();
-  const { userStories: stories, isLoading, dispatch } = useGlobalContext();
+  const { userStories: stories, removeStory, isLoading, dispatch } = useGlobalContext();
+
+  const handleDeleteStory = useCallback(async (id) => {
+    try {
+      removeStory(id);
+      await deleteStory(id);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404)
+        toast.error('This story has already been deleted');
+    }
+  }, [removeStory]);
+
+  const handleDelete = useCallback(async (id) => {
+    if (window.confirm('Are you sure you want to delete this story')) {
+      await handleDeleteStory(id);
+    }
+  }, [handleDeleteStory]);
 
   useEffect(() => {
     (async () => {
